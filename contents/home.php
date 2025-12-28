@@ -7,6 +7,7 @@ $head_config = [
 	'description' => 'Dive into awesome apps, games, and wild experiments. Explore features, tech, and creative ideas. Click, play, and get inspired.',
 	'keywords'    => 'PixelLab, Julibe, web playground, creative coding, apps, games, experiments, UI, design, JavaScript, HTML, CSS',
 	'lang'        => $lang,
+	'language'        => $lang,
 ];
 
 $page = [

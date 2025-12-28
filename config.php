@@ -4,7 +4,7 @@
 	$config = [
 		'project'  => 'Julibe Apps - PixelLab',
 		'timezone' => 'America/Bogota',
-		'langs'    => ['es', 'en'],
+		'langs'    => [ 'en'],
 
 		// Directories
 		'paths' => [

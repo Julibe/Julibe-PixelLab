@@ -103,6 +103,15 @@
 		$created_ts  = !empty($project_data['created']) ? strtotime($project_data['created']) : time();
 		$modified_ts = !empty($project_data['date'])    ? strtotime($project_data['date'])    : $created_ts;
 
+		$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+		$host   = $_SERVER['HTTP_HOST'];
+		$uri    = $_SERVER['REQUEST_URI'];
+
+		$current_url = $scheme . '://' . $host . $uri;
+
+		$base_url = str_replace('view','media', $current_url);
+		$base_url = str_replace('.html','/', $base_url);
+
 
 		// Head Configuration Defaults
 		$project_title = $project_data['title'] ?? $project_slug;
@@ -119,6 +128,7 @@
 				}))
 				: null,
 
+			'language'        => $lang,
 			'year' => date('Y', $created_ts),
 			'date' => date('Y-m-d', $created_ts),
 			'modified_year' => date('Y', $modified_ts),
@@ -129,19 +139,19 @@
 				'expiration_time' => date('Y-m-d\T', strtotime('+12 months')).'00:00:00-05:00',
 			],
 
-			'favicon' => '../' . (
+			'favicon' => $base_url . (
 				$images['favicon']
 				?? $images['icon']
 				?? null
 			),
 
-			'icon' => '../' . (
+			'icon' => $base_url. (
 				$images['icon']
 				?? $images['favicon']
 				?? null
 			),
 
-			'image' => '../' . (
+			'image' => $base_url. (
 				$images['cover']
 				?? $images['poster']
 				?? $images['image']
@@ -151,7 +161,7 @@
 			),
 
 			'video' => isset($images['video'])
-				? '../' . $images['video']
+				?$base_url . $images['video']
 				: null,
 		];
 

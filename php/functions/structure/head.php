@@ -216,6 +216,8 @@
 		$key_apple        = '06. Apple/iOS';
 		$key_microsoft    = '07. Microsoft';
 		$key_dublin       = '08. Dublin';
+		$key_PBCore       = '08. PBCore';
+		$key_DataCite     = '08. DataCite ';
 		$key_feeds        = '10. Feeds & Search';
 		$key_fonts        = '20. Fonts';
 		$key_styles       = '21. Styles';
@@ -401,36 +403,34 @@
 		}
 
 		/* Apple/iOS */
-		if ( ! empty( $config['apple'] ) ) {
-			$tags[ $key_apple ] = array_filter( [
-				[ 'tag' => 'meta', 'name' => 'apple-mobile-web-app-capable', 'content' => 'yes' ],
-				[ 'tag' => 'meta', 'name' => 'apple-mobile-web-app-status-bar-style', 'content' => $config['apple']['bar'] ?? 'default' ],
-				[ 'tag' => 'meta', 'name' => 'apple-mobile-web-app-title', 'content' => $config['name'] ?: $config['author'] ],
-				( ! empty( $config['apple']['id'] ) ? [
-					'tag'     => 'meta',
-					'name'    => 'apple-itunes-app',
-					'content' => "app-id={$config['apple']['id']}" .
-								( ! empty( $config['apple']['affiliate'] ) ? ", affiliate-data={$config['apple']['affiliate']}" : "" ) .
-								( ! empty( $config['apple']['appArgument'] ) ? ", app-argument={$config['apple']['appArgument']}" : "" )
-				] : null ),
-				[ 'tag' => 'link', 'rel' => 'apple-touch-icon', 'href' => $config['icon']['src'] ?? null ],
-				( ! empty( $config['apple']['maskIcon'] ) ? [ 'tag' => 'link', 'rel' => 'mask-icon', 'href' => $config['apple']['maskIcon'] ?? null, 'color' => $config['color'] ] : null ),
-				[ 'tag' => 'link', 'rel' => 'apple-touch-startup-image', 'href' => $config['apple']['image'] ?? ( $config['image']['src'] ?? null ) ],
-				[ 'tag' => 'meta', 'name' => 'format-detection', 'content' => is_string( $config['apple']['format'] ?? '' ) ? ( $config['apple']['format'] ?? '' ) : "telephone=no, date=no, address=no, email=no" ],
-			], $filter_null );
 
-			if ( ! empty( $config['apple']['touchIcons'] ) && is_array( $config['apple']['touchIcons'] ) ) {
-				foreach ( $config['apple']['touchIcons'] as $item ) {
-					$tags[ $key_apple ][] = [ 'tag' => 'link', 'rel' => 'apple-touch-icon', 'sizes' => $item['size'] ?? null, 'href' => $item['src'] ?? null ];
-				}
-			}
-			if ( ! empty( $config['apple']['images'] ) && is_array( $config['apple']['images'] ) ) {
-				foreach ( $config['apple']['images'] as $img_item ) {
-					$tags[ $key_apple ][] = [ 'tag' => 'link', 'rel' => 'apple-touch-startup-image', 'media' => $img_item['media'] ?? null, 'href' => $img_item['src'] ?? null ];
-				}
+		$tags[ $key_apple ] = array_filter( [
+			[ 'tag' => 'meta', 'name' => 'apple-mobile-web-app-capable', 'content' => 'yes' ],
+			[ 'tag' => 'meta', 'name' => 'apple-mobile-web-app-status-bar-style', 'content' => $config['apple']['bar'] ?? 'default' ],
+			[ 'tag' => 'meta', 'name' => 'apple-mobile-web-app-title', 'content' => $config['name'] ?: $config['author'] ],
+			( ! empty( $config['apple']['id'] ) ? [
+				'tag'     => 'meta',
+				'name'    => 'apple-itunes-app',
+				'content' => "app-id={$config['apple']['id']}" .
+							( ! empty( $config['apple']['affiliate'] ) ? ", affiliate-data={$config['apple']['affiliate']}" : "" ) .
+							( ! empty( $config['apple']['appArgument'] ) ? ", app-argument={$config['apple']['appArgument']}" : "" )
+			] : null ),
+			[ 'tag' => 'link', 'rel' => 'apple-touch-icon', 'href' => $config['icon']['src'] ?? null ],
+			( ! empty( $config['apple']['maskIcon'] ) ? [ 'tag' => 'link', 'rel' => 'mask-icon', 'href' => $config['apple']['maskIcon'] ?? null, 'color' => $config['color'] ] : null ),
+			[ 'tag' => 'link', 'rel' => 'apple-touch-startup-image', 'href' => $config['apple']['image'] ?? ( $config['image']['src'] ?? null ) ],
+			[ 'tag' => 'meta', 'name' => 'format-detection', 'content' => is_string( $config['apple']['format'] ?? '' ) ? ( $config['apple']['format'] ?? '' ) : "telephone=no, date=no, address=no, email=no" ],
+		], $filter_null );
+
+		if ( ! empty( $config['apple']['touchIcons'] ) && is_array( $config['apple']['touchIcons'] ) ) {
+			foreach ( $config['apple']['touchIcons'] as $item ) {
+				$tags[ $key_apple ][] = [ 'tag' => 'link', 'rel' => 'apple-touch-icon', 'sizes' => $item['size'] ?? null, 'href' => $item['src'] ?? null ];
 			}
 		}
-
+		if ( ! empty( $config['apple']['images'] ) && is_array( $config['apple']['images'] ) ) {
+			foreach ( $config['apple']['images'] as $img_item ) {
+				$tags[ $key_apple ][] = [ 'tag' => 'link', 'rel' => 'apple-touch-startup-image', 'media' => $img_item['media'] ?? null, 'href' => $img_item['src'] ?? null ];
+			}
+		}
 		/* Microsoft */
 		$tags[ $key_microsoft ] = array_filter( [
 			[ 'tag' => 'meta', 'name' => 'msvalidate.01', 'content' => $config['seo']['bing'] ?? null ],
@@ -444,7 +444,7 @@
 
 
 		/* Dublin Core Metadata */
-		$tags[ $key_dublin ] = array_merge( $tags[ $key_microsoft ] ?? [], array_filter( [
+		$tags[ $key_dublin ] = array_merge( $tags[ $key_dublin ] ?? [], array_filter( [
 			[ 'tag' => 'meta', 'name' => 'DC.title', 'content' => $config['title_full'] ?? null],
 			[ 'tag' => 'meta', 'name' => 'DC.creator', 'content' => $config['author'] ?? null],
 			[ 'tag' => 'meta', 'name' => 'DC.description', 'content' => $config['desc']?? null ],
@@ -458,6 +458,37 @@
 			[ 'tag' => 'meta', 'name' => 'DC.identifier', 'content' => $config['url'] ?? null],
 			[ 'tag' => 'meta', 'name' => 'DC.source', 'content' => $config['domain'] ?? null],
 			[ 'tag' => 'meta', 'name' => 'DC.rights', 'content' => $config['copyright'] ?? null],
+		] ) );
+
+		/* Public Broadcasting Metadata Project */
+		$tags[ $key_PBCore  ] = array_merge( $tags[ $key_PBCore ] ?? [], array_filter( [
+			[ 'tag' => 'meta', 'name' => 'PBMP.title', 'content' => $config['title_full'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.creator', 'content' => $config['author'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.description', 'content' => $config['desc'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.subject', 'content' => $config['keywords'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.issued', 'content' => $config['date'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.modified', 'content' => $config['modified_date'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.language', 'content' => $config['language'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.format', 'content' => 'text/html' ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.identifier', 'content' => $config['url'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.source', 'content' => $config['domain'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.rights', 'content' => $config['copyright'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'PBMP.publisher', 'content' => $config['author'] ?? null ],
+		] ) );
+
+
+		/* DataCite Metadata Schema */
+		$tags[ $key_DataCite] = array_merge( $tags[ $key_DataCite ] ?? [], array_filter( [
+			[ 'tag' => 'meta', 'name' => 'datacite.creator', 'content' => $config['author'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'datacite.title', 'content' => $config['title_full'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'datacite.publisher', 'content' => $config['author'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'datacite.publicationYear', 'content' => $config['year'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'datacite.resourceType', 'content' => ( $config['type'] === 'article' ? 'Text/Article' : 'InteractiveResource' ) ],
+			[ 'tag' => 'meta', 'name' => 'datacite.subject', 'content' => $config['keywords'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'datacite.description', 'content' => $config['desc'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'datacite.language', 'content' => $config['language'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'datacite.url', 'content' => $config['url'] ?? null ],
+			[ 'tag' => 'meta', 'name' => 'datacite.dateIssued', 'content' => $config['date'] ?? null ],
 		] ) );
 
 		/* Feeds & Search */
@@ -529,6 +560,8 @@
 					"inLanguage" => $config['language'] ?? null,
 				] ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT )
 			],
+
+
 
 			/* Service Worker */
 			( ! empty( $config['sw_path'] ) ? [ 'tag' => 'script', '_html' => "if('serviceWorker' in navigator){navigator.serviceWorker.register('{$config['sw_path']}');}" ] : null ),
