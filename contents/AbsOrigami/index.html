@@ -1,0 +1,389 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<div id="intro_screen" class="intro_overlay">
+	<div class="intro_logo_box">
+		<img src="https://omnex.julibe.com/Assets/PixelLab/AbsOrigami/logo-white.webp" alt="AbsOrigami White Logo">
+	</div>
+	<h1>ABSORIGAMI</h1>
+</div>
+
+<div class="bento_wrap">
+	<div class="app_shell">
+		<header class="header_bar no_select">
+			<div class="brand_logo" onclick="handleTabSwitch('home')">
+				<img src="https://omnex.julibe.com/Assets/PixelLab/AbsOrigami/logo.webp" alt="AbsOrigami Logo">
+				<span>ABS<span>ORIGAMI</span></span>
+			</div>
+			<div class="player_stats">
+				<div class="user_profile_mini">
+					<div class="mini_avatar">
+						<img id="ui_header_avatar" src="" alt="Avatar">
+					</div>
+					<div class="user_meta">
+						<span id="ui_header_name" class="header_name">User-San</span>
+						<div class="belt_info">
+							<div id="ui_belt_node" class="belt_node"></div>
+							<span id="ui_belt_name">White Belt</span>
+						</div>
+					</div>
+				</div>
+				<div class="xp_track_wrapper">
+					<div class="xp_track">
+						<div id="ui_xp_bar" class="xp_fill"></div>
+					</div>
+					<span class="stat_counter">
+						<i class="fa-regular fa-star"></i>
+						<span id="ui_header_xp_val">0 XP</span>
+					</span>
+				</div>
+			</div>
+		</header>
+
+		<nav class="navigation_tabs no_select">
+			<button class="tab_trigger active" onclick="handleTabSwitch('home')"><i class="fa-solid fa-home"></i> Home</button>
+			<button class="tab_trigger" onclick="handleTabSwitch('adventure')"><i class="fa-solid fa-map"></i> Adventure</button>
+			<button class="tab_trigger" onclick="handleTabSwitch('community')"><i class="fa-solid fa-users"></i> Community</button>
+			<button class="tab_trigger" onclick="handleTabSwitch('resources')"><i class="fa-solid fa-book"></i> Resources</button>
+			<button class="tab_trigger" onclick="handleTabSwitch('profile')"><i class="fa-solid fa-user"></i> Profile</button>
+			<button class="tab_trigger" onclick="handleTabSwitch('contact')"><i class="fa-solid fa-envelope"></i> Contact</button>
+		</nav>
+
+		<main class="viewport_content" id="app_viewport">
+			<!-- Home Section -->
+			<section id="view_home" class="view_section active">
+				<div class="bento_grid">
+					<div class="bento_cell bento_large">
+						<div class="menu_label"><i class="fa-solid fa-star"></i> TODAY'S SPECIAL</div>
+						<div class="hero_layout_box">
+							<div class="hero_text_side">
+								<h1 class="hero_title">UNFOLD THE<br>IMPOSSIBLE.</h1>
+								<p class="section_paragraph">Your bento box of paper folding adventures awaits. Each compartment holds a new challenge.</p>
+
+								<div class="level_display">
+									<span class="level_label" id="ui_lvl_title">LVL 1: PAPER PILGRIM</span>
+									<div class="progress_dots" id="ui_lvl_dots"></div>
+								</div>
+
+								<div class="hero_action">
+									<button class="cta_btn" onclick="handleTabSwitch('adventure')">START FEAST</button>
+								</div>
+							</div>
+							<div class="hero_img_side">
+								<img src="https://omnex.julibe.com/Assets/PixelLab/AbsOrigami/image-001.webp" alt="Origami Hero Art">
+							</div>
+						</div>
+					</div>
+					<div class="bento_cell bento_medium">
+						<div class="stat_block">
+							<i class="fa-solid fa-fire fire"></i>
+							<h3>Streak</h3>
+							<p class="stat_value gold">7 Days</p>
+						</div>
+					</div>
+					<div class="bento_cell bento_medium">
+						<div class="stat_block">
+							<i class="fa-solid fa-trophy trophy"></i>
+							<h3>Rank</h3>
+							<p class="stat_value red">#42</p>
+						</div>
+					</div>
+					<div class="bento_cell bento_wide" id="home_featured"></div>
+					<div class="bento_cell bento_medium">
+						<div class="menu_label nori"><i class="fa-solid fa-bowl-food"></i> QUICK PICKS</div>
+						<div id="quick_picks" class="picks_grid"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Adventure Map Section -->
+			<section id="view_adventure" class="view_section">
+				<div class="ui_card">
+					<h2 class="section_title">Adventure Bento Menu</h2>
+					<form>
+						<div class="select_wrapper">
+							<select id="filter_difficulty" onchange="renderAdventureMap()">
+								<option value="all">All Challenges</option>
+								<option value="Easy">Beginner (Easy)</option>
+								<option value="Medium">Apprentice (Medium)</option>
+								<option value="Hard">Master (Hard)</option>
+							</select>
+						</div>
+					</form>
+					<div class="adventure_grid" id="adventure_map_grid"></div>
+				</div>
+			</section>
+
+			<!-- Community Table Section -->
+			<section id="view_community" class="view_section community_layout">
+				<div class="ui_card">
+					<h2 class="section_title">Community Table</h2>
+					<div class="leaderboard_container">
+						<div class="leaderboard_header">
+							<h2>Global Rankings</h2>
+							<span>Top 10 Folders</span>
+						</div>
+						<div class="leaderboard_list">
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">1</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=OrigamiKing" alt="OrigamiKing"></div>
+									<span class="user_name">OrigamiKing</span>
+								</div>
+								<span class="user_xp">15,420 XP</span>
+							</div>
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">2</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=PaperPulse" alt="PaperPulse"></div>
+									<span class="user_name">PaperPulse</span>
+								</div>
+								<span class="user_xp">12,890 XP</span>
+							</div>
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">3</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=CreaseMaster" alt="CreaseMaster"></div>
+									<span class="user_name">CreaseMaster</span>
+								</div>
+								<span class="user_xp">11,200 XP</span>
+							</div>
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">4</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=FoldSage" alt="FoldSage"></div>
+									<span class="user_name">FoldSage</span>
+								</div>
+								<span class="user_xp">10,550 XP</span>
+							</div>
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">5</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=NinjaFolder" alt="NinjaFolder"></div>
+									<span class="user_name">NinjaFolder</span>
+								</div>
+								<span class="user_xp">9,820 XP</span>
+							</div>
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">6</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ZenPaper" alt="ZenPaper"></div>
+									<span class="user_name">ZenPaper</span>
+								</div>
+								<span class="user_xp">8,900 XP</span>
+							</div>
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">7</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=CraneArtist" alt="CraneArtist"></div>
+									<span class="user_name">CraneArtist</span>
+								</div>
+								<span class="user_xp">8,450 XP</span>
+							</div>
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">8</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=PlicataPro" alt="PlicataPro"></div>
+									<span class="user_name">PlicataPro</span>
+								</div>
+								<span class="user_xp">7,980 XP</span>
+							</div>
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">9</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=SquareSoul" alt="SquareSoul"></div>
+									<span class="user_name">SquareSoul</span>
+								</div>
+								<span class="user_xp">7,210 XP</span>
+							</div>
+							<div class="rank_item">
+								<div class="user_info">
+									<div class="rank_num">10</div>
+									<div class="user_avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Tesselate" alt="Tesselate"></div>
+									<span class="user_name">Tesselate</span>
+								</div>
+								<span class="user_xp">6,500 XP</span>
+							</div>
+						</div>
+					</div>
+					<div class="join_club">
+						<h2>Join the Club!</h2>
+						<p>Unlock exclusive bento boxes and community challenges.</p>
+						<button class="cta_btn">GET STARTED</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- Resources Section (ASBORIGAMI Universe) -->
+			<section id="view_resources" class="view_section resources_layout">
+				<div class="resources_hero">
+					<img class="hero_bg_img" src="https://omnex.julibe.com/Assets/PixelLab/AbsOrigami/image-004.webp" alt="Background Texture">
+					<div class="hero_content">
+						<h1>ASBORIGAMI</h1>
+						<p>Discover the Art Hidden in a Single Sheet of Paper. Origami is more than folding paper. It is a quiet dialogue between your hands and your imagination.</p>
+					</div>
+				</div>
+
+				<div class="history_bento">
+					<div class="history_card span_8">
+						<h3>Welcome to ASBORIGAMI</h3>
+						<p class="section_paragraph">The word <em>origami</em> comes from Japan and means <strong>the art of folding paper</strong>. What began centuries ago as a simple form of entertainment gradually became part of educational and cultural life in Japan.</p>
+						<p class="section_paragraph">Today, origami is practiced around the world. It can be a gift, a decorative piece, a meditative exercise, or a creative challenge.</p>
+					</div>
+
+					<div class="history_card span_4 img_card">
+						<img src="https://omnex.julibe.com/Assets/PixelLab/AbsOrigami/image-005.webp" alt="Association History Image">
+					</div>
+
+					<div class="history_card span_12">
+						<h3>Our History</h3>
+						<p class="section_paragraph">It started with a simple idea: to create a group inspired by a similar association in Osaka. Informal meetings soon became regular gatherings where members shared techniques and explored refined models.</p>
+						<p class="section_paragraph">Among those who joined were Kenji Takahashi, Haruto Nakamura, Daichi Sato, Yuki Yamamoto, Aiko Tanaka, Mei Kobayashi, Riku Watanabe, and Sora Ito. On <strong>February 17, 2000</strong>, the association was officially registered.</p>
+						<blockquote>"Taro Suzuki brought structure and a sense of humor to the meetings. Each person contributed their own unique style to the group."</blockquote>
+					</div>
+				</div>
+
+				<div class="ui_card premium">
+					<h2 class="section_title">Featured Creations</h2>
+					<div class="creation_showcase">
+						<div class="creation_item">
+							<img class="creation_img" src="https://omnex.julibe.com/Assets/PixelLab/AbsOrigami/image-006.webp" alt="Sakura Blossom">
+							<div class="creation_details">
+								<strong>Sakura Blossom</strong>
+								<span>Hiroshi Yamazaki</span>
+							</div>
+						</div>
+						<div class="creation_item">
+							<img class="creation_img" src="https://omnex.julibe.com/Assets/PixelLab/AbsOrigami/image-002.webp" alt="Dragon Centipede">
+							<div class="creation_details">
+								<strong>Dragon Centipede</strong>
+								<span>Emi Fujimoto</span>
+							</div>
+						</div>
+						<div class="creation_item">
+							<img class="creation_img" src="https://omnex.julibe.com/Assets/PixelLab/AbsOrigami/image-004.webp" alt="Harmony Modular Sphere">
+							<div class="creation_details">
+								<strong>Harmony Modular Sphere</strong>
+								<span>Hiroshi Yamazaki</span>
+							</div>
+						</div>
+						<div class="creation_item">
+							<img class="creation_img" src="https://omnex.julibe.com/Assets/PixelLab/AbsOrigami/image-001.webp" alt="Sacred Crane Heart">
+							<div class="creation_details">
+								<strong>Sacred Crane Heart</strong>
+								<span>Kenta Mori</span>
+							</div>
+						</div>
+					</div>
+
+					<h3 class="skill_tree_title" style="margin-top: 40px; font-family: 'Fredoka'; font-size: 1.8rem; color: var(--brand_red);">Recommended Bibliography</h3>
+					<div class="book_shelf">
+						<div class="book_card">
+							<h4>Origami Design Secrets</h4>
+							<p>Robert J. Lang</p>
+						</div>
+						<div class="book_card">
+							<h4>Origami for Interpreters</h4>
+							<p>Román Díaz</p>
+						</div>
+						<div class="book_card">
+							<h4>Creative Origami Collection</h4>
+							<p>Kunihiko Kasahara</p>
+						</div>
+						<div class="book_card">
+							<h4>Fabulous Origami Boxes</h4>
+							<p>Tomoko Fuse</p>
+						</div>
+						<div class="book_card">
+							<h4>Origametry</h4>
+							<p>Tom Hull</p>
+						</div>
+						<div class="book_card">
+							<h4>Mythical Paper Creatures</h4>
+							<p>Yusuke Hayashi et al.</p>
+						</div>
+						<div class="book_card">
+							<h4>Folded Universe</h4>
+							<p>Takumi Okada</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Profile Section -->
+			<section id="view_profile" class="view_section">
+				<div class="bento_grid profile_bento">
+					<div class="bento_cell bento_medium avatar_cell">
+						<div class="avatar_box">
+							<img id="ui_profile_avatar" src="" alt="Session Avatar">
+						</div>
+						<h2 id="ui_display_name" class="display_name">User-San</h2>
+						<p id="ui_profile_name" class="profile_title">Paper Pilgrim</p>
+
+						<div class="stat_pill_group">
+							<div class="stat_pill">
+								<span id="ui_stat_xp">0</span> XP
+							</div>
+							<div class="stat_pill">
+								<span id="ui_stat_folds">0</span> Folds
+							</div>
+						</div>
+					</div>
+					<div class="bento_cell bento_wide performance_cell">
+						<h3 class="perf_header"><i class="fa-solid fa-chart-line"></i> Performance</h3>
+						<div class="perf_grid">
+							<div class="perf_card">
+								<div id="stat_completed" class="perf_value red">0</div>
+								<div class="perf_label">Mastered</div>
+							</div>
+							<div class="perf_card">
+								<div id="stat_level" class="perf_value gold">1</div>
+								<div class="perf_label">Level</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ui_card">
+					<h2 class="section_title"><i class="fa-solid fa-box-open"></i> Mastery Bento</h2>
+					<p class="section_paragraph">Models you have successfully mastered.</p>
+					<div id="ui_mastery_list" class="mastery_grid"></div>
+				</div>
+			</section>
+
+			<!-- Contact Section -->
+			<section id="view_contact" class="view_section">
+				<div class="ui_card">
+					<h2 class="section_title">Get in Touch</h2>
+					<p class="section_paragraph">We would be delighted to welcome you into our community. Whether you are stuck on a complex crease, want to share your latest masterpiece, or just want to say hello, the ASBORIGAMI masters are always here to listen. Leave us a message and let’s begin folding something meaningful together.</p>
+					<form onsubmit="handleFormSubmission(event)">
+						<input type="text" placeholder="Your Name" required>
+						<input type="email" placeholder="Email Address" required>
+						<textarea placeholder="Your message here..." required></textarea>
+						<button class="cta_btn">SEND MESSAGE</button>
+					</form>
+				</div>
+			</section>
+		</main>
+	</div>
+</div>
+
+<!-- Quest Modal -->
+<div class="modal_overlay" id="quest_modal">
+	<div class="modal_box">
+		<button class="close_trigger" onclick="closeQuestModal()">&times;</button>
+		<h2 id="modal_title">Quest</h2>
+		<div class="step_preview"><i id="modal_icon" class="fa-solid fa-dove"></i></div>
+		<p id="modal_step_count" class="step_indicator">Step 1/3</p>
+		<div id="modal_instruction" class="instruction_text">Instruction...</div>
+		<div class="modal_actions">
+			<button class="cta_btn secondary back" onclick="handleStepChange(-1)">BACK</button>
+			<button id="modal_next_btn" class="cta_btn next" onclick="handleStepChange(1)">NEXT</button>
+			<button id="modal_finish_btn" class="cta_btn success finish" onclick="handleQuestCompletion()">FINISH</button>
+		</div>
+	</div>
+</div>
+
+<div class="toast_hub" id="ui_toast_hub"></div>

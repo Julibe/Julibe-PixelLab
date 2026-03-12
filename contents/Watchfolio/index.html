@@ -1,0 +1,119 @@
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+<div id="ambient-bg"></div>
+<div id="ambient-overlay"></div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<div id="loader" class="loading-screen">
+	<div class="spinner"></div>
+	<p>Loading Watchfolio ...</p>
+</div>
+
+<div id="detail-modal" class="modal-overlay">
+	<div class="modal-card">
+		<button class="close-btn" onclick="app.closeModal()">
+			<span class="material-icons-round">close</span>
+		</button>
+		<div id="modal-content" style="min-height: 200px;">
+			<div class="spinner-small"></div>
+		</div>
+	</div>
+</div>
+
+<nav class="no-select" id="navbar">
+	<div class="nav-left">
+		<div class="logo">
+			<span class="material-icons-round">movie_filter</span>
+			Watchfolio <span class="hidden">My Cinematic Universe</span>
+		</div>
+		<ul>
+			<li><a href="#" class="active" onclick="app.setFilter('default')"><span class="material-icons-round icon-small">dashboard</span> Board</a></li>
+			<li><a href="#" onclick="app.setFilter('month')"><span class="material-icons-round icon-small">new_releases</span> New</a></li>
+			<li><a href="#movies-section"><span class="material-icons-round icon-small">movie</span> Movies</a></li>
+			<li><a href="#series-section"><span class="material-icons-round icon-small">tv</span> Series</a></li>
+		</ul>
+	</div>
+	<div class="nav-right">
+		<div class="search-bar">
+			<span class="material-icons-round">search</span>
+			<input type="text" placeholder="Search collection...">
+		</div>
+		<button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Switch Theme">
+			<span class="material-icons-round">light_mode</span>
+		</button>
+		<div class="profile">
+			<img id="user-avatar" src="" alt="Profile">
+			<div class="info">
+				<span class="name" id="user-name">Loading...</span>
+				<span class="badge">Trakt User</span>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="time-controls no-select">
+	<div class="mode-selector">
+		<button onclick="app.setMode('year')" id="mode-year">Year</button>
+		<button onclick="app.setMode('month')" id="mode-month">Month</button>
+		<button class="active" onclick="app.setMode('rolling')" id="mode-rolling">Past Year</button>
+		<button onclick="app.setMode('all')" id="mode-all">All Time</button>
+	</div>
+	<div class="time-stepper">
+		<button onclick="app.moveTime(-1)"><span class="material-icons-round">chevron_left</span></button>
+		<div class="date-range-display">
+			<span id="date-display-main">Past 365 Days</span>
+			<small id="date-display-sub">Rolling Year View</small>
+		</div>
+		<button onclick="app.moveTime(1)"><span class="material-icons-round">chevron_right</span></button>
+	</div>
+</div>
+
+<div class="layout-grid">
+	<section class="hero card no-select" id="hero-section">
+		<div class="overlay">
+			<h1>Loading Hero...</h1>
+		</div>
+	</section>
+	<aside class="sidebar no-select">
+		<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+			<h2>Now watching</h2>
+			<span class="material-icons-round" style="opacity:0.5;">history</span>
+		</div>
+		<div class="watchlist" id="watchlist-container"></div>
+	</aside>
+</div>
+
+<section class="section-slider no-select" id="movies-section">
+	<div class="header">
+		<h2>Top Rated Movies <span>(In Selected Period)</span></h2>
+		<div class="nav-arrows">
+			<button onclick="scrollContainer('movies-track', 'left')"><span class="material-icons-round">arrow_back</span></button>
+			<button onclick="scrollContainer('movies-track', 'right')"><span class="material-icons-round">arrow_forward</span></button>
+		</div>
+	</div>
+	<div class="scroll-track" id="movies-track"></div>
+</section>
+
+<section class="section-slider no-select" id="series-section">
+	<div class="header">
+		<h2>Top Rated Series <span>(In Selected Period)</span></h2>
+		<div class="nav-arrows">
+			<button onclick="scrollContainer('series-track', 'left')"><span class="material-icons-round">arrow_back</span></button>
+			<button onclick="scrollContainer('series-track', 'right')"><span class="material-icons-round">arrow_forward</span></button>
+		</div>
+	</div>
+	<div class="scroll-track" id="series-track"></div>
+</section>
+
+<button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+	<span class="material-icons-round">arrow_upward</span>
+</button>
+
+<div id="toast" class="toast">
+	<span id="toast-message">Notification</span>
+</div>

@@ -2,7 +2,7 @@
   title: The Pillars Behind Crafting Digital Experiences
   slogan: Stop contributing to the noise. Start creating meaning.
   slug: julibe-pillars
-  extract: A digital manifesto rejecting "AI slop" and boring interfaces. Explore the four pillars—UX, AI, Gamification, and Design—that turn passive users into loyal fans.
+  extract: A digital Philosophy rejecting "AI slop" and boring interfaces. Explore the four pillars—UX, AI, Gamification, and Design—that turn passive users into loyal fans.
   description: An interactive audio-visual journey breaking down the philosophy of Cognitive Clarity, Responsible AI, and Organic Growth.
 
   ## Pricing & Estimates
@@ -32,7 +32,7 @@
 
   ## Metadata
   tags:
-    - Manifesto
+    - Philosophy
     - Philosophy
     - UX/UI
     - Ethics
@@ -62,7 +62,7 @@
     - Audio Sync
     - Future Web
   hashtags:
-    - '#DigitalManifesto'
+    - '#DigitalPhilosophy'
     - '#ResponsibleAI'
     - '#CognitiveClarity'
     - '#GamificationStrategy'
@@ -75,7 +75,7 @@
 
   ## Call to Action
   view_btn: Experience the Pillars
-  read_btn: Read the Manifesto
+  read_btn: Read the Philosophy
 
   ## Design
   colors:
@@ -98,7 +98,7 @@
 
 We are drowning in a sea of digital noise.
 "AI slop," cookie-cutter templates, and aggressive pop-ups have turned the web into a chaotic storm of distraction.
-This project is my answer to that chaos. It is a **manifesto in code**.
+This project is my answer to that chaos. It is a **Philosophy in code**.
 
 ## Project Overview (The Message)
 This isn't just a portfolio; it’s a breakdown of the specific methodology I use to rescue brands from obscurity. It creates a structured, narrative space to explore the **Four Core Pillars** that define modern, high-impact digital products:
@@ -130,7 +130,7 @@ Relevant foundational concepts:
 * **The "AI Slop" Perception:** How do we talk about using AI without sounding like just another "ChatGPT wrapper"?
 * **Attention Span:** Users today give you 3 seconds. How do we convince them to listen to a 2-minute audio story?
 * **Complex Concepts:** Explaining "Adaptive Ecosystems" or "Organic Data" can easily become boring academic lectures.
-* **Language Barriers:** Ensuring the emotional weight of the manifesto hits equally hard in both English and Spanish.
+* **Language Barriers:** Ensuring the emotional weight of the Philosophy hits equally hard in both English and Spanish.
 
 ### Solutions
 * **Synced Audio Storytelling:** We don't ask the user to read walls of text. We *narrate* it to them. The text highlights in karaoke-style sync, keeping their eyes focused and their brain engaged.
@@ -182,7 +182,7 @@ We are done with boring websites. This project is a testament to the fact that w
 * **[CodePen](https://codepen.io/)**: The sandbox where this idea was born.
 
 ## TL;DR Version
-This is an interactive 3D manifesto that explains *how* I build digital products. It breaks down my four obsessions: **UX Design** (making it usable), **Responsible AI** (making it smart), **Gamification** (making it fun), and **Design** (making it beautiful).
+This is an interactive 3D Philosophy that explains *how* I build digital products. It breaks down my four obsessions: **UX Design** (making it usable), **Responsible AI** (making it smart), **Gamification** (making it fun), and **Design** (making it beautiful).
 
 Technically, it's a showcase of modern, framework-free JavaScript. It features a custom audio-sync engine that matches voiceover to text slides in real-time and a performant Three.js background that reacts to your journey.
 

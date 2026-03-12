@@ -1,0 +1,366 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<div class="app-container">
+	<aside class="sidebar" role="navigation" aria-label="PixelStage Design Controls">
+		<div class="sidebar-header">
+			<div class="brand">
+				<div class="logo-icon" role="img" aria-label="PixelStage Creative Icon"> <i class="fas fa-camera-retro"></i> </div>
+				<h1 title="PixelStage: Design the frame. Own the moment" aria-label="Design the frame. Own the moment"> PixelStage </h1>
+			</div>
+			<p class="slogan hidden" title="A professional toolkit to frame your digital work beautifully" aria-label="Design the frame. Own the moment."> Design the frame. Own the moment. </p>
+		</div>
+		<div class="main-tabs-wrapper"> <button class="tab-arrow tab-arrow-left" id="tabArrowLeft" title="Scroll tabs to the left" aria-label="Scroll navigation menu left"> <i class="fas fa-chevron-left"></i> </button>
+			<div class="tabs-scroll-container">
+				<div class="main-tabs" id="mainTabsContainer" role="tablist" aria-label="Main editing sections"> <button class="main-tab active" data-tab="presets" role="tab" aria-selected="true" title="Browse and apply pre-configured design styles" aria-label="Switch to Presets panel"> <i class="fas fa-palette"></i> <span>Presets</span> </button> <button class="main-tab" data-tab="content" role="tab" aria-selected="false" title="Upload or link the screenshot you want to showcase" aria-label="Switch to Content panel"> <i class="fas fa-image"></i> <span>Content</span> </button> <button class="main-tab" data-tab="background" role="tab" aria-selected="false" title="Customize the stage background colors and gradients" aria-label="Switch to Background panel"> <i class="fas fa-fill-drip"></i> <span>Background</span> </button> <button class="main-tab" data-tab="canvas" role="tab" aria-selected="false" title="Adjust the 3D perspective and frame of your preview" aria-label="Switch to Canvas panel"> <i class="fas fa-desktop"></i> <span>Canvas</span> </button> <button class="main-tab" data-tab="title" role="tab" aria-selected="false" title="Add informative text and logos to your design" aria-label="Switch to Title and Typography panel"> <i class="fas fa-heading"></i> <span>Title</span> </button> <button class="main-tab" data-tab="shadow" role="tab" aria-selected="false" title="Configure realistic shadow effects for depth" aria-label="Switch to Shadow panel"> <i class="fas fa-clone"></i> <span>Shadow</span> </button> <button class="main-tab" data-tab="filters" role="tab" aria-selected="false" title="Apply professional color filters and visual effects" aria-label="Switch to Filters panel"> <i class="fas fa-filter"></i> <span>Filters</span> </button> <button class="main-tab" data-tab="export" role="tab" aria-selected="false" title="Ready to share? Choose your format and size" aria-label="Switch to Export panel"> <i class="fas fa-download"></i> <span>Export</span> </button> </div>
+			</div> <button class="tab-arrow tab-arrow-right" id="tabArrowRight" title="Scroll tabs to the right" aria-label="Scroll navigation menu right"> <i class="fas fa-chevron-right"></i> </button>
+		</div>
+		<div class="sidebar-content">
+			<div class="tab-panel active" id="panel-presets" role="tabpanel" aria-label="Presets Selection">
+				<div class="tabs-wrapper">
+					<div class="tabs" role="tablist"> <button class="tab active" data-subtab="built-in" role="tab" aria-selected="true" title="Explore professional templates created by Julibe" aria-label="View default built-in presets"> Built-in </button> <button class="tab" data-subtab="saved" role="tab" aria-selected="false" title="Access your personal collection of saved styles" aria-label="View your custom saved presets"> Saved </button> </div>
+				</div>
+				<div class="sub-tab-panel active" id="subtab-built-in" role="tabpanel">
+					<div class="preset-cards" id="builtInPresets" aria-label="List of available built-in styles"></div>
+				</div>
+				<div class="sub-tab-panel" id="subtab-saved" role="tabpanel">
+					<div class="preset-cards" id="savedPresets" aria-label="List of your custom saved styles"></div>
+				</div>
+				<div class="divider" role="separator"></div>
+				<div class="btn-group"> <button class="btn btn-secondary" id="loadPresetFileBtn" title="Import a previously exported JSON configuration" aria-label="Import design from a JSON file"> <i class="fas fa-file-import"></i> Load JSON </button> <button class="btn btn-primary" id="savePresetBtn" title="Keep this design for future use in your local gallery" aria-label="Save current configuration as a preset"> <i class="fas fa-save"></i> Save </button> </div>
+			</div>
+			<div class="tab-panel" id="panel-content" role="tabpanel" aria-label="Image and URL Content Source">
+				<div class="tabs-wrapper">
+					<div class="tabs" role="tablist"> <button class="tab active" data-subtab="url-tab" role="tab" aria-selected="true" title="Generate a preview directly from a live website address" aria-label="Use a website link as source"> <i class="fas fa-link"></i> URL </button> <button class="tab" data-subtab="upload-tab" role="tab" aria-selected="false" title="Upload a screenshot file from your computer" aria-label="Upload an image file as source"> <i class="fas fa-upload"></i> Upload </button> </div>
+				</div>
+				<div class="sub-tab-panel active" id="subtab-url-tab" role="tabpanel">
+					<div class="input-group"> <label for="websiteUrl"><i class="fas fa-globe"></i> Website URL</label> <input type="url" id="websiteUrl" placeholder="Enter your awesome URL!" title="Enter the full URL of the site you want to capture" aria-label="Input field for website URL" /> </div>
+					<div class="input-group"> <label for="previewMethod"><i class="fas fa-cog"></i> Preview Method</label> <select id="previewMethod" title="Choose the technology used to render the website preview" aria-label="Select rendering engine">
+							<option value="iframe" selected> Iframe </option>
+							<option value="microlink">Microlink</option>
+							<option value="screenshotapi"> ScreenshotAPI.net </option>
+							<option value="apiflash">ApiFlash</option>
+							<option value="thumio">Thum.io (Watermark)</option>
+						</select> </div>
+					<div class="input-group" id="apiKeyGroup" style="display: none"> <label for="apiKeyInput"><i class="fas fa-key"></i> API Key (optional)</label> <input type="text" id="apiKeyInput" placeholder="Paste your private API key here" title="Authentication key for premium preview services" aria-label="API Key input field" /> </div> <button class="btn btn-primary btn-block" id="loadUrlBtn" title="Fetch the latest view of the provided website" aria-label="Refresh and load website preview"> <i class="fas fa-sync"></i> Load Preview </button>
+				</div>
+				<div class="sub-tab-panel" id="subtab-upload-tab" role="tabpanel">
+					<div class="upload-area" id="uploadArea" tabindex="0" role="button" title="Click or drag an image here to use it in your mockup" aria-label="Image upload drop zone"> <i class="fas fa-cloud-upload-alt"></i>
+						<p>Drag & drop image or <span>browse</span></p>
+					</div> <input type="file" id="imageInput" class="hidden" accept="image/*" aria-label="File picker for content image" />
+				</div>
+			</div>
+			<div class="tab-panel" id="panel-background" role="tabpanel" aria-label="Background Styles">
+				<div class="section-label" title="Define the shape and size of the output area" aria-label="Background Dimensions Section"> Background Dimensions </div>
+				<div class="input-group"> <label aria-label="Choose a predefined aspect ratio"><i class="fas fa-expand"></i> Aspect Ratio</label>
+					<div class="aspect-btns" data-target="background" role="group" aria-label="Background Aspect Ratio Options"> <button class="aspect-btn active" data-ratio="16:9" title="Standard Wide Format (16:9)" aria-label="Set background to 16:9"> 16:9 </button> <button class="aspect-btn" data-ratio="1:1" title="Square Format (1:1)" aria-label="Set background to 1:1"> 1:1 </button> <button class="aspect-btn" data-ratio="9:16" title="Vertical Mobile Format (9:16)" aria-label="Set background to 9:16"> 9:16 </button> <button class="aspect-btn" data-ratio="4:3" title="Classic Monitor Format (4:3)" aria-label="Set background to 4:3"> 4:3 </button> <button class="aspect-btn" data-ratio="3:4" title="Portrait Tablet Format (3:4)" aria-label="Set background to 3:4"> 3:4 </button> <button class="aspect-btn" data-ratio="21:9" title="Ultrawide Format (21:9)" aria-label="Set background to 21:9"> 21:9 </button> </div>
+				</div>
+				<div class="input-row">
+					<div class="input-group"> <label for="bgWidth"><i class="fas fa-arrows-alt-h"></i> Width</label> <input type="number" id="bgWidth" value="1200" placeholder="1200" title="Adjust the total width in pixels" aria-label="Background width in pixels" /> </div>
+					<div class="input-group"> <label for="bgHeight"><i class="fas fa-arrows-alt-v"></i> Height</label> <input type="number" id="bgHeight" value="675" placeholder="675" title="Adjust the total height in pixels" aria-label="Background height in pixels" /> </div>
+				</div>
+				<div class="divider" role="separator"></div>
+				<div class="section-label" title="Choose between solid colors, gradients, or images" aria-label="Background Style Section"> Background Style </div>
+				<div class="tabs-wrapper">
+					<div class="tabs" role="tablist"> <button class="tab active" data-subtab="bg-color" role="tab" aria-selected="true" title="Apply a solid uniform color to the background" aria-label="Solid color background option"> Color </button> <button class="tab" data-subtab="bg-gradient" role="tab" aria-selected="false" title="Create a dynamic color transition" aria-label="Gradient background option"> Gradient </button> <button class="tab" data-subtab="bg-image" role="tab" aria-selected="false" title="Set a custom photograph as the background" aria-label="Image background option"> Image </button> </div>
+				</div>
+				<div class="sub-tab-panel active" id="subtab-bg-color" role="tabpanel">
+					<div class="input-group"> <label for="bgColor"><i class="fas fa-paint-brush"></i> Background Color</label>
+						<div class="color-input">
+							<div class="color-preview"> <input type="color" id="bgColor" value="#6366f1" title="Pick a color from the palette" aria-label="Background color picker" /> </div>
+							<div class="color-inputs"> <input type="text" id="bgColorText" value="#6366f1" placeholder="#FFFFFF" title="Enter Hex color code" aria-label="Background color hex value" /> </div>
+						</div>
+					</div>
+				</div>
+				<div class="sub-tab-panel" id="subtab-bg-gradient" role="tabpanel">
+					<div class="gradient-grid" id="gradientPresets" aria-label="Selection of curated gradient presets"></div>
+					<div class="input-row">
+						<div class="input-group"> <label for="gradientStart">Start</label>
+							<div class="color-input">
+								<div class="color-preview"> <input type="color" id="gradientStart" value="#6366f1" title="Initial gradient color" aria-label="Gradient start color picker" /> </div>
+							</div>
+						</div>
+						<div class="input-group"> <label for="gradientEnd">End</label>
+							<div class="color-input">
+								<div class="color-preview"> <input type="color" id="gradientEnd" value="#8b5cf6" title="Final gradient color" aria-label="Gradient end color picker" /> </div>
+							</div>
+						</div>
+					</div>
+					<div class="range-group">
+						<div class="range-header"> <label for="gradientAngle"><i class="fas fa-redo"></i> Angle</label> <span class="range-value" id="gradientAngleValue" aria-live="polite">135°</span> </div> <input type="range" id="gradientAngle" min="0" max="360" value="135" title="Rotate the direction of the color gradient" aria-label="Gradient direction slider" />
+					</div>
+				</div>
+				<div class="sub-tab-panel" id="subtab-bg-image" role="tabpanel">
+					<div class="upload-area" id="bgImageUpload" tabindex="0" role="button" title="Upload a personalized backdrop image" aria-label="Upload background image drop zone"> <i class="fas fa-image"></i>
+						<p>Upload background image</p>
+					</div> <input type="file" id="bgImageInput" class="hidden" accept="image/*" aria-label="Background image file picker" />
+				</div>
+			</div>
+			<div class="tab-panel" id="panel-canvas" role="tabpanel" aria-label="Mockup Canvas and 3D Controls">
+				<div class="section-label" title="Set the dimensions for the screenshot element" aria-label="Screenshot Size Section"> Screenshot Size </div>
+				<div class="input-group"> <label aria-label="Choose screenshot aspect ratio"><i class="fas fa-expand"></i> Aspect Ratio</label>
+					<div class="aspect-btns" data-target="canvas" role="group" aria-label="Screenshot Aspect Ratio Options"> <button class="aspect-btn active" data-ratio="16:9" title="Set screenshot to 16:9" aria-label="Screenshot 16:9"> 16:9 </button> <button class="aspect-btn" data-ratio="1:1" title="Set screenshot to 1:1" aria-label="Screenshot 1:1"> 1:1 </button> <button class="aspect-btn" data-ratio="9:16" title="Set screenshot to 9:16" aria-label="Screenshot 9:16"> 9:16 </button> <button class="aspect-btn" data-ratio="4:3" title="Set screenshot to 4:3" aria-label="Screenshot 4:3"> 4:3 </button> <button class="aspect-btn" data-ratio="3:4" title="Set screenshot to 3:4" aria-label="Screenshot 3:4"> 3:4 </button> <button class="aspect-btn" data-ratio="21:9" title="Set screenshot to 21:9" aria-label="Screenshot 21:9"> 21:9 </button> </div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="canvasScalePercent"><i class="fas fa-expand-alt"></i> Scale (%)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="canvasScalePercentInput" value="66" data-default="66" title="Manually enter scale percentage" aria-label="Scale input value" /> <button class="reset-btn" data-reset="canvasScalePercent" title="Return scale to its default 66%" aria-label="Reset scale"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="canvasScalePercent" min="10" max="200" value="66" data-default="66" title="Shrink or enlarge the mockup on the stage" aria-label="Scale slider" /> </div>
+				</div>
+				<div class="section-label" title="Move the mockup horizontally or vertically" aria-label="Screenshot Position Section"> Screenshot Position </div>
+				<div class="range-group">
+					<div class="range-header"> <label for="offsetX"><i class="fas fa-arrows-alt-h"></i> Offset X (px)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="offsetXInput" value="0" data-default="0" title="Horizontal position in pixels" aria-label="Offset X value" /> <button class="reset-btn" data-reset="offsetX" title="Center the mockup horizontally" aria-label="Reset Offset X"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="offsetX" min="-500" max="500" value="0" data-default="0" title="Slide mockup left or right" aria-label="Offset X slider" /> </div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="offsetY"><i class="fas fa-arrows-alt-v"></i> Offset Y (px)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="offsetYInput" value="0" data-default="0" title="Vertical position in pixels" aria-label="Offset Y value" /> <button class="reset-btn" data-reset="offsetY" title="Center the mockup vertically" aria-label="Reset Offset Y"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="offsetY" min="-500" max="500" value="0" data-default="0" title="Slide mockup up or down" aria-label="Offset Y slider" /> </div>
+				</div>
+				<div class="section-label" title="Apply 3D depth and rotation effects" aria-label="3D Transform Section"> 3D Transform </div>
+				<div class="range-group">
+					<div class="range-header"> <label for="scale"><i class="fas fa-expand-alt"></i> Scale (%)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="scaleInput" value="100" data-default="100" title="3D scale percentage" aria-label="3D scale value" /> <button class="reset-btn" data-reset="scale" title="Restore original 3D scale" aria-label="Reset 3D scale"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="scale" min="20" max="200" value="100" data-default="100" title="Adjust the depth scaling" aria-label="3D scale slider" /> </div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="rotateZ"><i class="fas fa-sync-alt"></i> Rotate Z (°)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="rotateZInput" value="0" data-default="0" title="Flat rotation angle" aria-label="Rotation Z value" /> <button class="reset-btn" data-reset="rotateZ" title="Remove Z-axis rotation" aria-label="Reset Rotation Z"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="rotateZ" min="-180" max="180" value="0" data-default="0" title="Rotate mockup clockwise or counter-clockwise" aria-label="Rotation Z slider" /> </div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="rotateX"><i class="fas fa-arrows-alt-v"></i> Rotate X (°)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="rotateXInput" value="0" data-default="0" title="Vertical tilt angle" aria-label="Rotation X value" /> <button class="reset-btn" data-reset="rotateX" title="Remove X-axis tilt" aria-label="Reset Rotation X"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="rotateX" min="-45" max="45" value="0" data-default="0" title="Tilt mockup forward or backward" aria-label="Rotation X slider" /> </div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="rotateY"><i class="fas fa-arrows-alt-h"></i> Rotate Y (°)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="rotateYInput" value="0" data-default="0" title="Horizontal tilt angle" aria-label="Rotation Y value" /> <button class="reset-btn" data-reset="rotateY" title="Remove Y-axis tilt" aria-label="Reset Rotation Y"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="rotateY" min="-45" max="45" value="0" data-default="0" title="Tilt mockup side to side" aria-label="Rotation Y slider" /> </div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="perspective"><i class="fas fa-cube"></i> Perspective (px)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="perspectiveInput" value="1000" data-default="1000" title="View distance in pixels" aria-label="Perspective distance value" /> <button class="reset-btn" data-reset="perspective" title="Restore default perspective depth" aria-label="Reset Perspective"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="perspective" min="200" max="2000" value="1000" data-default="1000" title="Change the focal length of the 3D view" aria-label="Perspective slider" /> </div>
+				</div>
+				<div class="section-label" title="Wrap your content in a realistic device UI" aria-label="Device Frame Section"> Device Frame </div>
+				<div class="device-grid" role="group" aria-label="Choose a device container"> <button class="device-btn active" data-frame="none" title="Show raw image with no frame" aria-label="No device frame"> <i class="fas fa-ban"></i><span>None</span> </button> <button class="device-btn" data-frame="macos" title="Elegant Apple macOS window frame" aria-label="macOS desktop frame"> <i class="fab fa-apple"></i><span>macOS</span> </button> <button class="device-btn" data-frame="windows" title="Modern Windows 11 window frame" aria-label="Windows desktop frame"> <i class="fab fa-windows"></i><span>Windows</span> </button> <button class="device-btn" data-frame="iphone" title="Sleek smartphone frame" aria-label="iPhone mobile frame"> <i class="fas fa-mobile-alt"></i><span>iPhone</span> </button> <button class="device-btn" data-frame="android" title="Clean Android device frame" aria-label="Android mobile frame"> <i class="fab fa-android"></i><span>Android</span> </button> <button class="device-btn" data-frame="tablet" title="Tablet or iPad frame" aria-label="Tablet device frame"> <i class="fas fa-tablet-alt"></i><span>Tablet</span> </button> <button class="device-btn" data-frame="browser" title="Generic web browser UI" aria-label="Generic browser frame"> <i class="fab fa-chrome"></i><span>Browser</span> </button> </div>
+				<div class="range-group">
+					<div class="range-header"> <label for="cornerRadius"><i class="fas fa-border-style"></i> Corner Radius (px)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="cornerRadiusInput" value="10" data-default="10" title="Corner roundness in pixels" aria-label="Corner radius value" /> <button class="reset-btn" data-reset="cornerRadius" title="Set corners back to 12px" aria-label="Reset Corner Radius"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="cornerRadius" min="0" max="1000" step="0.1" value="10" data-default="10" title="Soften or sharpen the frame corners" aria-label="Corner radius slider" /> </div>
+				</div>
+				<div class="input-group"> <label aria-label="Choose the artistic style of the corners"><i class="fas fa-shapes"></i> Corner Shape</label>
+					<div class="aspect-btns" id="cornerShapeBtns" role="group" aria-label="Corner Shape Selection"> <button class="aspect-btn" data-shape="round" title="Standard circular rounded corners" aria-label="Set corners to round"> Round </button> <button class="aspect-btn active" data-shape="squircle" title="Smooth Apple-style squircle corners" aria-label="Set corners to squircle"> Squircle </button> <button class="aspect-btn" data-shape="bevel" title="Standard circular rounded corners" aria-label="Set corners to bevel"> Bevel </button> <button class="aspect-btn" data-shape="notch" title="Sharp inward notch corners" aria-label="Set corners to notch"> Notch </button> <button class="aspect-btn" data-shape="superellipse" title="Smooth superellipse corners" aria-label="Set corners to superellipse"> Superellipse </button> <button class="aspect-btn" data-shape="scoop" title="Concave inward corners" aria-label="Set corners to scooped"> Scooped </button> <button class="aspect-btn" data-shape="chamfer" title="Straight diagonal corners" aria-label="Set corners to chamfer"> Chamfer </button> </div>
+				</div>
+				<div class="range-group hidden">
+					<div class="range-header"> <label for="canvasPadding"><i class="fas fa-compress-arrows-alt"></i> Padding (px)</label>
+						<div class="range-controls"> <input type="number" class="range-value-input" id="canvasPaddingInput" value="60" data-default="60" title="Inner breathing room in pixels" aria-label="Canvas padding value" /> <button class="reset-btn" data-reset="canvasPadding" title="Restore default padding" aria-label="Reset Padding"> <i class="fas fa-undo"></i> </button> </div>
+					</div>
+					<div class="range-slider-row"> <input type="range" id="canvasPadding" min="0" max="200" value="60" data-default="60" title="Adjust the space around the screenshot" aria-label="Canvas padding slider" /> </div>
+				</div>
+			</div>
+			<div class="tab-panel" id="panel-title" role="tabpanel" aria-label="Branding and Typography">
+				<div class="section-label" title="Manage your brand logo visibility" aria-label="Logo Branding Section"> Logo </div>
+				<div class="toggle-group"> <span class="toggle-label"><i class="fas fa-image"></i> Show Logo</span>
+					<div class="toggle" id="logoVisible" role="switch" aria-checked="false" tabindex="0" title="Enable or disable logo visibility" aria-label="Toggle logo display"></div>
+				</div>
+				<div class="input-group">
+					<div class="btn-group"> <button class="btn btn-secondary" id="uploadLogoBtn" title="Select a PNG or SVG logo from your files" aria-label="Upload custom logo image"> <i class="fas fa-upload"></i> Upload Logo </button> <button class="btn btn-ghost" id="removeLogoBtn" title="Delete the current logo" aria-label="Remove logo image"> <i class="fas fa-trash"></i> </button> </div> <input type="file" id="logoInput" class="hidden" accept="image/*" aria-label="Logo file picker" />
+				</div>
+				<div class="section-label" title="Edit the main headline of your mockup" aria-label="Main Title Section"> Title </div>
+				<div class="toggle-group"> <span class="toggle-label"><i class="fas fa-heading"></i> Show Title</span>
+					<div class="toggle" id="titleVisible" role="switch" aria-checked="false" tabindex="0" title="Enable or disable main title" aria-label="Toggle title visibility"></div>
+				</div>
+				<div class="input-group"> <label for="titleText"><i class="fas fa-heading"></i> Title Text</label> <input type="text" id="titleText" placeholder="Craft your headline here" title="Type the main message for your mockup" aria-label="Main title text input" /> </div>
+				<div class="input-row">
+					<div class="input-group"> <label for="titleFont"><i class="fas fa-font"></i> Font</label> <select id="titleFont" title="Pick a typography style for the title" aria-label="Select title font family">
+							<option value="Inter">Inter</option>
+							<option value="Roboto">Roboto</option>
+							<option value="Open Sans">Open Sans</option>
+							<option value="Lato">Lato</option>
+							<option value="Montserrat">Montserrat</option>
+							<option value="Poppins">Poppins</option>
+							<option value="Playfair Display"> Playfair Display </option>
+							<option value="Merriweather">Merriweather</option>
+							<option value="Oswald">Oswald</option>
+							<option value="Raleway">Raleway</option>
+							<option value="Ubuntu">Ubuntu</option>
+							<option value="Nunito">Nunito</option>
+						</select> </div>
+					<div class="input-group"> <label for="titleSizeNum"><i class="fas fa-text-height"></i> Size</label> <input type="number" id="titleSizeNum" value="28" min="10" max="100" title="Text size in pixels" aria-label="Title font size" /> </div>
+				</div>
+				<div class="input-group"> <label aria-label="Horizontal alignment for the title text"><i class="fas fa-align-left"></i> Text Align</label>
+					<div class="aspect-btns" role="group" aria-label="Title Alignment"> <button class="aspect-btn active" data-align="left" title="Align text to the left" aria-label="Align title left"> <i class="fas fa-align-left"></i> </button> <button class="aspect-btn" data-align="center" title="Center the text" aria-label="Align title center"> <i class="fas fa-align-center"></i> </button> <button class="aspect-btn" data-align="right" title="Align text to the right" aria-label="Align title right"> <i class="fas fa-align-right"></i> </button> </div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="titleOffsetX">Offset X</label> <span class="range-value" id="titleOffsetXValue" aria-live="polite">0px</span> </div> <input type="range" id="titleOffsetX" min="-200" max="200" value="0" title="Slide title horizontally" aria-label="Title Offset X slider" />
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="titleOffsetY">Offset Y</label> <span class="range-value" id="titleOffsetYValue" aria-live="polite">0px</span> </div> <input type="range" id="titleOffsetY" min="-200" max="200" value="0" title="Slide title vertically" aria-label="Title Offset Y slider" />
+				</div>
+				<div class="input-group"> <label for="titleColor"><i class="fas fa-palette"></i> Color</label>
+					<div class="color-input">
+						<div class="color-preview"> <input type="color" id="titleColor" value="#ffffff" title="Pick a color for your title" aria-label="Title color picker" /> </div>
+					</div>
+				</div>
+				<div class="input-group"> <label aria-label="Select the anchor point for your title on the stage"><i class="fas fa-map-marker-alt"></i> Position</label>
+					<div class="position-grid" data-target="title" role="group" aria-label="Title Anchor Position"> <button class="position-btn" data-position="top-left" title="Place at top left" aria-label="Anchor title top left"> ↖ Top Left </button> <button class="position-btn active" data-position="top-center" title="Place at top center" aria-label="Anchor title top center"> ↑ Top Center </button> <button class="position-btn" data-position="top-right" title="Place at top right" aria-label="Anchor title top right"> ↗ Top Right </button> <button class="position-btn" data-position="bottom-left" title="Place at bottom left" aria-label="Anchor title bottom left"> ↙ Bot Left </button> <button class="position-btn" data-position="bottom-center" title="Place at bottom center" aria-label="Anchor title bottom center"> ↓ Bot Center </button> <button class="position-btn" data-position="bottom-right" title="Place at bottom right" aria-label="Anchor title bottom right"> ↘ Bot Right </button> </div>
+				</div>
+				<div class="section-label" title="Add a secondary description line" aria-label="Subtitle Section"> Subtitle </div>
+				<div class="toggle-group"> <span class="toggle-label"><i class="fas fa-text-width"></i> Show Subtitle</span>
+					<div class="toggle" id="subtitleVisible" role="switch" aria-checked="false" tabindex="0" title="Enable or disable subtitle" aria-label="Toggle subtitle visibility"></div>
+				</div>
+				<div class="input-group"> <label for="subtitleText"><i class="fas fa-text-width"></i> Subtitle Text</label> <input type="text" id="subtitleText" placeholder="Add some context here" title="Secondary message text" aria-label="Subtitle text input" /> </div>
+				<div class="input-row">
+					<div class="input-group"> <label for="subtitleFont"><i class="fas fa-font"></i> Font</label> <select id="subtitleFont" title="Pick a typography style for the subtitle" aria-label="Select subtitle font family">
+							<option value="Inter">Inter</option>
+							<option value="Roboto">Roboto</option>
+							<option value="Open Sans">Open Sans</option>
+							<option value="Lato">Lato</option>
+							<option value="Montserrat">Montserrat</option>
+							<option value="Poppins">Poppins</option>
+							<option value="Playfair Display"> Playfair Display </option>
+							<option value="Merriweather">Merriweather</option>
+							<option value="Oswald">Oswald</option>
+							<option value="Raleway">Raleway</option>
+							<option value="Ubuntu">Ubuntu</option>
+							<option value="Nunito">Nunito</option>
+						</select> </div>
+					<div class="input-group"> <label for="subtitleSizeNum"><i class="fas fa-text-height"></i> Size</label> <input type="number" id="subtitleSizeNum" value="14" min="10" max="60" title="Subtitle size in pixels" aria-label="Subtitle font size" /> </div>
+				</div>
+				<div class="input-group"> <label aria-label="Horizontal alignment for the subtitle text"><i class="fas fa-align-left"></i> Text Align</label>
+					<div class="aspect-btns" id="subtitleAlignBtns" role="group" aria-label="Subtitle Alignment"> <button class="aspect-btn active" data-align="left" title="Align subtitle to the left" aria-label="Align subtitle left"> <i class="fas fa-align-left"></i> </button> <button class="aspect-btn" data-align="center" title="Center the subtitle" aria-label="Align subtitle center"> <i class="fas fa-align-center"></i> </button> <button class="aspect-btn" data-align="right" title="Align subtitle to the right" aria-label="Align subtitle right"> <i class="fas fa-align-right"></i> </button> </div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="subtitleOffsetX">Offset X</label> <span class="range-value" id="subtitleOffsetXValue" aria-live="polite">0px</span> </div> <input type="range" id="subtitleOffsetX" min="-200" max="200" value="0" title="Slide subtitle horizontally" aria-label="Subtitle Offset X slider" />
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="subtitleOffsetY">Offset Y</label> <span class="range-value" id="subtitleOffsetYValue" aria-live="polite">0px</span> </div> <input type="range" id="subtitleOffsetY" min="-200" max="200" value="0" title="Slide subtitle vertically" aria-label="Subtitle Offset Y slider" />
+				</div>
+				<div class="input-group"> <label for="subtitleColor"><i class="fas fa-palette"></i> Color</label>
+					<div class="color-input">
+						<div class="color-preview"> <input type="color" id="subtitleColor" value="#ffffff" title="Pick a color for your subtitle" aria-label="Subtitle color picker" /> </div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-panel" id="panel-shadow" role="tabpanel" aria-label="Shadow Effects">
+				<div class="toggle-group"> <span class="toggle-label"><i class="fas fa-toggle-on"></i> Enable Shadow</span>
+					<div class="toggle active" id="shadowToggle" role="switch" aria-checked="true" tabindex="0" title="Enable or disable shadow depth" aria-label="Toggle shadow visibility"></div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="shadowBlur"><i class="fas fa-water"></i> Blur</label><span class="range-value" id="shadowBlurValue" aria-live="polite">30px</span> </div> <input type="range" id="shadowBlur" min="0" max="100" value="30" title="Adjust the soft focus of the shadow" aria-label="Shadow blur slider" />
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="shadowSpread"><i class="fas fa-expand-alt"></i> Spread</label><span class="range-value" id="shadowSpreadValue" aria-live="polite">0px</span> </div> <input type="range" id="shadowSpread" min="-20" max="20" value="0" title="Expand or contract the shadow size" aria-label="Shadow spread slider" />
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="shadowX">Offset X</label><span class="range-value" id="shadowXValue" aria-live="polite">0px</span> </div> <input type="range" id="shadowX" min="-100" max="100" value="0" title="Slide shadow horizontally" aria-label="Shadow Offset X slider" />
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="shadowY">Offset Y</label><span class="range-value" id="shadowYValue" aria-live="polite">20px</span> </div> <input type="range" id="shadowY" min="-100" max="100" value="20" title="Slide shadow vertically" aria-label="Shadow Offset Y slider" />
+				</div>
+				<div class="input-group"> <label for="shadowColor"><i class="fas fa-palette"></i> Shadow Color</label>
+					<div class="color-input">
+						<div class="color-preview"> <input type="color" id="shadowColor" value="#000000" title="Choose the shadow tint" aria-label="Shadow color picker" /> </div>
+						<div class="color-inputs"> <input type="text" id="shadowColorText" value="#000000" placeholder="#000000" title="Shadow Hex color code" aria-label="Shadow color hex value" /> </div>
+					</div>
+				</div>
+				<div class="range-group">
+					<div class="range-header"> <label for="shadowOpacity"><i class="fas fa-adjust"></i> Opacity</label><span class="range-value" id="shadowOpacityValue" aria-live="polite">50%</span> </div> <input type="range" id="shadowOpacity" min="0" max="100" value="50" title="Adjust the transparency of the shadow" aria-label="Shadow opacity slider" />
+				</div>
+			</div>
+			<div class="tab-panel" id="panel-filters" role="tabpanel" aria-label="Visual Filters">
+				<div class="filter-grid" id="filterGrid" aria-label="Choose a color filter style"></div>
+				<div class="range-group mt-10">
+					<div class="range-header"> <label for="filterIntensity"><i class="fas fa-sliders-h"></i> Intensity</label><span class="range-value" id="filterIntensityValue" aria-live="polite">100%</span> </div> <input type="range" id="filterIntensity" min="0" max="100" value="100" title="Adjust how strong the filter effect is" aria-label="Filter intensity slider" />
+				</div>
+			</div>
+			<div class="tab-panel" id="panel-export" role="tabpanel" aria-label="Export and Save Options">
+				<div class="export-options" role="group" aria-label="Export Formats"> <button class="export-btn" id="copyBtn" title="Instantly copy the image to your clipboard" aria-label="Copy mockup image to clipboard"> <i class="fas fa-copy"></i><span>Copy to Clipboard</span> </button> <button class="export-btn" id="downloadPngBtn" title="Save high-quality PNG with transparency" aria-label="Download mockup as PNG"> <i class="fas fa-file-image"></i><span>Download PNG</span> </button> <button class="export-btn" id="downloadJpgBtn" title="Save optimized JPG image" aria-label="Download mockup as JPG"> <i class="fas fa-file-image"></i><span>Download JPG</span> </button> <button class="export-btn" id="downloadWebpBtn" title="Save modern WebP image for web performance" aria-label="Download mockup as WebP"> <i class="fas fa-file-image"></i><span>Download WebP</span> </button> </div>
+				<div class="input-group"> <label for="exportSize"><i class="fas fa-expand"></i> Export Scale</label> <select id="exportSize" title="Select the resolution for the final export" aria-label="Select export resolution multiplier">
+						<option value="1">1x (Canvas Size)</option>
+						<option value="2" selected>2x (HD)</option>
+						<option value="3">3x (2K)</option>
+						<option value="4">4x (4K)</option>
+					</select> </div>
+			</div>
+		</div>
+		<div class="footer" role="contentinfo">
+			<div class="footer-cols">
+				<div>
+					<div class="footer-label" title="Tell others about PixelStage" aria-label="Share your creation section"> Share </div>
+					<div class="footer-btns" role="group" aria-label="Social sharing buttons"> <button class="footer-btn" id="shareTwitterFtr" title="Spread the word about Julibe on X (Twitter)" aria-label="Share mockup on X"> <i class="fab fa-x-twitter"></i> </button> <button class="footer-btn" id="shareFacebookFtr" title="Invite friends through Facebook" aria-label="Share mockup on Facebook"> <i class="fab fa-facebook-f"></i> </button> <button class="footer-btn" id="shareLinkedinFtr" title="Showcase your professional work on LinkedIn" aria-label="Share mockup on LinkedIn"> <i class="fab fa-linkedin-in"></i> </button> <button class="footer-btn" id="shareEmailFtr" title="Send this design via Email" aria-label="Share mockup via Email"> <i class="fas fa-envelope"></i> </button> </div>
+				</div>
+				<div>
+					<div class="footer-label" title="Visit the main hub of Julibe's work" aria-label="Follow links section"> Follow </div>
+					<div class="footer-btns" role="group" aria-label="Julibe social profiles"> <a href="https://julibe.com/" class="footer-btn" target="_blank" title="Explore Julibe's professional portfolio and latest projects" aria-label="Visit Julibe.com website"><i class="fas fa-globe"></i></a> <a href="https://julibe.com/github" class="footer-btn" target="_blank" title="Check out Julibe's code repositories and open source work" aria-label="Follow Julibe on GitHub"><i class="fab fa-github"></i></a> <a href="https://julibe.com/whatsapp" class="footer-btn" target="_blank" title="Hey, have some questions? Just contact Julibe through WhatsApp!" aria-label="Message Julibe on WhatsApp"><i class="fab fa-whatsapp"></i></a> <a href="https://julibe.com/twitter" class="footer-btn" target="_blank" title="Don't forget to follow Julibe on X for design tips and updates" aria-label="Follow Julibe on X"><i class="fab fa-x-twitter"></i></a> <a href="https://julibe.com/instagram" class="footer-btn" target="_blank" title="See the visual journey and behind-the-scenes by Julibe on Instagram" aria-label="Follow Julibe on Instagram"><i class="fab fa-instagram"></i></a> <a href="mailto:mail@julibe.com" class="footer-btn" title="Drop a friendly line to Julibe via email" aria-label="Email Julibe"><i class="fas fa-envelope"></i></a> </div>
+				</div>
+			</div>
+			<div class="divider" role="separator"></div>
+			<div class="copyright"> Copyright © 2026 - <a href="https://julibe.com/" target="_blank" title="Visit the designer's website" aria-label="Copyright link to Julibe.com">Julibe.com</a> </div>
+		</div>
+	</aside>
+	<main class="main-area" role="main" aria-label="Mockup Preview Stage">
+		<div class="canvas-toolbar" role="toolbar" aria-label="Preview Interaction Toolbar">
+			<div class="toolbar-left">
+				<div class="zoom-control"> <button id="zoomOut" title="Zoom out for a wider view" aria-label="Decrease zoom level"> <i class="fas fa-minus"></i> </button> <span class="zoom-value" id="zoomLevel" aria-live="polite">100%</span> <button id="zoomIn" title="Zoom in to see the details" aria-label="Increase zoom level"> <i class="fas fa-plus"></i> </button> <button id="zoomReset" title="Return zoom level to 100%" aria-label="Reset zoom"> <i class="fas fa-sync-alt"></i> </button> </div>
+			</div>
+			<div class="toolbar-right"> <button class="btn btn-ghost" id="reloadBtn" title="Refresh the content inside the mockup frame" aria-label="Reload mockup preview"> <i class="fas fa-redo"></i> </button> <button class="btn btn-ghost" id="resetBtn" title="Clear all modifications and start over" aria-label="Reset all design settings"> <i class="fas fa-undo"></i> Reset </button> <button class="btn btn-secondary" id="fullscreenBtn" title="View your mockup in distraction-free fullscreen mode" aria-label="Open fullscreen view"> <i class="fas fa-expand"></i> View </button> <button class="btn btn-primary" id="quickExportBtn" title="Instantly save your current work" aria-label="Quick export image"> <i class="fas fa-download"></i> Export </button> </div>
+		</div>
+		<div class="canvas-wrapper" id="canvasWrapper">
+			<div class="mockup-stage" id="mockupStage" aria-label="Virtual stage for your mockup">
+				<div class="background-layer" id="backgroundLayer">
+					<div class="bg-content" id="bgContent" aria-hidden="true"></div>
+					<div class="canvas-layer" id="canvasLayer">
+						<div class="canvas-inner" id="canvasInner">
+							<div class="title-layer position-top" id="titleLayerTop" style="display: none" role="banner">
+								<div class="logo-container" id="logoContainer" style="display: none"> <img id="logoImage" src="" alt="Custom brand logo displayed at the top" title="Preview of your uploaded logo" /> </div>
+								<div class="mockup-title" id="mockupTitle" aria-label="Mockup Title Text"></div>
+								<div class="mockup-subtitle" id="mockupSubtitle" aria-label="Mockup Subtitle Text"></div>
+							</div>
+							<div class="device-frame frame-none" id="deviceFrame" role="img" aria-label="3D visual frame containing your website content">
+								<div class="screenshot-content" id="screenshotContent">
+									<div id="placeholderContent" style=" width: 800px; height: 500px; background: linear-gradient( 135deg, #667eea 0%, #764ba2 100% ); display: flex; align-items: center; justify-content: center; color: white; border-radius: 12px; " aria-label="Empty stage waiting for content">
+										<div style="text-align: center"> <i class="fas fa-globe" style=" font-size: 48px; margin-bottom: 16px; opacity: 0.8; " aria-hidden="true"></i>
+											<p title="Begin your creation by adding a source" aria-label="Instructions: Enter a URL or upload an image to begin"> Enter a URL or upload an image to begin </p>
+										</div>
+									</div> <img id="screenshotImage" src="" style="display: none" alt="User provided screenshot or content" title="Active content preview" /> <iframe id="screenshotIframe" style="display: none; border: none" title="Live website interaction area"></iframe>
+								</div>
+							</div>
+							<div class="title-layer position-bottom" id="titleLayerBottom" style="display: none" role="contentinfo">
+								<div class="logo-container" id="logoContainerBottom" style="display: none"> <img id="logoImageBottom" src="" alt="Custom brand logo displayed at the bottom" title="Preview of your uploaded logo" /> </div>
+								<div class="mockup-title" id="mockupTitleBottom" aria-label="Mockup Title Text Bottom"></div>
+								<div class="mockup-subtitle" id="mockupSubtitleBottom" aria-label="Mockup Subtitle Text Bottom"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>
+<div class="toast-container" id="toastContainer" aria-live="polite"></div> <button class="fullscreen-close-btn" id="fullscreenCloseBtn" title="Return to editor (ESC)" aria-label="Exit Fullscreen Mode"> <i class="fas fa-times"></i> </button>
+<div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
+	<div class="loading-content">
+		<div class="spinner" role="status" aria-label="Processing request"></div>
+		<p id="loadingText">Processing your amazing design...</p>
+	</div>
+</div>
+<div class="modal-overlay" id="savePresetModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+	<div class="modal">
+		<div class="modal-header">
+			<h3 id="modalTitle" title="Give your style a unique name" aria-label="Save Preset Modal Title"> <i class="fas fa-save"></i> Save Preset </h3> <button class="modal-close" id="closeModalBtn" title="Discard and close window" aria-label="Close save preset modal"> <i class="fas fa-times"></i> </button>
+		</div>
+		<div class="input-group"> <label for="presetName"><i class="fas fa-tag"></i> Preset Name</label> <input type="text" id="presetName" placeholder="e.g., My Midnight Dark Mode" title="What should we call this style?" aria-label="Input field for preset name" /> </div>
+		<div class="modal-footer"> <button class="btn btn-secondary" id="cancelPresetBtn" title="Go back to editing" aria-label="Cancel saving preset"> Cancel </button> <button class="btn btn-primary" id="confirmSavePresetBtn" title="Confirm and store this style" aria-label="Confirm save preset"> <i class="fas fa-save"></i> Save </button> </div>
+	</div>
+</div>

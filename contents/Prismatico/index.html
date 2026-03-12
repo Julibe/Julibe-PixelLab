@@ -1,0 +1,375 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<div class="aurora-bg" aria-hidden="true"></div>
+
+<div class="app-layout">
+	<div class="sidebar" role="complementary" aria-label="Sidebar Color Controls">
+		<div class="title-group">
+			<h1 id="sidebarTitle" title="Prismatico: Your Creative Color Companion" aria-label="Prismatico: The ultimate tool for color exploration">Prismatico</h1>
+			<p>
+				<span class="material-symbols-rounded icon-sm" aria-hidden="true">palette</span>
+				Your colors, your hues!
+			</p>
+		</div>
+
+		<div class="picker-container" aria-label="Interactive Color Picker Area">
+			<div class="picker-area" id="slBox" role="slider" aria-label="Saturation and Lightness Pad: Drag to adjust intensity and brightness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+				<div class="picker-layer" id="pickerLayer" aria-hidden="true"></div>
+				<div class="picker-cursor" id="pickerCursor" aria-hidden="true"></div>
+			</div>
+
+			<label for="hueSlider" class="sr-only">Hue Alignment</label>
+			<input type="range" class="hue-slider" id="hueSlider" min="0" max="360" value="0" title="Slide to shift the color spectrum" aria-label="Hue Slider: Adjusts the base color family from 0 to 360 degrees">
+
+			<label for="alphaSlider" class="sr-only">Stealth Check</label>
+			<input type="range" class="alpha-slider" id="alphaSlider" min="0" max="100" value="100" title="Slide to change transparency" aria-label="Opacity Slider: Controls how transparent or solid the color appears">
+		</div>
+
+		<div class="controls-box" aria-label="Color Format Input and Selection">
+			<div class="controls-header-merged">
+				<div class="magic-wrapper">
+					<span class="material-symbols-rounded icon-tiny" aria-hidden="true">colorize</span>
+					<label for="magicInput" class="sr-only">Color Input Field</label>
+					<input type="text" class="magic-input-clean" id="magicInput" placeholder="Go ahead, type a color..." title="Type a color name or code here" aria-label="Magic Input: Type any color format or name to update the picker" onchange="handleMagicInput()">
+				</div>
+				<div class="sep-vert" aria-hidden="true"></div>
+				<label for="formatSelect" class="sr-only">Color Rune Selector</label>
+				<select id="formatSelect" class="select-clean" onchange="renderInputs()" title="Choose your preferred color format" aria-label="Format Selector: Switch between Hex, RGB, HSL, and other formats">
+					<option value="hex">HEX</option>
+					<option value="rgb">RGB</option>
+					<option value="rgba">RGBA</option>
+					<option value="hsl">HSL</option>
+					<option value="hsla">HSLA</option>
+				</select>
+			</div>
+			<div id="inputWrapper" aria-live="polite"></div>
+			<div class="hero-wrapper">
+				<button id="heroCard" class="hero-preview" onclick="copyHero()" title="Click to copy this color to clipboard" aria-label="Color Preview: Click to copy the current color code to your clipboard">
+					<span id="heroCode" class="hero-code">#FFFFFF</span>
+					<span class="hero-label"><span class="material-symbols-rounded icon-sm" aria-hidden="true">content_copy</span> Copy</span>
+				</button>
+			</div>
+
+			<div class="sidebar-actions">
+				<button id="btnAdd" onclick="addToPalette()" class="btn-primary" title="Save this color to your collection" aria-label="Add Color: Saves the currently selected color to your working palette">
+					<span class="material-symbols-rounded" aria-hidden="true">add</span> Stash in Inventory
+				</button>
+				<div class="action-group">
+					<button onclick="undoAction()" class="btn-secondary" title="Rewind Time (Undo)" aria-label="Undo last action">
+						<span class="material-symbols-rounded" aria-hidden="true">undo</span>
+					</button>
+					<button onclick="redoAction()" class="btn-secondary" title="Future Sight (Redo)" aria-label="Redo last action">
+						<span class="material-symbols-rounded" aria-hidden="true">redo</span>
+					</button>
+					<button onclick="resetApp()" class="btn-secondary btn-danger" title="Reset everything" aria-label="Reset the palette and clear the board">
+						<span class="material-symbols-rounded" aria-hidden="true">delete_sweep</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-panel" role="main">
+		<div class="header">
+			<div class="title-group">
+				<h2 class="feat-title" id="feattitle" title="Welcome to the Guild Hall" aria-label="Welcome Section">
+					<span class="material-symbols-rounded" aria-hidden="true">favorite</span> Greetings, Traveler!
+				</h2>
+				<p class="feat-desc">Prismatico aids you in crafting legendary palettes for your next campaign.</p>
+			</div>
+			<button onclick="addToPalette()" class="btn-primary" title="Loot this hue immediately!" aria-label="Quick Add">
+				<span class="material-symbols-rounded" aria-hidden="true">add</span> Loot This Hue
+			</button>
+		</div>
+		<nav>
+			<ul class="tabs-nav" role="tablist" aria-label="Application Navigation Tabs">
+				<li class="tab-btn active" onclick="switchTab('palette')" role="tab" aria-selected="true" title="View your saved colors" aria-label="Palette Tab: Manage your saved collection">
+					<span class="material-symbols-rounded" aria-hidden="true">palette</span> Palette
+				</li>
+				<li class="tab-btn" onclick="switchTab('legibility')" role="tab" aria-selected="false" title="Check contrast scores" aria-label="Legibility Tab: Analyze accessibility and contrast">
+					<span class="material-symbols-rounded" aria-hidden="true">contrast</span> Legibility
+				</li>
+				<li class="tab-btn" onclick="switchTab('harmony')" role="tab" aria-selected="false" title="Discover matching colors" aria-label="Harmony Tab: Explore complementary and analogous relationships">
+					<span class="material-symbols-rounded" aria-hidden="true">interests</span> Harmony
+				</li>
+				<li class="tab-btn" onclick="switchTab('scale')" role="tab" aria-selected="false" title="Create tonal variations" aria-label="Scale Tab: Generate lighter and darker variations">
+					<span class="material-symbols-rounded" aria-hidden="true">linear_scale</span> Scale
+				</li>
+				<li class="tab-btn" onclick="switchTab('mixer')" role="tab" aria-selected="false" title="Blend two colors" aria-label="Mixer Tab: Create a gradient between two specific colors">
+					<span class="material-symbols-rounded" aria-hidden="true">tune</span> Mixer
+				</li>
+				<li class="tab-btn" onclick="switchTab('history')" role="tab" aria-selected="false" title="View recent colors" aria-label="History Tab: See your recently generated colors">
+					<span class="material-symbols-rounded" aria-hidden="true">history</span> History
+				</li>
+				<li class="tab-btn" onclick="switchTab('theory')" role="tab" aria-selected="false" title="Learn color basics" aria-label="Theory Tab: educational resources about color concepts">
+					<span class="material-symbols-rounded" aria-hidden="true">school</span> Theory
+				</li>
+				<li class="tab-btn" onclick="switchTab('about')" role="tab" aria-selected="false" title="Get to know Prismatico" aria-label="About Tab: Information about the project and creator">
+					<span class="material-symbols-rounded" aria-hidden="true">info</span> About
+				</li>
+			</ul>
+		</nav>
+
+		<div class="content-area">
+			<div id="view-palette" class="view-section active" role="region" aria-labelledby="paletteTitle">
+				<div class="palette-title-row">
+					<h2 class="feat-title editable-title" id="paletteTitle" contenteditable="true" onblur="updatePaletteName(this)" title="Click to rename your palette" aria-label="Palette Name: Editable heading, click to type a new name">
+						Rare pigments Palette
+					</h2>
+					<button class="btn-icon-random" onclick="randomizePaletteName()" title="Random name" aria-label="Generate random palette name">
+						<span class="material-symbols-rounded" aria-hidden="true">casino</span>
+					</button>
+				</div>
+				<p class="section-subtitle">Hoard the rare pigments you discover on your journey.</p>
+				<div class="grid" id="paletteGrid" aria-live="polite"></div>
+				<div id="emptyMsg" role="note" aria-label="Empty Inventory">
+					<span class="material-symbols-rounded icon-empty" aria-hidden="true">palette</span>
+					<div class="title-empty">Inventory Empty</div>
+					<p class="sub-empty">Go forth, choose a lovely pigment, and stash it here.</p>
+				</div>
+			</div>
+
+			<div id="view-history" class="view-section" role="region" aria-label="Color History Tool">
+				<h2 class="section-title" title="Your recently viewed colors" aria-label="History Section: Your latest generated colors">Quest Log</h2>
+				<p class="section-subtitle">Here are your recent encounters with the spectrum.</p>
+				<div class="grid" id="historyGrid" aria-live="polite"></div>
+				<div id="emptyHistoryMsg" role="note" aria-label="Empty Quest Log">
+					<span class="material-symbols-rounded icon-empty" aria-hidden="true">history</span>
+					<div class="title-empty">No tales to tell yet</div>
+					<p class="sub-empty">Start exploring the realm, your footsteps will appear here.</p>
+				</div>
+			</div>
+
+			<div id="view-legibility" class="view-section" role="region" aria-label="Legibility Checker Tool">
+				<h2 class="section-title" title="Ensure your design is accessible" aria-label="Legibility Section: Check contrast against WCAG standards">Oracle's Eye (Color Legibility)</h2>
+				<p class="section-subtitle">Roll against the WCAG Difficulty Class (DC) to see if your text survives.</p>
+
+				<h3 class="section-title" title="Background contrast check" aria-label="Background Analysis: How text looks on top of your color">As a background</h3>
+				<div class="legibility-grid">
+					<div class="leg-card" aria-label="Result for White Text: Shows if white text is readable on this background">
+						<div class="leg-top">
+							<span class="label">White Text</span>
+							<span class="badge" id="badgeWhite">Crit Success</span>
+						</div>
+						<div class="leg-score" id="scoreWhite">0.0</div>
+						<div class="sample-box" id="sampleWhite">The five boxing <br> wizards jumped quickly</div>
+					</div>
+					<div class="leg-card" aria-label="Result for Black Text: Shows if black text is readable on this background">
+						<div class="leg-top">
+							<span class="label">Black Text</span>
+							<span class="badge" id="badgeBlack">Crit Fail</span>
+						</div>
+						<div class="leg-score" id="scoreBlack">0.0</div>
+						<div class="sample-box" id="sampleBlack">Pack my bag with <br> five dozen potions</div>
+					</div>
+				</div>
+
+				<h3 class="section-title" title="Foreground contrast check" aria-label="Foreground Analysis: How your color looks as text">On the foreground</h3>
+				<div class="legibility-grid">
+					<div class="leg-card" aria-label="Result on White Background: Shows if your color is readable as text on white">
+						<div class="leg-top">
+							<span class="label">On White</span>
+							<span class="badge" id="badgeOnWhite">Crit Success</span>
+						</div>
+						<div class="sample-box light" id="sampleOnWhite">How vexingly quick <br> Giant Rocktopus jump!</div>
+					</div>
+					<div class="leg-card" aria-label="Result on Black Background: Shows if your color is readable as text on black">
+						<div class="leg-top">
+							<span class="label">On Black</span>
+							<span class="badge" id="badgeOnBlack">Crit Fail</span>
+						</div>
+						<div class="sample-box dark" id="sampleOnBlack">The quick elven rogue <br> jumps over the mimic</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="view-harmony" class="view-section" role="region" aria-label="Color Harmony Explorer">
+				<h2 class="section-title" title="Assemble your party" aria-label="Harmony Section">Party Alignment (Color Harmony)</h2>
+				<p class="section-subtitle">Summon allies that fight perfectly alongside your chosen hue.</p>
+				<div class="grid" id="harmonyGrid" aria-live="polite"></div>
+			</div>
+
+			<div id="view-scale" class="view-section" role="region" aria-label="Color Scale Generator">
+				<h2 class="section-title" title="Build a consistent range" aria-label="Scale Section: Generates a monochromatic gradient">Power Tiers (Color Scale)</h2>
+				<p class="section-subtitle">Forge a path from divine light to abyssal shadow.</p>
+				<div class="grid" id="scaleGrid" aria-live="polite"></div>
+			</div>
+
+			<div id="view-mixer" class="view-section" role="region" aria-label="Custom Color Mixer">
+				<h2 class="section-title" title="Blend your own shades" aria-label="Mixer Section: Tool to interpolate between two distinct colors">Alchemy Lab (Color Mixer)</h2>
+				<p class="section-subtitle">Brew a potion by blending two elemental essences together!<br>Select a hue, set your Base Reagent, choose a Catalyst, then Transmute.</p>
+				<div class="mixer-box">
+					<div class="mixer-controls">
+						<div class="mixer-slot" id="slotStart" onclick="setMix('start')" tabindex="0" title="Click to set the starting color" aria-label="Start Slot: Assigns the currently selected color as the beginning of the mix">
+							<div class="slot-fill init-white" id="mixStartFill"></div>
+							<span class="slot-label">Base</span>
+						</div>
+						<span class="material-symbols-rounded icon-lg" aria-hidden="true">arrow_forward</span>
+						<div class="mixer-slot" id="slotEnd" onclick="setMix('end')" tabindex="0" title="Click to set the ending color" aria-label="End Slot: Assigns the currently selected color as the end of the mix">
+							<div class="slot-fill init-black" id="mixEndFill"></div>
+							<span class="slot-label">Catalyst</span>
+						</div>
+						<div></div>
+						<button onclick="generateMix()" class="btn-primary btn-wide" title="Ready? Click to blend them!" aria-label="Generate Mix: Calculates and displays the steps between the two chosen colors">
+							Transmute
+						</button>
+					</div>
+				</div>
+				<div class="grid" id="mixGrid" aria-live="polite"></div>
+			</div>
+
+			<div id="view-theory" class="view-section" role="region" aria-label="Educational Color Theory">
+				<h2 class="section-title" title="Understanding digital formats" aria-label="Color Codes: Explanations of technical color formats">Color Codes</h2>
+				<p class="section-subtitle">Learn the digital formats used to describe colors on the web.</p>
+				<div class="grid">
+					<div class="card card-static" aria-label="Hex Info">
+						<span class="material-symbols-rounded icon-lg icon-default" aria-hidden="true">tag</span>
+						<span class="meta-label">HEXADECIMAL</span>
+						<h3 class="theory-title-sm" title="The standard spell" aria-label="HEX">HEX</h3>
+						<p class="theory-desc">A base 16 code starting with #. Used by wizards and design tools alike.</p>
+					</div>
+					<div class="card card-static" aria-label="RGB Info">
+						<span class="material-symbols-rounded icon-lg icon-default" aria-hidden="true">preview</span>
+						<span class="meta-label">RED GREEN BLUE</span>
+						<h3 class="theory-title-sm" title="Screen Magic" aria-label="RGB">RGB / RGBA</h3>
+						<p class="theory-desc">Light-based magic using values from 0 to 255. 'A' controls your stealth level.</p>
+					</div>
+					<div class="card card-static" aria-label="HSL Info">
+						<span class="material-symbols-rounded icon-lg icon-default" aria-hidden="true">tune</span>
+						<span class="meta-label">HUE SAT LIGHT</span>
+						<h3 class="theory-title-sm" title="Human Readable" aria-label="HSL">HSL / HSLA</h3>
+						<p class="theory-desc">A model based on elemental alignment, intensity, and radiance.</p>
+					</div>
+				</div>
+
+				<h2 class="section-title" title="Core concepts" aria-label="The Basics: Fundamental properties of color">The Basics</h2>
+				<div class="grid">
+					<div class="card card-static" aria-label="Hue Card">
+						<span class="material-symbols-rounded icon-lg icon-accent" aria-hidden="true">palette</span>
+						<h3 class="theory-title-sm" title="Your Alignment" aria-label="Hue">Hue</h3>
+						<p class="theory-desc">The elemental school, like Fire (Red) or Ice (Blue), on the 360-degree wheel.</p>
+					</div>
+					<div class="card card-static" aria-label="Saturation Card">
+						<span class="material-symbols-rounded icon-lg icon-warning" aria-hidden="true">invert_colors</span>
+						<h3 class="theory-title-sm" title="Spell Potency" aria-label="Saturation">Saturation</h3>
+						<p class="theory-desc">The intensity of the magic. 100% is pure mana, 0% is drained gray.</p>
+					</div>
+					<div class="card card-static" aria-label="Lightness Card">
+						<span class="material-symbols-rounded icon-lg icon-info" aria-hidden="true">brightness_6</span>
+						<h3 class="theory-title-sm" title="Divine or Abyssal" aria-label="Lightness">Lightness</h3>
+						<p class="theory-desc">How bright the spell burns. 0% is total darkness, 100% is blinding light.</p>
+					</div>
+				</div>
+
+				<h2 class="section-title" title="How colors interact" aria-label="Harmony and Relationships: Theory behind color combinations">Harmony and Relationships</h2>
+				<div class="grid">
+					<div class="card card-static" aria-label="Complementary Card">
+						<span class="material-symbols-rounded icon-lg icon-accent" aria-hidden="true">balance</span>
+						<h3 class="theory-title-sm" title="The Rival" aria-label="Complementary">Complementary</h3>
+						<p class="theory-desc">Opposites on the wheel. High contrast, high energy clashes.</p>
+					</div>
+					<div class="card card-static" aria-label="Analogous Card">
+						<span class="material-symbols-rounded icon-lg icon-success" aria-hidden="true">group_work</span>
+						<h3 class="theory-title-sm" title="The Allies" aria-label="Analogous">Analogous</h3>
+						<p class="theory-desc">Neighbors on the wheel. They share a bond and work in peace.</p>
+					</div>
+					<div class="card card-static" aria-label="Triadic Card">
+						<span class="material-symbols-rounded icon-lg icon-danger" aria-hidden="true">change_history</span>
+						<h3 class="theory-title-sm" title="The Trinity" aria-label="Triadic">Triadic</h3>
+						<p class="theory-desc">Three points of power spaced evenly. Balanced and vibrant.</p>
+					</div>
+				</div>
+
+				<h2 class="section-title" title="Designing for everyone" aria-label="Legibility and Accessibility: Standards for inclusive design">Legibility and Accessibility</h2>
+				<div class="grid">
+					<div class="card card-static" aria-label="Contrast Ratio Info">
+						<span class="material-symbols-rounded icon-lg icon-default" aria-hidden="true">contrast</span>
+						<h3 class="theory-title-sm" title="Perception DC" aria-label="Contrast Ratio">Contrast DC</h3>
+						<p class="theory-desc">The difference in radiance. Crucial for passing readability checks.</p>
+					</div>
+					<div class="card card-static" aria-label="WCAG Standards Info">
+						<span class="material-symbols-rounded icon-lg icon-success" aria-hidden="true">accessibility_new</span>
+						<h3 class="theory-title-sm" title="The Rulebook" aria-label="WCAG Standards">The Standard</h3>
+						<p class="theory-desc">AA requires a roll of 4.5, AAA requires 7. Don't fail the check.</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="view-about" class="view-section" role="region" aria-label="About Prismatico Information">
+				<div class="about-container">
+					<h1 class="main-title" title="The Artifact" aria-label="Prismatico">Prismatico</h1>
+					<p class="intro">A legendary artifact for color mages. Build loot tables, brew potions, check saving throws, and explore the arcane.</p>
+					<div class="features-grid">
+						<div>
+							<h3 class="feat-title" title="Modern formats" aria-label="Feature: Web Ready">
+								<span class="material-symbols-rounded" aria-hidden="true">web</span> Browser Ready
+							</h3>
+							<p class="feat-desc">Support for HEX, RGBA and HSLA runes for modern workflows.</p>
+						</div>
+						<div>
+							<h3 class="feat-title" title="Wisdom Checks included" aria-label="Feature: Contrast Checking">
+								<span class="material-symbols-rounded" aria-hidden="true">accessibility_new</span> Wisdom Check
+							</h3>
+							<p class="feat-desc">Live scoring helps keep your designs readable and accessible.</p>
+						</div>
+						<div>
+							<h3 class="feat-title" title="Fits any viewport" aria-label="Feature: Responsive">
+								<span class="material-symbols-rounded" aria-hidden="true">motion_photos_on</span> Polymorph Self
+							</h3>
+							<p class="feat-desc">The interface shifts form instantly to fit your device.</p>
+						</div>
+					</div>
+					<div id="about-content">
+						<h2 class="main-title" title="The Mission" aria-label="Mission">Forged for Dungeon Masters</h2>
+						<p class="body-text">Prismatico helps you craft practical color systems for your campaign.</p>
+						<p class="body-text">Blend essences in the Alchemy Lab, adjust Power Tiers, and find allies in Synergy.</p>
+					</div>
+					<div id="about-share">
+						<h2 class="main-title" title="Join the Party" aria-label="Contact">Join the Guild</h2>
+						<p class="body-text">Find Julibe as <span>@Julibe</span> and share your legendary loot.</p>
+						<p class="body-text">Always open to new quests and collaborations. Let's create magic.</p>
+
+						<p class="feat-title" style="padding-top:var(--s-xl); font-size: var(--f-sm);">Copyright &copy; 2025 Julibe. All rights reserved. </p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel-footer">
+			<ul class="social-list" role="navigation" aria-label="Connect with Julibe">
+				<li>&copy; 2025 - Julibe</li>
+				<li><a href="https://julibe.com/" target="_blank" aria-label="Julibe's Portfolio: See more projects and work" title="Don't forget to visit Julibe's Portfolio">Web</a></li>
+				<li><a href="https://julibe.com/whatsapp" target="_blank" aria-label="WhatsApp: Start a chat directly with Julibe" title="Hey have some questions? Chat with Julibe on WhatsApp">WhatsApp</a></li>
+				<li><a href="https://julibe.com/twitter" target="_blank" aria-label="Twitter: Follow Julibe for design updates" title="Follow Julibe's latest thoughts on Twitter">Twitter</a></li>
+				<li><a href="https://julibe.com/instagram" target="_blank" aria-label="Instagram: View Julibe's visual gallery" title="Check out Julibe's creative snaps on Instagram">Instagram</a></li>
+				<li><a href="mailto:mail@julibe.com" aria-label="Email: Send a message to Julibe" title="Drop a friendly email to Julibe anytime">Email</a></li>
+			</ul>
+			<div class="panel-footer-btn">
+				<div class="dropdown-wrapper">
+					<button class="btn-share" onclick="toggleDownloadMenu(event)" title="Ready to export your colors?" aria-haspopup="true" aria-expanded="false" aria-controls="dlMenu" aria-label="Download Menu: Choose a format to save your palette">
+						<span class="material-symbols-rounded" aria-hidden="true">download</span> Download
+					</button>
+					<div id="dlMenu" class="dropdown-menu" aria-label="List of download formats">
+						<a onclick="downloadPalette('json')" role="menuitem" tabindex="0" title="Save as JSON file"><span class="sm-text">JavaScript Object Notation</span> (JSON)</a>
+						<a onclick="downloadPalette('css')" role="menuitem" tabindex="0" title="Save as CSS variables"><span class="sm-text">Cascading Style Sheets</span> (CSS)</a>
+						<a onclick="downloadPalette('xml')" role="menuitem" tabindex="0" title="Save as XML file"><span class="sm-text">Extensible Markup Language</span> (XML)</a>
+						<a onclick="downloadPalette('ase')" role="menuitem" tabindex="0" title="Save as Adobe Swatch Exchange file"><span class="sm-text">Adobe Swatch Exchange</span> (ASE)</a>
+						<a onclick="downloadPalette('aco')" role="menuitem" tabindex="0" title="Save as Adobe Color file"><span class="sm-text">Adobe Color</span> (ACO)</a>
+						<a onclick="downloadPalette('csv')" role="menuitem" tabindex="0" title="Save as CSV file"><span class="sm-text">Comma-Separated Values</span> (CSV)</a>
+					</div>
+				</div>
+				<button class="btn-share" onclick="document.getElementById('importFile').click()" title="Load a previously saved palette" aria-label="Import Palette: Upload a JSON file to restore your colors">
+					<span class="material-symbols-rounded" aria-hidden="true">upload</span> Import
+				</button>
+				<input type="file" id="importFile" accept=".json,.ase,.aco,.csv,.xml" style="display:none" onchange="importPalette(this)" aria-hidden="true" tabindex="-1">
+				<button class="btn-share" onclick="window.shareTwitter()" title="Show the world your creation" aria-label="Share Button: Post your current palette directly to Twitter">
+					<span class="material-symbols-rounded" aria-hidden="true">share</span> Share Your Palette
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite">Color Saved</div>
+<canvas id="canvasParams" aria-hidden="true"></canvas>

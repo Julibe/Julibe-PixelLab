@@ -31,49 +31,12 @@
   category: design
 
   ## Metadata
-  tags:
-    - Retro
-    - Glitch
-    - Cyberpunk
-    - Effects
-    - Filters
-    - UI
-    - Experimental
-  emojis:
-    - 📺
-    - 🔴
-    - 🔵
-    - 👾
-    - ✨
-    - 📼
-    - 👓
-    - 🌈
-    - ⚡
-    - 🎨
-  keywords:
-    - Chromatic
-    - Aberration
-    - SVG
-    - Filter
-    - Glitch
-    - Retro
-    - CRT
-    - Distortion
-    - CSS
-    - Visuals
-  hashtags:
-    - '#CreativeCoding'
-    - '#SVGFilters'
-    - '#WebDesign'
-    - '#GlitchArt'
-    - '#RetroFuturism'
-    - '#CSSMagic'
-    - '#FrontEnd'
-    - '#UIInspiration'
-    - '#Cyberpunk'
-    - '#DevLife'
+  tags: Design, UI, Retro, Aesthetic, Glitch, Visual, SVG
+  emojis: 📺 ✨ 📼 🌈 💻 🎨 🚀 💡 🔮 📸 🎞️
+  keywords: chromatic, aberration, svg, filter, css, retro, glitch, crt, scanlines, design, aesthetic, frontend, visual, effect
+  hashtags: #ChromaticAberration #SVGFilter #CSSGlitch #RetroAesthetic #WebDesign #FrontendDev #UIUX #CRTScanlines #VisualEffect #CreativeCoding #WebDesign
 
-  ## Call to Action
+    ## Call to Action
   view_btn: See the Glitch
   read_btn: Decode the Magic
 

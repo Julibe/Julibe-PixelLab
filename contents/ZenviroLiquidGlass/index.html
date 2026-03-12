@@ -1,0 +1,631 @@
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<div class="anim-elements">
+	<div class="anim-element"></div>
+	<div class="anim-element"></div>
+	<div class="anim-element"></div>
+	<div class="anim-element"></div>
+	<div class="anim-element"></div>
+</div>
+<svg style="display: none" aria-hidden="true">
+	<filter id="displacementFilter" primitiveUnits="objectBoundingBox">
+		<feImage id="map_source" result="map" x="0" y="0" width="1" height="1" preserveAspectRatio="none" />
+		<feDisplacementMap in="SourceGraphic" in2="map" id="redDisp" result="dispRed" scale="0" xChannelSelector="R" yChannelSelector="G" />
+		<feColorMatrix in="dispRed" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="red" />
+		<feDisplacementMap in="SourceGraphic" in2="map" id="greenDisp" result="dispGreen" scale="0" xChannelSelector="R" yChannelSelector="G" />
+		<feColorMatrix in="dispGreen" type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="green" />
+		<feDisplacementMap in="SourceGraphic" in2="map" id="blueDisp" result="dispBlue" scale="0" xChannelSelector="R" yChannelSelector="G" />
+		<feColorMatrix in="dispBlue" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="blue" />
+		<feBlend in="red" in2="green" mode="screen" result="rg" />
+		<feBlend in="rg" in2="blue" mode="screen" result="chromaOut" />
+		<feGaussianBlur in="chromaOut" id="blurEffect" stdDeviation="0" result="blurred" />
+		<feComposite in="blurred" in2="SourceGraphic" operator="atop" result="final" />
+	</filter>
+</svg>
+
+<!-- NAVIGATION -->
+<nav class="navbar glass" role="navigation" aria-label="Main navigation">
+	<a href="#" class="logo" aria-label="Cleaning home">
+		<div class="logo-icon">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+			</svg>
+		</div>
+		<span>Zenviro<span class="hidden"> Cleaning Services</span></span>
+	</a>
+	<div class="nav-links">
+		<a href="#home" class="nav-link">Home</a>
+		<a href="#about" class="nav-link">About</a>
+		<a href="#services" class="nav-link">Service</a>
+		<a href="#testimonials" class="nav-link">Testimonials</a>
+		<a href="#contact" class="nav-link">Contact</a>
+	</div>
+	<div class="nav-actions">
+		<button class="btn btn-outline glass">Log in</button>
+		<button class="btn btn-primary glass">Get Started</button>
+		<button class="mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<line x1="3" y1="12" x2="21" y2="12"></line>
+				<line x1="3" y1="6" x2="21" y2="6"></line>
+				<line x1="3" y1="18" x2="21" y2="18"></line>
+			</svg>
+		</button>
+	</div>
+	<div class="mobile-menu" id="mobileMenu">
+		<a href="#home" class="mobile-menu-link">Home</a>
+		<a href="#about" class="mobile-menu-link">About</a>
+		<a href="#services" class="mobile-menu-link">Service</a>
+		<a href="#testimonials" class="mobile-menu-link">Testimonials</a>
+		<a href="#contact" class="mobile-menu-link">Contact</a>
+		<button class="btn btn-outline glass" style="margin-top: 16px; width: 100%;">Log in</button>
+	</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+	<div class="shape-container">
+		<div class="shape shape-periwinkle" style="width: 600px; height: 600px; top: -15%; right: -10%;"></div>
+		<div class="shape shape-accent" style="width: 450px; height: 450px; bottom: 5%; left: -10%;"></div>
+		<div class="shape shape-white" style="width: 300px; height: 300px; top: 40%; left: 25%;"></div>
+	</div>
+	<div class="container">
+		<div class="hero-grid">
+			<div class="hero-content">
+				<div class="reveal delay-1">
+					<span class="hero-badge glass">
+						<span class="hero-badge-dot"></span>
+						Professional Cleaning Service
+					</span>
+				</div>
+				<h1 class="hero-title reveal delay-2">
+					Enjoy The Best<br>
+					<span class="hero-title-accent">
+						Cleaning Service
+						<span class="hero-title-underline" aria-hidden="true"></span>
+					</span><br>
+					Stay Safe
+				</h1>
+				<p class="hero-desc reveal delay-3">
+					We provide professional cleaning services for your home and office.
+					Our experienced team ensures a spotless environment with eco-friendly products.
+				</p>
+				<div class="hero-actions reveal delay-4">
+					<button class="btn btn-primary glass">Book Now</button>
+					<button class="btn btn-outline glass">Watch Video</button>
+				</div>
+			</div>
+			<div class="hero-visual reveal delay-5">
+				<div class="hero-image-wrapper">
+					<img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=700&fit=crop" alt="Professional cleaner with cleaning supplies" class="hero-image">
+				</div>
+				<div class="hero-float-card hero-float-card-1 glass animate-float">
+					<div class="hero-float-icon">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+						</svg>
+					</div>
+					<div>
+						<div class="hero-float-number">200k+</div>
+						<div class="hero-float-label">Reviews</div>
+					</div>
+				</div>
+				<div class="hero-float-card hero-float-card-2 glass animate-float" style="animation-delay: 1s;">
+					<div class="hero-float-icon">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="20 6 9 17 4 12"></polyline>
+						</svg>
+					</div>
+					<div>
+						<div class="hero-float-number">Verified</div>
+						<div class="hero-float-label">Professionals</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- STATS -->
+<section class="stats" id="stats">
+	<div class="stats-line" aria-hidden="true"></div>
+	<div class="shape-container">
+		<div class="shape shape-lavender" style="width: 500px; height: 500px; top: 0; left: 0;"></div>
+		<div class="shape shape-periwinkle" style="width: 400px; height: 400px; bottom: 0; right: 0;"></div>
+	</div>
+	<div class="container">
+		<div class="stats-grid">
+			<div class="stat-item glass reveal delay-1">
+				<div class="stat-number" data-count="2760">0</div>
+				<div class="stat-label">Total Customer</div>
+			</div>
+			<div class="stat-item glass reveal delay-2">
+				<div class="stat-number" data-count="122">0</div>
+				<div class="stat-label">Years Experience</div>
+			</div>
+			<div class="stat-item glass reveal delay-3">
+				<div class="stat-number" data-count="200">0</div>
+				<div class="stat-label">Expert Cleaners</div>
+			</div>
+			<div class="stat-item glass reveal delay-4">
+				<div class="stat-number" data-count="98">0</div>
+				<div class="stat-label">Satisfaction Rate %</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+	<div class="shape-container">
+		<div class="shape shape-accent" style="width: 550px; height: 550px; bottom: -20%; left: -15%; opacity: 0.4;"></div>
+		<div class="shape shape-periwinkle" style="width: 350px; height: 350px; top: 10%; right: 10%;"></div>
+	</div>
+	<div class="container">
+		<div class="about-grid">
+			<div class="about-image reveal">
+				<img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=600&h=500&fit=crop" alt="Cleaning team at work">
+
+				<!-- REDESIGNED FLOAT CARD -->
+				<div class="about-float-card glass animate-float">
+					<div class="about-float-avatar-group">
+						<img src="https://i.pravatar.cc/80?img=1" alt="Team member" class="about-float-avatar">
+						<img src="https://i.pravatar.cc/80?img=2" alt="Team member" class="about-float-avatar">
+						<img src="https://i.pravatar.cc/80?img=3" alt="Team member" class="about-float-avatar">
+					</div>
+					<div class="about-float-content">
+						<div class="about-float-number">200+</div>
+						<div class="about-float-text">Expert Cleaners</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="about-content">
+				<span class="section-badge section-badge-periwinkle glass reveal">About Us</span>
+				<h2 class="section-title reveal delay-1">We Make Your Life Easier With Clean Spaces</h2>
+				<p class="section-desc reveal delay-2">
+					With over 122 years of combined experience, our team delivers exceptional
+					cleaning services that transform your spaces. We use eco-friendly products
+					and modern techniques to ensure the best results.
+				</p>
+				<ul class="feature-list reveal delay-3">
+					<li class="feature-item">
+						<div class="feature-icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="20 6 9 17 4 12"></polyline>
+							</svg>
+						</div>
+						<div class="feature-content">
+							<h4>Eco-Friendly Products</h4>
+							<p>Safe for your family, pets, and the environment</p>
+						</div>
+					</li>
+					<li class="feature-item">
+						<div class="feature-icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="20 6 9 17 4 12"></polyline>
+							</svg>
+						</div>
+						<div class="feature-content">
+							<h4>Trained Professionals</h4>
+							<p>Background-checked and certified cleaning experts</p>
+						</div>
+					</li>
+					<li class="feature-item">
+						<div class="feature-icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="20 6 9 17 4 12"></polyline>
+							</svg>
+						</div>
+						<div class="feature-content">
+							<h4>Satisfaction Guaranteed</h4>
+							<p>Not happy? We'll re-clean for free</p>
+						</div>
+					</li>
+				</ul>
+				<button class="btn btn-primary glass reveal delay-4">Learn More About Us</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+	<div class="shape-container">
+		<div class="shape shape-periwinkle" style="width: 500px; height: 500px; top: -15%; right: -15%;"></div>
+		<div class="shape shape-accent" style="width: 350px; height: 350px; bottom: 10%; left: -5%; opacity: 0.5;"></div>
+	</div>
+	<div class="container">
+		<div class="section-header">
+			<span class="section-badge section-badge-accent reveal">Our Services</span>
+			<h2 class="section-title reveal delay-1">What We Offer</h2>
+			<p class="section-desc reveal delay-2" style="margin-bottom: 0;">
+				Professional cleaning solutions tailored to your needs
+			</p>
+		</div>
+		<div class="services-grid">
+			<article class="service-card glass reveal delay-1">
+				<div class="service-icon service-icon-accent">
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+					</svg>
+				</div>
+				<h3 class="service-title">Home Cleaning</h3>
+				<p class="service-desc">Complete residential cleaning services for a fresh and healthy home environment.</p>
+				<a href="#" class="service-link">
+					Learn More
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
+			</article>
+			<article class="service-card glass reveal delay-2">
+				<div class="service-icon service-icon-periwinkle">
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+					</svg>
+				</div>
+				<h3 class="service-title">Office Cleaning</h3>
+				<p class="service-desc">Professional commercial cleaning to maintain a productive workplace environment.</p>
+				<a href="#" class="service-link">
+					Learn More
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
+			</article>
+			<article class="service-card glass reveal delay-3">
+				<div class="service-icon service-icon-dark">
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B9FF66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
+						<path d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
+					</svg>
+				</div>
+				<h3 class="service-title">Kitchen Cleaning</h3>
+				<p class="service-desc">Deep cleaning for your kitchen including appliances, surfaces, and ventilation.</p>
+				<a href="#" class="service-link">
+					Learn More
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
+			</article>
+			<article class="service-card glass reveal delay-4">
+				<div class="service-icon service-icon-light">
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+					</svg>
+				</div>
+				<h3 class="service-title">Deep Cleaning</h3>
+				<p class="service-desc">Thorough cleaning service reaching every corner for a complete refresh.</p>
+				<a href="#" class="service-link">
+					Learn More
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
+			</article>
+			<article class="service-card glass reveal delay-5">
+				<div class="service-icon service-icon-accent">
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+					</svg>
+				</div>
+				<h3 class="service-title">Regular Maintenance</h3>
+				<p class="service-desc">Scheduled cleaning visits to keep your space consistently spotless.</p>
+				<a href="#" class="service-link">
+					Learn More
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
+			</article>
+			<article class="service-card service-card-dark glass reveal delay-5">
+				<div class="service-icon service-icon-accent">
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+					</svg>
+				</div>
+				<h3 class="service-title">Move In/Out</h3>
+				<p class="service-desc">Comprehensive cleaning for moving transitions, ensuring a fresh start.</p>
+				<a href="#" class="service-link">
+					Learn More
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</a>
+			</article>
+		</div>
+	</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+	<div class="shape-container">
+		<div class="shape shape-lavender" style="width: 400px; height: 400px; top: -10%; right: -10%;"></div>
+		<div class="shape shape-accent" style="width: 300px; height: 300px; bottom: 10%; left: -5%; opacity: 0.4;"></div>
+	</div>
+	<div class="container">
+		<div class="section-header">
+			<span class="section-badge section-badge-dark reveal">Testimonials</span>
+			<h2 class="section-title reveal delay-1">What Our Clients Say</h2>
+		</div>
+		<div class="testimonials-grid">
+			<article class="testimonial-card glass reveal delay-1">
+				<div class="testimonial-stars" aria-label="5 out of 5 stars">
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+				</div>
+				<p class="testimonial-text">"Absolutely amazing service! The team was punctual, professional, and left my house spotless. I've tried many cleaning services, but this one is by far the best."</p>
+				<div class="testimonial-author">
+					<img src="https://i.pravatar.cc/56?img=5" alt="Sarah Johnson" class="testimonial-avatar">
+					<div>
+						<div class="testimonial-name">Sarah Johnson</div>
+						<div class="testimonial-role">Homeowner</div>
+					</div>
+				</div>
+			</article>
+			<article class="testimonial-card glass reveal delay-2">
+				<div class="testimonial-stars" aria-label="5 out of 5 stars">
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+				</div>
+				<p class="testimonial-text">"We use their office cleaning service weekly. Our workspace has never been cleaner. The attention to detail is remarkable, and the team is always friendly."</p>
+				<div class="testimonial-author">
+					<img src="https://i.pravatar.cc/56?img=8" alt="Michael Chen" class="testimonial-avatar">
+					<div>
+						<div class="testimonial-name">Michael Chen</div>
+						<div class="testimonial-role">Business Owner</div>
+					</div>
+				</div>
+			</article>
+			<article class="testimonial-card glass reveal delay-3">
+				<div class="testimonial-stars" aria-label="5 out of 5 stars">
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+					<svg class="star-filled" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+					</svg>
+				</div>
+				<p class="testimonial-text">"The deep cleaning service transformed my apartment. It feels like a brand new space! Highly recommend for anyone moving in or out."</p>
+				<div class="testimonial-author">
+					<img src="https://i.pravatar.cc/56?img=9" alt="Emily Rodriguez" class="testimonial-avatar">
+					<div>
+						<div class="testimonial-name">Emily Rodriguez</div>
+						<div class="testimonial-role">Apartment Renter</div>
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+	<div class="shape-container">
+		<div class="shape shape-accent" style="width: 500px; height: 500px; top: -20%; right: -20%; opacity: 0.3;"></div>
+		<div class="shape shape-lavender" style="width: 400px; height: 400px; bottom: -15%; left: -10%;"></div>
+	</div>
+	<div class="container">
+		<div class="contact-wrapper">
+			<div class="contact-grid">
+				<div class="contact-content">
+					<h2 class="contact-title reveal">
+						Ready for a<br>
+						<span class="contact-title-accent">Spotless Space?</span>
+					</h2>
+					<p class="contact-desc reveal delay-1">
+						Book your cleaning service today and enjoy a fresh, healthy environment.
+						Our team is ready to transform your space.
+					</p>
+					<div class="reveal delay-2">
+						<div class="contact-info-item">
+							<div class="contact-info-icon">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B9FF66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+								</svg>
+							</div>
+							<div>
+								<div class="contact-info-label">Call us</div>
+								<div class="contact-info-value">+1 (555) 123-4567</div>
+							</div>
+						</div>
+						<div class="contact-info-item">
+							<div class="contact-info-icon">
+								<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B9FF66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+								</svg>
+							</div>
+							<div>
+								<div class="contact-info-label">Email us</div>
+								<div class="contact-info-value">hello@cleaning.com</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="contact-form glass reveal delay-3">
+					<h3 class="form-title">Get a Free Quote</h3>
+					<form id="contactForm">
+						<div class="form-group">
+							<label for="name" class="form-label">Full Name</label>
+							<input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+						</div>
+						<div class="form-group">
+							<label for="email" class="form-label">Email</label>
+							<input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+						</div>
+						<div class="form-group">
+							<label for="service" class="form-label">Service Type</label>
+							<select id="service" name="service" class="form-input form-select" required>
+								<option value="">Select a service</option>
+								<option value="home">Home Cleaning</option>
+								<option value="office">Office Cleaning</option>
+								<option value="kitchen">Kitchen Cleaning</option>
+								<option value="deep">Deep Cleaning</option>
+								<option value="move">Move In/Out</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="message" class="form-label">Message</label>
+							<textarea id="message" name="message" rows="3" class="form-input form-textarea" placeholder="Tell us about your cleaning needs..."></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary form-button glass">Request Quote</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+	<div class="container">
+		<div class="footer-grid">
+			<div class="footer-brand">
+				<a href="#" class="logo">
+					<div class="logo-icon">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+						</svg>
+					</div>
+					<span>Cleaning</span>
+				</a>
+				<p class="footer-brand-text">Professional cleaning services for homes and businesses. Making spaces sparkle since 2002.</p>
+			</div>
+			<div>
+				<h4 class="footer-title">Quick Links</h4>
+				<ul class="footer-links">
+					<li><a href="#home" class="footer-link">Home</a></li>
+					<li><a href="#services" class="footer-link">Services</a></li>
+					<li><a href="#about" class="footer-link">About</a></li>
+					<li><a href="#contact" class="footer-link">Contact</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4 class="footer-title">Services</h4>
+				<ul class="footer-links">
+					<li><a href="#" class="footer-link">Home Cleaning</a></li>
+					<li><a href="#" class="footer-link">Office Cleaning</a></li>
+					<li><a href="#" class="footer-link">Deep Cleaning</a></li>
+					<li><a href="#" class="footer-link">Move In/Out</a></li>
+				</ul>
+			</div>
+			<div>
+				<h4 class="footer-title">Follow Us</h4>
+				<div class="footer-social">
+					<a href="#" class="footer-social-link glass" aria-label="Facebook">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+						</svg>
+					</a>
+					<a href="#" class="footer-social-link glass" aria-label="Twitter">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+						</svg>
+					</a>
+					<a href="#" class="footer-social-link glass" aria-label="Instagram">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p>2026 Cleaning. All rights reserved.</p>
+		</div>
+	</div>
+</footer>
+
+<!-- FX TOGGLE -->
+<button class="fx-toggle glass" id="fxToggle" aria-label="Toggle glass effect controls" aria-expanded="false">
+	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+		<polyline points="2 17 12 22 22 17"></polyline>
+		<polyline points="2 12 12 17 22 12"></polyline>
+	</svg>
+</button>
+
+<!-- BUBBLE MENU -->
+<div class="bubble-menu glass" id="bubbleMenu" role="dialog" aria-label="Glass effect controls">
+	<div class="bubble-menu-title">
+		<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+			<polyline points="2 17 12 22 22 17"></polyline>
+			<polyline points="2 12 12 17 22 12"></polyline>
+		</svg>
+		Glass FX Controls
+	</div>
+	<div class="control-group">
+		<div class="control-label"><span>Texture</span></div>
+		<div class="texture-row" id="textureRow"></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label">
+			<span>Refraction</span>
+			<span class="control-value" id="refractVal">0.30</span>
+		</div>
+		<input type="range" class="control-slider" id="refractSlider" min="-0.5" max="0.5" step="0.01" value="0.30">
+	</div>
+	<div class="control-group">
+		<div class="control-label">
+			<span>Chromatic</span>
+			<span class="control-value" id="chromaVal">50</span>
+		</div>
+		<input type="range" class="control-slider" id="chromaSlider" min="-200" max="200" value="50">
+	</div>
+	<div class="control-group">
+		<div class="control-label">
+			<span>Blur</span>
+			<span class="control-value" id="blurVal">0.001</span>
+		</div>
+		<input type="range" class="control-slider" id="blurSlider" min="0" max="0.1" step="0.00001" value="0.001">
+	</div>
+	<div class="control-group" style="margin-bottom: 0;">
+		<div class="control-label">
+			<span>Opacity</span>
+			<span class="control-value" id="opacityVal">0.25</span>
+		</div>
+		<input type="range" class="control-slider" id="opacitySlider" min="0" max="0.8" step="0.01" value="0.25">
+	</div>
+</div>

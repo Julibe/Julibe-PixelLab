@@ -154,10 +154,7 @@ While the output is visual, the engine is technical. The project relies on a sea
 *   **AR Packaging:** Using WebXR to let users see the *Crimson Surge* can in 3D.
 
 ## Instructions [How to Explore]
-1.  **Dive In:** Scroll through the "Home" section to meet the brand.
-2.  **Browse the Aisle:** Explore the *Food*, *Grooming*, and *Health* categories.
-3.  **Read the Labels:** Click on products like *Sunbeam Radiance* or *Mystic Dream* to read the witty backstory and see the ingredients.
-4.  **Watch the Pups:** Notice how every product is paired with a specific dog breed video that matches its vibe!
+Just explore freely, click wherever you find something interesting, enjoy the experience, and do not forget to pet a puppy. 🐶
 
 ## Conclusion
 **GUAU** is an exploration of design possibilities, reflecting a deep passion for creativity and a love for dogs. It transforms a simple idea into an unforgettable experience, proving that thoughtful branding can create a "forever home" in the hearts of users. It’s colorful, it’s loud, and it’s full of heart. ❤️‍🔥

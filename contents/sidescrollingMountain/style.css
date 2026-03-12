@@ -63,7 +63,7 @@ html {
 	font-weight: 100;
 	border-radius: 2px;
 
-	h1,
+	h2,
 	.subheading {
 		font-size: 1.5em;
 		color: rgb(var(--orange));

@@ -1,0 +1,129 @@
+
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+	<nav>
+		<h2 title="VisionBreak 🔎 see, explore, and debug line breaks effortlessly" aria-label="Navigation header introducing VisionBreak">VisionBreak 🔎 </h2>
+		<button id="toggle_markers_btn" aria-pressed="false" title="Click to toggle visibility of line break markers" aria-label="Toggle showing or hiding visual line break markers">Hide Markers</button>
+	</nav>
+
+	<div class="main-layout-wrapper">
+		<header class="intro-section">
+			<div class="card">
+				<h1 title="Understand and visually debug line breaks in text with ease" aria-label="Main section: Learn and inspect line breaks visually">Understanding Line Break Markers</h1>
+				<div class="info-box">
+					<p class="lead">
+						This page demonstrates a JavaScript snippet that visually highlights line breaks (&lt;br&gt;) in the text.
+					</p>
+					<ul>
+						<li>
+							<strong title="Helpful for spotting spacing and layout issues caused by line breaks" aria-label="Debugging Layouts: identify spacing problems">Debugging Layouts:</strong> Identify where line breaks cause spacing issues.
+						</li>
+						<li>
+							<strong title="Shows exactly how text flows and wraps for clarity in layout" aria-label="Text Flow: visualize text placement and wrapping">Text Flow:</strong> See the exact placement of tags.
+						</li>
+						<li>
+							<strong title="Ensures text is structured accessibly and semantically correct" aria-label="Accessibility: review markup for better semantics">Accessibility:</strong> Review markup for better semantics.
+						</li>
+					</ul>
+					<p class="lead" style="margin-top: 1.5rem; font-size: 1rem; font-weight: 600;" title="Overview of main features of this visualizer" aria-label="Section highlighting feature capabilities">Feature Highlights:</p>
+					<ul>
+						<li class="feature">
+							<strong title="Elements are dynamically inserted after page load to enhance visualization" aria-label="Dynamic DOM: adds elements post-load for live demonstration">Dynamic DOM:</strong> Inserts elements post-load for flexible visualization.
+						</li>
+						<li class="feature">
+							<strong title="Toggle markers without altering your original content" aria-label="Non-Invasive: preserves original structure when toggling">Non-Invasive:</strong> Toggles markers without changing your original text structure.
+						</li>
+						<li class="feature">
+							<strong title="Provides logs in the console to monitor actions and debug" aria-label="Console Feedback: check console for details about marker actions">Console Feedback:</strong> Review your browser console for detailed logs.
+						</li>
+					</ul>
+				</div>
+
+				<div class="code-showcase">
+					<div class="code-header">
+						<span>The Magic Snippet</span>
+						<button id="copy_snippet_btn" title="Copy code to clipboard">Copy Code</button>
+					</div>
+					<pre><code id="core_snippet_code">document.querySelectorAll('br').forEach(br_element => {
+  let marker_span = document.createElement('span');
+  marker_span.innerHTML = '&lt;svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="9 10 4 15 9 20"&gt;&lt;/polyline&gt;&lt;path d="M20 4v7a4 4 0 0 1-4 4H4"&gt;&lt;/path&gt;&lt;/svg&gt;';
+  
+  Object.assign(marker_span.style, {
+    background: 'linear-gradient(135deg, #ff9a44 0%, #fc6076 100%)',
+    color: '#ffffff',
+    width: '24px',
+    height: '24px',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+    margin: '0 8px 0 4px',
+    verticalAlign: 'middle',
+    transform: 'translateY(-2px)'
+  });
+
+  br_element.parentNode.insertBefore(marker_span, br_element);
+});</code></pre>
+				</div>
+				
+				<p style="text-align: center; color: #b2bec3; font-size: 0.85rem; margin-top: 1.5rem;" aria-label="Browser console instructions">
+					Check your browser's console for execution logs.
+				</p>
+			</div>
+		</header>
+
+		<main class="app-workspace">
+			<div class="workspace-unified-panel">
+				
+				<div class="unified-header">
+					<div class="header-col">
+						<h3>HTML Source Input</h3>
+						<span class="badge">Real-Time</span>
+					</div>
+					<div class="header-col">
+						<h3>Live Visual Preview</h3>
+						<span class="badge" id="break_counter_badge">0 Breaks Found</span>
+					</div>
+				</div>
+
+				<div class="unified-body">
+					<div class="editor-col">
+						<textarea id="html_input_area" class="html-editor" spellcheck="false" placeholder="Type your HTML here..."></textarea>
+					</div>
+					
+					<div class="preview-col">
+						<div id="live_preview_container" class="live-preview-container"></div>
+					</div>
+				</div>
+				
+			</div>
+		</main>
+	</div>
+
+	<footer>
+		<div class="footer-container">
+			<h3 class="section-title" title="Connect and explore creative projects with Julibe" aria-label="Footer section: connect and collaborate with Julibe">Support & Connect</h3>
+			<p class="desc-text">
+				Follow Julibe @Julibe and share your favorite HTML and JavaScript formatting tools.<br>
+				Julibe is excited to explore new ideas, collaborate, and work on fresh projects together.
+			</p>
+			<ul class="link-list">
+				<li>
+					<a href="https://julibe.com/" target="_blank" title="Don't forget to check out Julibe's portfolio online" aria-label="Visit Julibe's website to explore creative projects">Explore Julibe's Website</a>
+				</li>
+				<li>
+					<a href="https://julibe.com/whatsapp" target="_blank" title="Hey, have some questions? Just contact Julibe through WhatsApp" aria-label="Chat with Julibe via WhatsApp for any inquiries">Say Hello to Julibe on WhatsApp</a>
+				</li>
+				<li>
+					<a href="https://julibe.com/twitter" target="_blank" title="Don't miss updates! Follow Julibe on Twitter for news and insights" aria-label="Follow Julibe on Twitter for updates and insights">Follow Julibe on Twitter</a>
+				</li>
+				<li>
+					<a href="https://julibe.com/instagram" target="_blank" title="Discover Julibe's latest creations and inspirations on Instagram" aria-label="Check out Julibe's Instagram to explore visual projects">Peek at Julibe's Instagram</a>
+				</li>
+				<li>
+					<a href="mailto:mail@julibe.com" title="Have a question or idea? Contact Julibe by email" aria-label="Email Julibe to discuss projects, questions, or collaborations">Drop a Note to Julibe</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
+
+	<div id="toast_container"></div>

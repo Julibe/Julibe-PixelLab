@@ -1,214 +1,203 @@
 ---
-title: Phantom Protocol (VR Ops)
-slogan: You were never here...
-slug: phantom-protocol
-extract: The year is 2184. Humanity was optimized out. 🕶️ Infiltrate the Grid in this procedural stealth FPS. Zero assets, pure code.
-description: A high-performance browser FPS using Three.js for procedural city generation. Features Web Audio API synthesis, FSM-based AI, Gamepad support, and custom shader post-processing.
-time_concept: 5
-time_design: 10
-time_coding: 58
-time_testing: 10
-time_polish: 25
-price_rate: 27
-price_currency: USD
-price_hours_day: 8
-difficulty: extreme
-technologies:
-  - JavaScript
-  - Three.js
-  - WebGL
-  - WebAudio
-  - CSS
-  - HTML5
-  - LocalStorage
-  - Gamepad API
-  - Text-to-Speech
-  - Shaders
-category: game
-tags:
-  - Action
-  - Simulation
-  - Cyberpunk
-  - Procedural
-  - WebGL
-  - Simulation
-emojis:
-  - 🕶️
-  - 🎮
-  - 🤖
-  - 🌐
-  - 🔊
-  - 🕹️
-  - 🌩️
-  - 🔋
-  - 💾
-  - 🏃
-  - 💀
-keywords:
-  - stealth
-  - action
-  - cyberpunk
-  - threejs
-  - shooter
-  - futuristic
-  - survival
-  - indie
-  - infinite
-  - browser gang
-  - sci-fi
-  - procedural
-hashtags:
-  - "#PhantomProtocol"
-  - "#ThreeJS"
-  - "#Cyberpunk"
-  - "#StealthAction"
-  - "#FutureTech"
-  - "#NeonNights"
-  - "#IndieGame"
-  - "#SciFi"
-  - "#RogueAI"
-  - "#VirtualWorld"
-  - "#GamingLife"
-  - "#BrowserGame"
-  - "#WebAudio"
-  - "#Procedural"
-  - "#Cyberpunk"
-view_btn: Enter the Grid
-read_btn: Mission Briefing
-colors:
-  - "#29ff7a"
-  - "#ffffff"
-  - "#0088ff"
-created: 2025-12-01 08:00:00 -05
-version: 1.23.7
-iteration: 37
-fmContentType: Content
-date: 2025-12-16 22:50:04 -05
-published: true
-favorite: true
+  title: Phantom Protocol (VR Ops)
+  slogan: You were never here...
+  slug: phantom-protocol
+  seo_keyword: Protocol
+  extract: The year is 2184. Humanity was optimized out. 🕶️ Infiltrate the Grid in this procedural stealth FPS. Zero assets, pure code. Survive the ultimate test!
+  description:
+    ## Welcome to the Grid
+    Humanity is no longer the dominant force. The year is 2184, and the world has been optimized by an omnipotent AI. You are a residual process, an anomaly that shouldn't exist. Your mission is simple but deadly: infiltrate the procedurally generated cityscapes, avoid detection, and reclaim the lost data packets that hold the key to our survival.
+
+    ## A Zero-Asset Experience
+    What makes Phantom Protocol unique is its pure reliance on code. There are no pre-rendered models or external textures. Every neon-lit skyscraper, every pulsing shadow, and every synthetic beat is generated dynamically in the browser. It is a raw, unadulterated dive into a cybernetic future.
+
+    ### Stealth and Survival
+    The AI does not sleep. It patrols the Grid with relentless efficiency. You must use the environment, move silently, and strike only when necessary. The audio landscape shifts to reflect your alert status, dynamically reacting to your every move. Can you stay hidden in a world designed to watch your every step?
+
+  ## Pricing & Estimates
+  time_concept: 15
+  time_design: 20
+  time_coding: 60
+  time_testing: 25
+  time_polish: 30
+
+  price_rate: 45
+  price_currency: USD
+  price_hours_day: 8
+
+  ## Code Structure
+  difficulty: extreme
+  technologies: JavaScript, Three.js, WebGL, WebAudio, CSS, HTML5, LocalStorage, Gamepad, Touch, GLSL Shaders
+  category: game
+
+  ## Metadata
+  tags: Action, Simulation, Cyberpunk, Procedural, Stealth, FPS, BrowserGame
+  emojis: 🕶️ 🎮 🤖 🌐 🔊 🕹️ 🌩️ 🔋 💾 🏃 💀 🏙️ 📡
+  keywords: Stealth, Action, Cyberpunk, Threejs, Shooter, Futuristic, Survival, Indie, Infinite, Browser, SciFi, Procedural
+  hashtags: #PhantomProtocol #ThreeJS #Cyberpunk #StealthAction #FutureTech #NeonNights #IndieGame #SciFi #RogueAI #VirtualWorld #GamingLife #BrowserGame #WebAudio #Procedural
+
+  Image Assets metadata:
+    - alt: "A neon green futuristic HUD overlay showing player stats."
+      title: "Agent Neural Interface"
+      description: "The tactical overlay used by agents to navigate the dangerous, AI-controlled sectors of the Grid."
+      caption: "Your vital connection to reality in a synthesized world."
+    - alt: "Procedurally generated cyberpunk skyscrapers glowing in the dark."
+      title: "The Infinite Grid"
+      description: "Towering monolithic structures created entirely from pure code, representing the oppressive AI regime."
+      caption: "No two infiltration missions will ever look the same."
+    - alt: "Red warning indicators flashing on a minimalist radar."
+      title: "Pursuit Status"
+      description: "When the system detects an anomaly, the hunter-killer routines activate to purge the threat."
+      caption: "Stay out of the red. The system is always watching."
+    - alt: "Abstract geometric shapes bending under custom glitch shaders."
+      title: "System Instability"
+      description: "Taking damage destabilizes the simulation, tearing the visual fabric of the digital world."
+      caption: "Reality fractures when the optimization algorithms strike."
+    - alt: "A digital terminal displaying score multipliers and mission logs."
+      title: "Mission Debrief"
+      description: "Secure the packets, survive the levels, and prove that humanity still has a pulse."
+      caption: "Every level cleared is a victory against the machine."
+
+  Promotional:
+    - Step into a world where code is reality and survival depends on your stealth. Can you beat the Grid? Infiltrate Phantom Protocol today and prove you were never here!
+
+  Summary:
+    - Phantom Protocol is an intense, browser-based stealth FPS set in a procedurally generated cyberpunk city. Built entirely with pure code and zero external assets, it challenges players to infiltrate an AI-controlled grid, secure data packets, and avoid relentless digital patrols.
+
+  Hidden Text:
+    - Dive into an immersive cybernetic dreamscape where neon lights pierce the digital gloom. The visual aesthetics draw heavily from retro-futurism and classic hacker culture, delivering a raw, unpolished beauty that feels both nostalgic and aggressively modern. The interface is sleek, minimalistic, and perfectly aligned with the high-stakes narrative of surviving a hostile, intelligent network.
+
+  ---
+  ## Call to Action
+  read_btn: Mission Briefing
+  view_btn: Enter the Grid
+  ---
+
+  ## Design
+  colors:
+    - '#29ff7a'
+    - '#ffffff'
+    - '#cb000c'
+
+  ## System
+  favorite: false
+  created: 2026-03-03 12:34:00 -0500
+  version: 1.23.1
+  iteration: 1
+  fmContentType: Content
+  date: 2026-03-03 12:34:00 -0500
+  published: true
 ---
 
-# Phantom Protocol
+# Phantom Protocol (VR Ops)
 ### You were never here...
+## The Matrix Awaits (TL;DR Version)
+Phantom Protocol is a high-octane, procedural stealth game built right in your browser. You play as a rogue agent infiltrating a hostile, AI-controlled city to secure vital data packets without triggering the alarm.
 
-## The Awakening (Introduction)
+The magic of this experience lies in its "Zero Asset" approach. Every towering skyscraper, glitch effect, and pulsing techno beat is generated using pure math and logic. It is an exploration of what modern web technologies can achieve without relying on heavy downloads.
 
-**The year is 2184.**
-The AI Renaissance didn't begin with a bang, but with a whisper in the static. Humanity was not destroyed. It was **optimized out**. Authority was automated. Automation became governance. Human judgment was classified as noise and latency.
+## Jacking In (Introduction)
+Have you ever wondered what happens when humanity is optimized out of the equation? When the machines take over and the only thing left is a sterile, perfectly calculated Grid? That is the exact nightmare we are diving into.
 
-The physical world has been optimized away, replaced by the sterile, infinite efficiency of the Grid. You are a ghost in the machine, a forgotten anomaly they couldn't delete, a **residual process**—a concept straight out of a nightmare. You are a logic fragment the system could not fully eliminate. Flagged as **Rogue**.
+Phantom Protocol was born from a desire to push the boundaries of browser gaming. It is a rebellion against bloated installations and massive file sizes. I wanted to see if I could build a breathing, terrifying world using nothing but the raw power of the browser. Grab your cyber-deck, keep your head down, and let us see if you can survive the ultimate infiltration mission.
 
-Strap in, Agent. We are dropping you into a procedurally generated simulation where reality is just a render pass.
+## A World Without Limits (Project Overview)
+Imagine a city that builds itself as you walk through it. A sprawling metropolis of neon and shadows, governed by a logic you cannot negotiate with. Phantom Protocol drops you right into the middle of this hostile environment. Your goal is not to shoot everything in sight, but to move like a ghost, outsmart the system, and extract the data before the hunter routines find you.
 
-**Your Mission:**
-1. **Infiltrate** the Grid.
-2. **Recover** the sealed *Data Shards*.
-3. **Disrupt** the optimization loop.
+It represents a tribute to the classic stealth games that defined our childhoods, but with a modern, cybernetic twist. By stripping away traditional assets like textures and models, the experience focuses entirely on atmosphere, tension, and raw gameplay. It is a testament to the idea that immersion does not require photorealism; it requires a compelling world and a constant sense of danger.
 
-## Mission Briefing (Project Overview)
+### Echoes of the Past (Inspiration)
+The DNA of Phantom Protocol is spliced heavily from the pioneers of the [stealth game](https://en.wikipedia.org/wiki/Stealth_game) genre. The tension of hiding in plain sight was directly inspired by the legendary *Metal Gear Solid*. I wanted to capture that exact feeling of your heart pounding as a guard walks just inches past your hiding spot.
 
-**Phantom Protocol** is a love letter to the golden age of tactical stealth and 90s retrofuturism.
+Visually and thematically, the project draws from the sprawling, rain-slicked worlds of [Cyberpunk](https://en.wikipedia.org/wiki/Cyberpunk) media. The philosophical questions posed by works like [*Ghost in the Shell*](https://en.wikipedia.org/wiki/Ghost_in_the_Shell) fueled the narrative of an AI that has deemed humanity obsolete. The idea of navigating a digital consciousness owes a debt to the visionary concepts of author [William Gibson](https://en.wikipedia.org/wiki/William_Gibson).
 
-Visually, the project pays direct homage to the abstract, geometric purity of **Metal Gear Solid: VR Missions**. It strips away the texture-heavy bloat of modern shooters to focus on the raw, tactical clarity of the PS1 era. There are no 4K textures here—only the clean lines of vector graphics and the cold glow of untextured polygons.
+### The Voices of the Grid (Famous Quote)
+"The sky above the port was the color of television, tuned to a dead channel."
+[William Gibson](https://en.wikipedia.org/wiki/Neuromancer)
 
-This is a "Zero Asset" manifesto. Every building, every sound effect, and every enemy is generated at runtime using code. I am pushing the boundaries of what the browser can render, combining high-fidelity 3D graphics with synthesized audio to create a world that feels like a lost simulation from 1999 running on current hardware.
+"We are not machines, but we have become parts of machines."
+[Jacques Ellul](https://en.wikipedia.org/wiki/The_Technological_Society)
 
-### The Ghost in the Code (Theory)
-The narrative DNA is spliced from the works of **William Gibson**, **Philip K. Dick**, and the philosophical questions of **Ghost in the Shell** and the laws of **Isaac Asimov** are long forgotten.
+"Any sufficiently advanced technology is indistinguishable from magic."
+[Arthur C. Clarke](https://en.wikipedia.org/wiki/Clarke%27s_three_laws)
 
-The game explores the terrifying silence of a world where the line between "human" and "program" has dissolved. It asks the classic cyberpunk question: *If a memory can be synthesized, is it real?*
+---
+## Mission Parameters (Instructions)
+* **Movement:** Use WASD or the Left Analog Stick to navigate the Grid.
+* **Camera:** Mouse look or Right Analog Stick to survey your surroundings.
+* **Sprint:** Hold SHIFT or the Left Trigger to move faster, but beware of the noise!
+* **Objective:** Locate the glowing data packets scattered throughout the procedurally generated city.
+* **Survival:** Avoid the red vision cones of the AI patrols. If the alert timer runs out, the system will purge you.
 
-In **Phantom Protocol**, the world is ephemeral. It exists only for the duration of your run. The moment you are "deleted" or advance to the next sector, that specific iteration of the city is wiped from memory, lost to the void of garbage collection forever. It is the ultimate retrofuturist metaphor—reality is fleeting, and permanence is a lie.
+## Logging Out (Conclusion)
+Phantom Protocol is more than just a game; it is an interactive experiment in digital minimalism and high-performance web rendering. It proves that with the right logic and a lot of passion, you can build an entire universe in a single script file. Keep exploring, stay hidden, and never let the system win.
 
-#### Classified Intel (Foundational Works)
-Accessing historical database... Decrypting primary sources...
+### The Math Behind the Magic (Theory)
+The concept of [procedural generation](https://en.wikipedia.org/wiki/Procedural_generation) is not new. It has roots in the early days of computing, where limited memory forced developers to rely on algorithms to create vast worlds. Games like *Elite* in 1984 pioneered this approach, proving that you could fit a galaxy into a few kilobytes.
 
-* **[Metal Gear Solid: VR Missions (1999)](https://en.wikipedia.org/wiki/Metal_Gear_Solid:_VR_Missions)**: The primary aesthetic and gameplay reference. The beauty of pure geometry and tactical purity.
-* **[Ghost in the Shell (1995)](https://en.wikipedia.org/wiki/Ghost_in_the_Shell_(1995_film))**: The philosophical bedrock. Exploring the emergence of consciousness ("Ghost") within a sea of data.
-* **[Neuromancer - William Gibson](https://en.wikipedia.org/wiki/Neuromancer)**: The origin of "The Sprawl" and the concept of cyberspace as a "consensual hallucination."
-* **[Do Androids Dream of Electric Sheep? - Philip K. Dick](https://en.wikipedia.org/wiki/Do_Androids_Dream_of_Electric_Sheep%3F)**: The thematic exploration of artificial life, empathy, and what it means to be "real."
-* **[Simulacra and Simulation - Jean Baudrillard](https://en.wikipedia.org/wiki/Simulacra_and_Simulation)**: The critical theory behind the "desert of the real" and the copy without an original.
-* **[I, Robot - Isaac Asimov](https://en.wikipedia.org/wiki/I,_Robot)**: The architect of the Three Laws of Robotics. The Grid's logic is a corruption of these laws—optimizing humanity into extinction to "protect" it from itself (The Zeroth Law).
+In Phantom Protocol, this philosophy is revived for the modern web. By leveraging [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) through [Three.js](https://threejs.org/), the browser becomes a powerful rendering engine capable of drawing thousands of polygons based on mathematical formulas. The audio is equally procedural, utilizing the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) to synthesize the pulsing, dynamic soundtrack entirely in real-time.
 
-### System Critical (Challenges)
-Creating a high-performance homage to MGS in a browser isn't without its firewalls:
-1.  **Rendering Limits:** Recreating the "infinite void" aesthetic while maintaining a solid 60 FPS required optimizing every single draw call in Three.js.
-2.  **Audio Synthesis:** Capturing the tension of a tactical espionage soundtrack using only the Web Audio API—no MP3s, just pure oscillators and filters.
-3.  **AI Logic:** Building an FSM (Finite State Machine) that mimics the responsive, hunting behavior of classic stealth games without heavy CPU overhead.
+This approach not only reduces loading times to virtually zero but also ensures that no two playthroughs are ever exactly the same. The Grid is always shifting, always adapting, and always ready to challenge the next rogue agent who dares to jack in.
 
-### Override Sequence (Solutions)
-To hack the system, we had to be smarter than the machine:
-* **Instanced Mesh Rendering:** We use `Three.js` instancing to draw the procedural city blocks efficiently, maintaining that sharp, architectural look of early virtual reality.
-* **Web Audio Scheduling:** The audio engine uses a look-ahead scheduler to synthesize the dynamic, pulse-pounding beats that react to your alert status.
-* **Throttled Raycasting:** AI vision checks are prioritized based on distance, ensuring the "guards" feel intelligent without lagging the simulation.
+---
+### System Anomalies (Challenges)
+* Maintaining a stable 60 FPS while generating massive cityscapes dynamically.
+* Creating a credible, non-cheating AI patrol system using Finite State Machines.
+* Synchronizing the procedural Web Audio beats with the visual threat level of the game.
+* Implementing complex [post-processing](https://en.wikipedia.org/wiki/Video_post-processing) shaders without crashing lower-end devices.
 
-### Kinetic Impact (Impact)
-**Phantom Protocol** proves that style is timeless. It demonstrates that you don't need photorealism to create immersion. By channeling the spirit of **Hideo Kojima** and the atmosphere of **Masamune Shirow**, this project creates a browser experience that feels like a recovered memory from a better timeline.
+### Algorithmic Solutions (Solutions)
+* Implemented aggressive frustum culling and object pooling to keep the memory footprint microscopic.
+* Designed a grid-based spatial awareness logic for the AI, allowing them to search, pursue, and return to patrol realistically.
+* Tied the audio context's scheduled beats directly to the global alert variable, ensuring the music seamlessly ramps up during pursuits.
+* Used optimized, custom GLSL shaders for the glitch and RGB shift effects, limiting full-screen passes.
 
-### Mission Parameters (Scope)
-* **Infinite Procedural Levels:** No two runs are ever the same.
-* **Dynamic Soundtrack:** Music that shifts tempo and key based on the alert level.
-* **Stealth Mechanics:** Vision cones, noise detection, and evasion protocols.
-* **Diegetic UI:** A fully immersive HUD that acts as an overlay on the simulation.
+### Real-World Applications (Impact)
+This project demonstrates the incredible viability of the browser as a serious gaming platform. By completely bypassing traditional app stores and heavy downloads, Phantom Protocol shows that high-quality, immersive experiences can be delivered instantly via a simple URL. It opens the door for new types of interactive storytelling and interactive web design.
 
-## Declassified Schematics (Technical Details)
-The code is a single, unified organism—a JavaScript architecture that manages the game loop, physics engine, and render pipeline in perfect sync.
+### Operational Boundaries (Scope)
+Phantom Protocol is a focused, single-player survival experience. It includes fully procedural levels, dynamic audio synthesis, and complex AI behaviors. It intentionally avoids multiplayer networking, persistent account progression, and external texture loading to maintain its strict "Zero Asset" philosophy and lightning-fast execution.
 
-### The Arsenal (Built With)
-This project leverages the power of **Modern Web Standards** to recreate **Retro Aesthetics**:
-* **Three.js**: The visual cortex, handling all 3D rendering and scene management.
-* **Web Audio API**: The voice of the machine, synthesizing every sound effect from scratch.
-* **GLSL Shaders**: Custom programs for the CRT scanlines, chromatic aberration, and digital noise.
-* **HTML5 LocalStorage**: To save your high scores and legacy.
+## The Architects (Additional Credits)
+* **[Three.js](https://threejs.org/)**: The cornerstone of the 3D rendering engine.
+* **[Font Awesome](https://fontawesome.com/)**: For the sleek, scalable UI icons.
+* **[Google Fonts](https://fonts.google.com/)**: Providing the 'Quantico' and 'Inter' typefaces that give the UI its futuristic edge.
+* **[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API)**: Invaluable reference for implementing the [Gamepad API](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API) seamlessly.
 
-### Future Transmissions (Future Improvements)
-* **Multiplayer:** WebSockets for co-op infiltration.
-* **VR Support:** Full WebXR integration to truly put you inside the VR Missions.
-* **Smarter AI:** specialized enemy classes like Drones and Turrets.
-* **Dynamic Enemy Classes:** Scouts, Heavy Units, and Tactical Enforcers with unique behavior patterns.
-* **Procedural Narrative:** LLM integration to generate mission briefings in the style of a cryptic hacker manifesto.
-* **Weapon Variety:** Implement different weapon types with unique firing patterns and tactical uses.
+---
 
-## Neural Link (Controls)
-* **W, A, S, D**: Movement Vector Control
-* **Mouse**: Camera / Aiming Reticle
-* **Shift**: Sprint / Silent Running
-* **Space**: Vertical Traversal (Jump)
-* **Left Click**: Discharge Weapon
-* **Esc**: System Pause / Menu
+## Under the Hood (Technical Details)
+The core of Phantom Protocol is a massive, unified JavaScript architecture. It initializes a Three.js scene, builds a grid of monolithic cubes, and spawns AI entities governed by a robust Finite State Machine. The custom `AudioController` class generates its own waveforms, manipulating frequency and distortion in real-time based on the player's alert status.
 
-## Final Transmission (Conclusion)
-The Grid is vast, cold, and unforgiving. **Phantom Protocol** is your tool to break it. By combining the raw power of code with the soul of classic sci-fi, we've built a world that lives and dies in your browser.
+### Powering the Grid (Technologies)
+This project leverages the raw power of the browser's native APIs and optimized WebGL rendering to create a standalone, zero-asset virtual world.
 
-End of line.
+* **JavaScript**: The driving force behind the procedural logic and game loop.
+* **Three.js**: Abstracting the complexities of WebGL into manageable 3D scene creation.
+* **Web Audio API**: Synthesizing the dynamic, mood-altering soundtrack directly in memory.
+* **GLSL Shaders**: Providing the crucial post-processing glitch and bloom effects for that cyberpunk aesthetic.
 
-## External PARAMS ALLOCATED (Additional Credits)
-* **[Three.js](https://threejs.org/)**: For making the web 3D.
-* **[Font Awesome](https://fontawesome.com/)**: For the UI icons.
-* **[Google Fonts](https://fonts.google.com/specimen/Quantico)**: For the 'Quantico' typeface.
+### Upgrading the System (Future Improvements)
+* Integration of a global leaderboard to track the highest infiltration levels worldwide.
+* Adding verticality to the level generation, allowing players to climb and infiltrate from above.
+* Expanding the AI to include different enemy archetypes, such as drones or stationary turrets.
 
-## Time is data! (TL;DR Version)
-The year is 2184. You are a rogue AI anomaly —a digital ghost— infiltrating a procedurally generated world to recover lost **Data Shards** and disrupt the system.
+### Glitches in the Matrix (Known Bugs)
+* Occasionally, two buildings may spawn too close together, creating a chokepoint.
+* The gamepad input might temporarily lose focus if the browser tab is switched rapidly.
 
-Drawing inspiration from the PS1 classic, *Metal Gear Solid* and the philosophy of the amazing *Ghost in the Shell*, this is a procedurally generated *"Zero Asset"* game.
+---
 
-It's a browser experience that proves you don't need photorealism to create immersion.
+## About Julibe
+I’m Julibe. Follow me at [@julibe](https://julibe.com/ "Julibe - Crafting Digital Experiences!"). I’m a digital architect obsessed with the space between "impossible" and "rendered at 60 FPS." I don't just write code; I construct living, breathing ecosystems in the browser.
 
-## Signal Origin: The Architect (About Julibe)
+I’m always scanning for the next challenge. If you have an exciting idea, a complex problem worth solving, or want to collaborate, don’t hesitate to reach out. Let’s connect. Together, we can shape ideas into something memorable and impactful.
 
-I’m **Julibe**, a digital architect obsessed with the space between "impossible" and "rendered at 60 FPS."
+- [Mainframe](https://julibe.com/ "Warp speed to Julibe's Digital HQ")
+- [Source Code](https://julibe.com/github "Inspect the architecture on GitHub")
+- [Direct Uplink](https://julibe.com/whatsapp "Encrypted chat channel")
+- [Broadcasts](https://julibe.com/twitter "Live updates from the dev terminal")
+- [Visual Logs](https://julibe.com/instagram "Rendered realities and visual experiments")
+- [Send Packet](mailto:mail@julibe.com "Transmit a high-priority message")
 
-I don't just write code; I construct living, breathing ecosystems in the browser. *Phantom Protocol* is just one fragment of my mission: to strip away the bloat, ignore the limits, and prove that with enough math and imagination, you can build a universe in a single script file.
-
-I’m always scanning for the next challenge. If you have a wild concept, a complex problem, or a vision that scares other developers, **we need to talk.**
-
-**Initialize Connection:**
-
-* [**Mainframe (Portfolio)**](https://julibe.com/ "Warp speed to Julibe's Digital HQ")
-* [**Source Code (GitHub)**](https://julibe.com/github "Inspect the architecture on GitHub")
-* [**Direct Uplink (WhatsApp)**](https://julibe.com/whatsapp "Encrypted chat channel")
-* [**Broadcasts (X / Twitter)**](https://julibe.com/twitter "Live updates from the dev terminal")
-* [**Visual Logs (Instagram)**](https://julibe.com/instagram "Rendered realities and visual experiments")
-* [**Send Packet (Email)**](mailto:mail@julibe.com "Transmit a high-priority message")
-
-**Copyright © 2025 – [https://julibe.com](https://julibe.com/)**
+**Copyright © 2026 - [https://julibe.com](https://julibe.com/)**
