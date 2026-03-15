@@ -1,0 +1,193 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<input type="color" id="hiddenColorInput" style="display:none" aria-label="Hidden Color Picker" title="Hidden Color Picker">
+
+<header class="glass" role="banner">
+	<div class="logo" aria-label="Aeryn Studio Logo" title="Aeryn Studio">
+		<span class="material-symbols-rounded" aria-hidden="true">design_services</span>
+		Aeryn<span>Studio</span>
+	</div>
+	<div class="header-actions">
+		<button class="btn btn-ghost" onclick="app.ui.openModal('newDocModal')" title="Create a new document" aria-label="Create a new document">New</button>
+		<button class="btn btn-ghost" onclick="document.getElementById('fileUpload').click()" title="Open an image file" aria-label="Open an image file">Open</button>
+		<button class="btn btn-ghost" onclick="app.ui.openModal('aboutModal')" aria-label="Learn more about this project" title="Learn more about this project">About</button>
+
+		<input type="file" id="fileUpload" hidden accept="image/*" onchange="app.io.handleFile(this)" aria-label="Upload an image" title="Upload an image">
+
+		<div style="width:1px; height: 20px; background:var(--border); margin:0 5px;" role="separator"></div>
+
+		<button class="btn btn-primary" onclick="app.io.exportImage()" title="Export your canvas as PNG" aria-label="Export your canvas as PNG">
+			<span class="material-symbols-rounded" style="font-size:16px" aria-hidden="true">download</span> Export
+		</button>
+		<button class="btn btn-primary" style="background: white; color: black; border:none;" onclick="shareTwitter()" aria-label="Share your design on Twitter" title="Share your design on Twitter">
+			Share
+		</button>
+	</div>
+</header>
+
+<div class="main-container">
+	<div class="toolbar glass" role="toolbar" aria-label="Drawing Tools">
+		<button class="tool-btn active" id="btn-move" onclick="app.tools.set('move')" title="Move selected layer" aria-label="Move selected layer">
+			<span class="material-symbols-rounded" aria-hidden="true">open_with</span>
+		</button>
+
+		<button class="tool-btn" id="btn-brush" onclick="app.tools.set('brush')" title="Select brush tool" aria-label="Select brush tool">
+			<span class="material-symbols-rounded" aria-hidden="true">brush</span>
+		</button>
+
+		<button class="tool-btn" id="btn-eraser" onclick="app.tools.set('eraser')" title="Select eraser tool" aria-label="Select eraser tool">
+			<span class="material-symbols-rounded" aria-hidden="true">ink_eraser</span>
+		</button>
+
+		<div class="tool-group" style="position:relative">
+			<button class="tool-btn" id="btn-shape" title="Choose a shape" aria-label="Choose a shape">
+				<span class="material-symbols-rounded" id="current-shape-icon" aria-hidden="true">crop_square</span>
+			</button>
+			<div class="sub-tool glass" role="menu" aria-label="Shape options">
+				<button class="tool-btn" onclick="app.tools.setShape('rect')" title="Rectangle shape" aria-label="Select rectangle shape"><span class="material-symbols-rounded" aria-hidden="true">crop_square</span></button>
+				<button class="tool-btn" onclick="app.tools.setShape('circle')" title="Circle shape" aria-label="Select circle shape"><span class="material-symbols-rounded" aria-hidden="true">circle</span></button>
+				<button class="tool-btn" onclick="app.tools.setShape('triangle')" title="Triangle shape" aria-label="Select triangle shape"><span class="material-symbols-rounded" aria-hidden="true">change_history</span></button>
+				<button class="tool-btn" onclick="app.tools.setShape('star')" title="Star shape" aria-label="Select star shape"><span class="material-symbols-rounded" aria-hidden="true">star</span></button>
+			</div>
+		</div>
+
+		<div class="color-area" role="region" aria-label="Color selection">
+			<span class="material-symbols-rounded color-swap" onclick="app.colors.swap()" title="Swap primary and secondary colors" aria-label="Swap primary and secondary colors">swap_horiz</span>
+			<div id="secondaryColor" class="color-box" onclick="app.colors.pick('secondary')" role="button" aria-label="Pick secondary color" title="Pick secondary color"></div>
+			<div id="primaryColor" class="color-box" onclick="app.colors.pick('primary')" role="button" aria-label="Pick primary color" title="Pick primary color"></div>
+		</div>
+	</div>
+
+	<div class="workspace">
+		<div class="ruler-container-h"><canvas id="ruler-top" class="ruler-canvas" aria-label="Horizontal ruler" title="Horizontal ruler"></canvas></div>
+		<div style="display:flex; flex:1; overflow:hidden; position:relative;">
+			<div class="ruler-container-v"><canvas id="ruler-left" class="ruler-canvas" aria-label="Vertical ruler" title="Vertical ruler"></canvas></div>
+
+			<div class="viewport" id="viewport" role="region" aria-label="Canvas viewport" title="Canvas viewport">
+				<div id="canvas-stage"></div>
+			</div>
+		</div>
+
+		<div class="zoom-bar glass" role="group" aria-label="Zoom controls" title="Zoom controls">
+			<button class="zoom-btn" onclick="app.ui.zoomOut()" aria-label="Zoom out" title="Zoom out"><span class="material-symbols-rounded" aria-hidden="true">remove</span></button>
+			<span id="zoom-val" style="min-width:40px; text-align:center;">100%</span>
+			<button class="zoom-btn" onclick="app.ui.zoomIn()" aria-label="Zoom in" title="Zoom in"><span class="material-symbols-rounded" aria-hidden="true">add</span></button>
+		</div>
+	</div>
+
+	<div class="sidebar glass" role="complementary" aria-label="Sidebar controls" title="Sidebar controls">
+		<div class="panel-section">
+			<div class="panel-title">Transform</div>
+
+			<div class="control-row">
+				<label for="layerRotation">Rotation</label>
+				<input type="range" min="0" max="360" value="0" id="layerRotation" oninput="app.layers.rotate(this.value)" aria-valuemin="0" aria-valuemax="360" aria-valuenow="0" aria-label="Rotate layer" title="Rotate layer">
+				<span id="lbl-rot" style="width:30px; text-align:right">0°</span>
+			</div>
+
+			<div class="align-grid" style="margin-top:10px">
+				<button class="align-btn" onclick="app.layers.align('left')" title="Align layer left" aria-label="Align layer to the left"><span class="material-symbols-rounded" aria-hidden="true">align_horizontal_left</span></button>
+				<button class="align-btn" onclick="app.layers.align('center-x')" title="Align layer center horizontally" aria-label="Align layer center horizontally"><span class="material-symbols-rounded" aria-hidden="true">align_horizontal_center</span></button>
+				<button class="align-btn" onclick="app.layers.align('right')" title="Align layer right" aria-label="Align layer to the right"><span class="material-symbols-rounded" aria-hidden="true">align_horizontal_right</span></button>
+				<button class="align-btn" onclick="app.layers.align('top')" title="Align layer top" aria-label="Align layer to the top"><span class="material-symbols-rounded" aria-hidden="true">align_vertical_top</span></button>
+				<button class="align-btn" onclick="app.layers.align('center-y')" title="Align layer center vertically" aria-label="Align layer center vertically"><span class="material-symbols-rounded" aria-hidden="true">align_vertical_center</span></button>
+				<button class="align-btn" onclick="app.layers.align('bottom')" title="Align layer bottom" aria-label="Align layer to the bottom"><span class="material-symbols-rounded" aria-hidden="true">align_vertical_bottom</span></button>
+			</div>
+		</div>
+
+		<div class="panel-section">
+			<div class="panel-title">Tool Properties</div>
+			<div class="control-row">
+				<label for="brushSize">Size</label>
+				<input type="range" min="1" max="100" value="20" oninput="app.tools.updateBrush(this.value, 'size')" aria-valuemin="1" aria-valuemax="100" aria-valuenow="20" aria-label="Brush size" title="Adjust brush size">
+				<span id="lbl-size" style="width:30px; text-align:right">20</span>
+			</div>
+			<div class="control-row">
+				<label for="brushFlow">Flow</label>
+				<input type="range" min="1" max="100" value="100" oninput="app.tools.updateBrush(this.value, 'opacity')" aria-valuemin="1" aria-valuemax="100" aria-valuenow="100" aria-label="Brush opacity" title="Adjust brush flow/opacity">
+				<span id="lbl-opacity" style="width:30px; text-align:right">100</span>
+			</div>
+		</div>
+
+		<div class="panel-section">
+			<div class="panel-title">Layer Adjustments</div>
+			<div class="control-row">
+				<label for="blendMode">Blend Mode</label>
+				<select id="blendMode" onchange="app.layers.updateProp('blend', this.value)" aria-label="Select blend mode" title="Select layer blend mode">
+					<option value="source-over">Normal</option>
+					<option value="multiply">Multiply</option>
+					<option value="screen">Screen</option>
+					<option value="overlay">Overlay</option>
+					<option value="color-dodge">Color Dodge</option>
+					<option value="soft-light">Soft Light</option>
+					<option value="difference">Difference</option>
+					<option value="hue">Hue</option>
+				</select>
+			</div>
+			<div class="control-row">
+				<label for="layerOpacity">Opacity</label>
+				<input type="range" min="0" max="100" value="100" id="layerOpacity" oninput="app.layers.updateProp('opacity', this.value)" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-label="Layer opacity" title="Adjust layer opacity">
+			</div>
+		</div>
+
+		<div class="layers-box">
+			<div class="panel-section" style="border-bottom:1px solid var(--border); padding-bottom:10px;">
+				<div class="panel-title">
+					Stack
+					<div style="display:flex; gap:5px">
+						<button class="btn btn-ghost" style="padding:4px" onclick="app.layers.add()" title="Add a new layer" aria-label="Add new layer"><span class="material-symbols-rounded" aria-hidden="true">add_box</span></button>
+						<button class="btn btn-ghost" style="padding:4px" onclick="app.layers.delete()" title="Delete selected layer" aria-label="Delete selected layer"><span class="material-symbols-rounded" aria-hidden="true">delete</span></button>
+					</div>
+				</div>
+			</div>
+			<ul class="layer-list" id="layerList" role="list" aria-label="Layer stack" title="Current layers in the canvas"></ul>
+		</div>
+	</div>
+</div>
+
+<div class="bottom-bar glass" role="contentinfo" title="Footer and social links">
+	<span>2025 © Julibe</span>
+	<a href="https://julibe.com/" target="_blank" class="social-link" aria-label="Visit Julibe Portfolio" title="Explore Julibe Portfolio">Web</a>
+	<a href="https://julibe.com/whatsapp" target="_blank" class="social-link" aria-label="Chat with Julibe on WhatsApp" title="Connect with Julibe through WhatsApp">WhatsApp</a>
+	<a href="https://julibe.com/twitter" target="_blank" class="social-link" aria-label="Follow Julibe on Twitter" title="Follow Julibe on Twitter">Twitter</a>
+	<a href="https://julibe.com/instagram" target="_blank" class="social-link" aria-label="Follow Julibe on Instagram" title="Follow Julibe on Instagram">Instagram</a>
+	<a href="mailto:mail@julibe.com" class="social-link" aria-label="Send an email to Julibe" title="Send Email to Julibe">Email</a>
+</div>
+
+<div class="modal-overlay" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle" title="About this project">
+	<div class="modal">
+		<div id="intro">
+			<h1 id="aboutModalTitle">Aeryn Studio</h1>
+			<p>Welcome to <strong>Aeryn Studio (WIP)</strong>, an adaptive design tool that molds to your style. Now featuring layer rotation, smart alignment, and dynamic theming.</p>
+		</div>
+
+		<div id="about">
+			<h3>Stay Connected</h3>
+			<p>
+				Connect with Julibe, <span>@Julibe</span>, and share your favorite dashboards.
+				Your feedback and creative inputs are always welcome!
+			</p>
+			<p>Copyright &copy; 2025 Julibe. All rights reserved.</p>
+		</div>
+
+		<div style="display:flex; justify-content:flex-end; gap:10px;">
+			<button class="btn btn-primary" onclick="app.ui.closeModal('aboutModal')" aria-label="Close About modal" title="Close About modal">Close</button>
+		</div>
+	</div>
+</div>
+
+<div class="modal-overlay" id="newDocModal" role="dialog" aria-modal="true" aria-labelledby="newDocTitle" title="Create new document">
+	<div class="modal">
+		<h2 id="newDocTitle">New Document</h2>
+		<label for="newW" style="font-size:12px; color:#aaa; display:block; margin-bottom:5px;">Width (px)</label>
+		<input type="number" id="newW" value="800" placeholder="Enter width in pixels" aria-label="Width of new canvas" title="Enter width for new canvas">
+
+		<label for="newH" style="font-size:12px; color:#aaa; display:block; margin-bottom:5px;">Height (px)</label>
+		<input type="number" id="newH" value="600" placeholder="Enter height in pixels" aria-label="Height of new canvas" title="Enter height for new canvas">
+
+		<div style="display:flex; justify-content:flex-end; gap:10px; margin-top:15px">
+			<button class="btn btn-ghost" onclick="app.ui.closeModal('newDocModal')" aria-label="Cancel creating new document" title="Cancel creating new document">Cancel</button>
+			<button class="btn btn-primary" onclick="app.io.createNewDoc()" aria-label="Create new canvas document" title="Create new canvas document">Create Canvas</button>
+		</div>
+	</div>
+</div>

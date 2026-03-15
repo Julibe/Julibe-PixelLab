@@ -1,0 +1,143 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<div class="ui-layer" role="banner">
+	<div class="logo" aria-label="Arqiv Logo" title="Arqiv Logo">Arqiv</div>
+	<ul class="header-social" role="navigation" aria-label="Julibe's Social Media Links">
+		<li><a href="https://julibe.com/" target="_blank" aria-label="Visit Julibe's Portfolio" title="Follow Julibe's Portfolio">Web</a></li>
+		<li><a href="https://julibe.com/whatsapp" target="_blank" aria-label="Chat with Julibe on WhatsApp" title="Connect through WhatsApp">WhatsApp</a></li>
+		<li><a href="https://julibe.com/twitter" target="_blank" aria-label="Follow Julibe on Twitter" title="Follow Julibe on Twitter">Twitter</a></li>
+		<li><a href="https://julibe.com/instagram" target="_blank" aria-label="Follow Julibe on Instagram" title="Follow Julibe on Instagram">Instagram</a></li>
+		<li><a href="mailto:mail@julibe.com" aria-label="Send an Email to Julibe" title="Send an Email to Julibe">Email</a></li>
+	</ul>
+	<div class="menu-burger" aria-label="Toggle navigation menu" role="button" tabindex="0" title="Open or close menu">
+		<span></span><span></span><span></span>
+	</div>
+	<div class="nav-counter" role="navigation" aria-label="Slide navigation">
+		<div class="nav-item active" data-index="0" role="button" aria-label="Go to slide 1" tabindex="0" title="Navigate to slide 1">01</div>
+		<div class="nav-item" data-index="1" role="button" aria-label="Go to slide 2" tabindex="0" title="Navigate to slide 2">02</div>
+		<div class="nav-item" data-index="2" role="button" aria-label="Go to slide 3" tabindex="0" title="Navigate to slide 3">03</div>
+		<div class="nav-item" data-index="3" role="button" aria-label="Go to slide 4" tabindex="0" title="Navigate to slide 4">04</div>
+		<div class="nav-item" data-index="4" role="button" aria-label="Go to slide 5" tabindex="0" title="Navigate to slide 5">05</div>
+		<div class="nav-item" data-index="5" role="button" aria-label="Go to slide 6" tabindex="0" title="Navigate to slide 6">06</div>
+	</div>
+	<button class="btn-share" onclick="shareTwitter()" aria-label="Share this project on Twitter" title="Share this project on Twitter">Share Inspiration</button>
+</div>
+
+<div class="info-overlay" id="infoOverlay" role="region" aria-labelledby="intro" title="Project Information Overlay">
+	<div class="info-content-wrapper">
+		<div id="intro">
+			<h1 title="Visual Stories Heading">Visual Stories</h1>
+			<p>Step into a space where bold typography meets captivating visuals. This project blends minimal design with smooth motion, creating a digital magazine feel that makes each story come alive.</p>
+		</div>
+		<div id="about">
+			<h2 title="About this project">Where Code Meets Creativity</h2>
+			<p>Designed with care and built for performance, this split-screen slider transforms browsing into a delightful experience. Vibrant colors and sharp photography come together to make navigating content intuitive and enjoyable.</p>
+		</div>
+		<div id="share">
+			<h3 title="Collaboration Invitation">Let's Collaborate</h3>
+			<p>Inspired by what is seen? Whether it’s teaming up on a new interface or sharing thoughts about the latest in UI trends, messages to Julibe are welcome.</p>
+			<p style="margin-top: 20px; font-size: 10px; color: #555;" title="Copyright Information"> Copyright &copy; 2025 Julibe. All rights reserved. </p>
+		</div>
+	</div>
+</div>
+
+<div class="slider" role="region" aria-label="Project Slides">
+	<div class="slide slide-0 active">
+		<div class="slide-bg-color"></div>
+		<div class="slide-image-wrapper">
+			<img src="https://picsum.photos/id/338/1920/1200" alt="Abstract ocean waves under soft light" class="slide-img" title="Slide 1 Image: Abstract Calm Sea">
+		</div>
+		<div class="slide-content">
+			<h1 class="main-title" title="The Calm Sea Shores">
+				<div class="title-line"><span>The Calm</span></div>
+				<div class="title-line"><span>Sea Shores</span></div>
+			</h1>
+			<div class="desc-block">
+				<span class="desc-label">Sea Series</span>
+				<p>A serene mix of nature and modern design. This study shows how water can harmonize beautifully.</p>
+			</div>
+		</div>
+	</div>
+	<div class="slide slide-1">
+		<div class="slide-bg-color"></div>
+		<div class="slide-image-wrapper">
+			<img src="https://picsum.photos/id/435/1920/1200" alt="Nordic cityscape in soft evening light" class="slide-img" title="Slide 2 Image: Urban Silence">
+		</div>
+		<div class="slide-content">
+			<h1 class="main-title" title="Urban Silence">
+				<div class="title-line"><span>Urban</span></div>
+				<div class="title-line"><span>Silence</span></div>
+			</h1>
+			<div class="desc-block">
+				<span class="desc-label">City Lights</span>
+				<p>Peace in the middle of the city buzz. Dark tones and sharp visuals make Urban Silence perfect for nighttime exploration.</p>
+			</div>
+		</div>
+	</div>
+	<div class="slide slide-2">
+		<div class="slide-bg-color"></div>
+		<div class="slide-image-wrapper">
+			<img src="https://picsum.photos/id/239/1920/1200" alt="Close-up of forest textures and leaves" class="slide-img" title="Slide 3 Image: Organic Matter">
+		</div>
+		<div class="slide-content">
+			<h1 class="main-title" title="Organic Matter">
+				<div class="title-line"><span>Organic</span></div>
+				<div class="title-line"><span>Matter</span></div>
+			</h1>
+			<div class="desc-block">
+				<span class="desc-label">Raw Materials</span>
+				<p>Returning to nature. A close-up look at textures, leaves, and the subtle beauty of forest light.</p>
+			</div>
+		</div>
+	</div>
+	<div class="slide slide-3">
+		<div class="slide-bg-color"></div>
+		<div class="slide-image-wrapper">
+			<img src="https://picsum.photos/id/1076/1920/1200" alt="Modern architectural structures with bold lines" class="slide-img" title="Slide 4 Image: Concrete Dreams">
+		</div>
+		<div class="slide-content">
+			<h1 class="main-title" title="Concrete Dreams">
+				<div class="title-line"><span>Concrete</span></div>
+				<div class="title-line"><span>Dreams</span></div>
+			</h1>
+			<div class="desc-block">
+				<span class="desc-label">Architecture</span>
+				<p>Brutalism with a fresh twist. Strong lines and bold shadows bring modern structures to life.</p>
+			</div>
+		</div>
+	</div>
+	<div class="slide slide-4">
+		<div class="slide-bg-color"></div>
+		<div class="slide-image-wrapper">
+			<img src="https://picsum.photos/id/838/1920/1200" alt="Fashion photoshoot with warm sunset tones" class="slide-img" title="Slide 5 Image: Golden Hour">
+		</div>
+		<div class="slide-content">
+			<h1 class="main-title" title="Golden Hour">
+				<div class="title-line"><span>Golden</span></div>
+				<div class="title-line"><span>Hour</span></div>
+			</h1>
+			<div class="desc-block">
+				<span class="desc-label">Collection 2025</span>
+				<p>As the sun dips, warm colors and soft textures create a dreamy, endless-summer vibe.</p>
+			</div>
+		</div>
+	</div>
+	<div class="slide slide-5">
+		<div class="slide-bg-color"></div>
+		<div class="slide-image-wrapper">
+			<img src="https://picsum.photos/id/334/1920/1200" alt="Quiet nightscape with moonlight reflection" class="slide-img" title="Slide 6 Image: Midnight Echo">
+		</div>
+		<div class="slide-content">
+			<h1 class="main-title" title="Midnight Echo">
+				<div class="title-line"><span>Midnight</span></div>
+				<div class="title-line"><span>Echo</span></div>
+			</h1>
+			<div class="desc-block">
+				<span class="desc-label">Finale</span>
+				<p>Closing the journey. Reflect on what has been and imagine what lies ahead in the quiet night.</p>
+			</div>
+		</div>
+	</div>
+</div>

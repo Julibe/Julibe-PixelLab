@@ -1,0 +1,30 @@
+<header role="banner">
+	<div class="filters" role="search" aria-label="Hotel search and filters" title="Hotel search and filters">
+		<label class="input" for="search" title="Search hotels by name, city, or state" aria-label="Search hotels by name, city, or state">
+			<span aria-hidden="true">🔎</span>
+			<input id="search" type="search" placeholder="Search for a specific hotel…" aria-label="Search for a hotel by name, city, or state" title="Search for a hotel by name, city, or state">
+		</label>
+		<label class="select" for="filter-location" title="Filter hotels by location" aria-label="Filter hotels by location">
+			<span aria-hidden="true">📍</span>
+			<select id="filter-location" aria-label="Filter hotels by location" title="Filter hotels by location">
+				<option value="">Filter by Location</option>
+			</select>
+		</label>
+		<label class="select" for="filter-category" title="Filter hotels by category" aria-label="Filter hotels by category">
+			<span aria-hidden="true">🏷️</span>
+			<select id="filter-category" aria-label="Filter hotels by category" title="Filter hotels by category">
+				<option value="">Filter by Category</option>
+			</select>
+		</label>
+	</div>
+</header>
+
+<main role="main">
+	<div id="map" role="region" aria-label="Interactive map showing hotels" title="Interactive map showing hotels"></div>
+	<aside class="panel" role="complementary" aria-label="Hotel list panel" title="List of hotels matching search and filters">
+		<h2 id="results-title" aria-label="Current hotel results" title="Current hotel results">Showing All Hotels</h2>
+		<ul id="list" class="list" role="list" aria-label="List of hotels matching current filters" title="List of hotels matching current filters"></ul>
+	</aside>
+</main>
+
+<body onload="initMap()" title="Hotel map application" aria-label="Hotel map application"></body>

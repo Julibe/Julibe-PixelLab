@@ -1,0 +1,97 @@
+<div id="animated-background" role="presentation" aria-hidden="true"></div>
+
+<div id="app">
+
+	<div id="sidebar">
+		<div id="name">
+			<h1 title="Hexli: HEX to CSS Filter Converter" aria-label="HEX to CSS Filter Converter">Hexli </h1>
+			<h2 style="font-size:.75em;font-weight:300;" title="HEX to CSS Filter Converter" aria-label="HEX to CSS Filter Converter">HEX to CSS Filter, in a sigle click</h2>
+
+			<h3 id="hex" title="Current HEX color value" aria-label="Current HEX color value">#427CFF</h3>
+
+		</div>
+
+		<div id="controls">
+			<h2 title="Pick a color to convert" aria-label="Pick a color to convert">Pick a Color</h2>
+			<p>Type a HEX code or click the color box to choose a shade.</p>
+			<label for="hex-input" title="Enter HEX code for color" aria-label="Enter HEX code for color">HEX Code
+				<input id="hex-input" type="text" placeholder="#RRGGBB" value="#427CFF" maxlength="7" aria-label="HEX Code input" title="Enter HEX code for color" />
+				<div id="color-swatch-wrapper">
+					<input id="color-picker" type="color" value="#427CFF" aria-label="Pick a color using the color picker" title="Pick a color using the color picker">
+					<div id="color-swatch" title="Click to open color picker" aria-label="Color swatch to open picker" class="color-pixel"></div>
+				</div>
+			</label>
+		</div>
+
+		<div id="suggestions">
+			<h3 title="Color suggestions based on current selection" aria-label="Color suggestions based on current selection">Suggestions</h3>
+			<p>Here are some colors that could go well with your color. Click one to try it!</p>
+			<div id="suggestion-output" title="Suggested colors appear here" aria-label="Suggested colors appear here">No suggestions yet - pick a color to get started!</div>
+		</div>
+	</div>
+
+	<div id="content">
+		<nav id="tabs-nav" role="tablist" aria-label="Navigation tabs for converter">
+			<ul>
+				<li><a href="#results" class="active" role="tab" aria-selected="true" aria-label="View Results Tab for HEX to CSS conversion" title="View Results Tab">Results</a></li>
+				<li><a href="#intro" role="tab" aria-selected="false" aria-label="View About Tab for HEX to CSS converter" title="View About Tab">About</a></li>
+			</ul>
+		</nav>
+
+		<div id="tabs">
+			<div id="results" role="tabpanel" aria-labelledby="results-tab">
+				<div id="displays">
+					<h2 title="Conversion Results" aria-label="Conversion Results">Results</h2>
+					<p>Compare the original color to the filtered version side-by-side. The goal is to achieve the smallest "Closeness" value. 🖌️</p>
+					<div class="display-row">
+						<div class="color-column">
+							<span>Target Color</span>
+							<div id="target-pixel" class="color-pixel" title="Target color preview" aria-label="Target color preview"></div>
+						</div>
+						<div class="color-column">
+							<span>Filtered Result (from Black)</span>
+							<div id="filter-pixel" class="color-pixel" title="Filtered color result from black" aria-label="Filtered color result from black"></div>
+						</div>
+					</div>
+				</div>
+
+				<div id="output">
+					<h2 title="CSS Filter Code output" aria-label="CSS Filter Code output">CSS Filter Code</h2>
+					<p>This single line of CSS creates the target color from a black base. Copy it and use it anywhere!</p>
+					<code id="filter" title="Generated CSS filter code" aria-label="Generated CSS filter code">filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(0%);</code>
+
+					<h4 id="loss" title="Closeness value to target color" aria-label="Closeness value to target color">Closeness: 0.0 – perfect match!</h4>
+					<p>The smaller the number, the more accurate the match. This value represents the difference in RGB and HSL components.</p>
+
+					<button id="rerun" aria-label="Re-run calculation for the current HEX value" title="Recalculate Filter">Recalculate Filter</button>
+				</div>
+			</div>
+
+			<div id="intro" role="tabpanel" aria-labelledby="intro-tab">
+				<h1 title="About the CSS Filter Color Solver" aria-label="About the CSS Filter Color Solver">The CSS Filter Color Solver</h1>
+				<p>Do you struggle to match a CSS filter to a specific color? This tool is the solution. Just enter your target HEX color, and instantly calculate the optimal CSS filter code needed to transform a <strong>black</strong> element (like an SVG icon) into that exact color. Stop guessing and start designing with precision!</p>
+				<div id="about">
+					<h2 title="How the Solver Works" aria-label="How the Solver Works">How the Solver Works</h2>
+					<p>This tool utilizes a computational solver based on Stochastic Perturbation Stochastic Approximation (SPSA), inspired by work from Barrett Sonnta and contributions from MultiplyByZer0. The script rapidly tests millions of filter combinations to find the perfect mix of <code>invert</code>, <code>sepia</code>, <code>saturate</code>, <code>hue-rotate</code>, <code>brightness</code>, and <code>contrast</code> that yields the closest color match to your target. It's built for speed, making complex front-end color transformations simple and precise.</p>
+					<h3 title="Feedback and ideas" aria-label="Feedback and ideas">Got Feedback or a New Idea?</h3>
+					<p>I'm Julibe, a freelance designer and developer. I focus on building tools that simplify workflows. If this solver saved you time, or if you have an amazing feature idea, let's connect! Your feedback helps create better digital solutions.</p>
+				</div>
+			</div>
+
+		</div>
+		<div id="share-section">
+			<ul class="social-list">
+				<li><a href="https://julibe.com/" target="_blank" aria-label="Explore Julibe's Portfolio of creative works" title="Explore Julibe's Portfolio of creative works">Web</a></li>
+				<li><a href="https://julibe.com/whatsapp" target="_blank" aria-label="Send a message to Julibe on WhatsApp" title="Send a message to Julibe on WhatsApp">WhatsApp</a></li>
+				<li><a href="https://julibe.com/twitter" target="_blank" aria-label="Follow Julibe's updates on Twitter" title="Follow Julibe's updates on Twitter">Twitter</a></li>
+				<li><a href="https://julibe.com/instagram" target="_blank" aria-label="Connect with Julibe on Instagram" title="Connect with Julibe on Instagram">Instagram</a></li>
+				<li><a href="mailto:mail@julibe.com" aria-label="Email Julibe for inquiries or feedback" title="Email Julibe for inquiries or feedback">Email</a></li>
+			</ul>
+			<p title="Copyright information" aria-label="Copyright information">Copyright &copy; 2025 Julibe. All rights reserved.</p>
+		</div>
+	</div>
+</div>
+
+<button class="btn-share" onclick="shareTwitter()" aria-label="Share this CSS Filter Solver on Twitter" title="Share this CSS Filter Solver on Twitter">Share This Tool! 🪄</button>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">

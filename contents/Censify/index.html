@@ -1,0 +1,65 @@
+<div class="wrap ">
+	<div class="shell ">
+
+		<section class="panel glass-2">
+			<div class="hero">
+				<div class="mark" aria-hidden="true"></div>
+				<div>
+					<h1 class="title">Hi, I'm Censify.</h1>
+
+				</div>
+			</div>
+			<div class="inputWrap">
+				<p class="subtitle">
+					A simple way to write or generate sentences and instantly censor offensive words.
+					Helpful for keeping conversations cleaner and testing content filters with ease.<br><br>
+				</p>
+				<textarea id="userInput" class="input" placeholder="Write  anything… or paste a spicy sentence. Generate, censor, reveal — all here."></textarea>
+			</div>
+			<div class="row">
+				<button class="btn" id="btnNew">➕ New sentence</button>
+				<button class="btn ok" id="btnCensor">🛡️ Censor</button>
+				<button class="btn ghost" id="btnReveal">👁️ Reveal</button>
+			</div>
+		</section>
+		<footer>
+			<div class="footer-container">
+				<h3 class="section-title">Support & Connect</h3>
+				<p class="desc-text">
+					Follow me @Julibe and share your favorite HTML and JavaScript formatting tools.<br>
+					I’m also excited to explore new ideas, collaborate, and work on fresh projects together.
+				</p>
+				<ul class="link-list">
+					<li><a href="https://julibe.com/" target="_blank">Web</a></li>
+					<li><a href="https://julibe.com/whatsapp" target="_blank">WhatsApp</a></li>
+					<li><a href="https://julibe.com/twitter" target="_blank">Twitter</a></li>
+					<li><a href="https://julibe.com/instagram" target="_blank">Instagram</a></li>
+					<li><a href="mailto:mail@julibe.com">Email</a></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+
+</div>
+<svg style="display: none">
+	<filter id="glass" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+		<feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
+		<!-- Seeds: 14, 17,  -->
+
+		<feComponentTransfer in="turbulence" result="mapped">
+			<feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+			<feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+			<feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+		</feComponentTransfer>
+
+		<feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+
+		<feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100" lighting-color="white" result="specLight">
+			<fePointLight x="-200" y="-200" z="300" />
+		</feSpecularLighting>
+
+		<feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+
+		<feDisplacementMap in="SourceGraphic" in2="softMap" scale="150" xChannelSelector="R" yChannelSelector="G" />
+	</filter>
+</svg>

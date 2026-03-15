@@ -1,0 +1,186 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,900;1,6..96,400&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+
+<div class="cursor" id="cursor"></div>
+
+<header class="ui-header">
+	<div class="brand-group">
+		<div class="brand-icon">✻</div>
+		<div class="brand-title">The Private Collector</div>
+	</div>
+	<button class="mute-btn" id="muteBtn" aria-label="Toggle the gallery’s audio" title="Turn ambient sound on or off">Sound: On</button>
+</header>
+
+<div class="fixed-bottom-left">
+	<button class="btn-share" onclick="window.shareTwitter()" aria-label="Share this curated experience on Twitter" title="Invite others to view the gallery">
+		Don't Forget to Share
+	</button>
+</div>
+
+<div class="fixed-bottom-right">
+	<ul class="social-list" role="list" aria-label="Explore Julibe’s curated works online">
+		<li>
+			<a href="https://julibe.com/" target="_blank" aria-label="Enter Julibe’s portfolio of curated visual narratives" title="Explore the Portfolio">
+				Web
+			</a>
+		</li>
+		<li>
+			<a href="https://julibe.com/whatsapp" target="_blank" aria-label="Engage in thoughtful conversation with Julibe via WhatsApp" title="Message Julibe">
+				WhatsApp
+			</a>
+		</li>
+		<li>
+			<a href="https://julibe.com/twitter" target="_blank" aria-label="Follow Julibe for updates on new exhibitions and projects" title="Discover Julibe on Twitter">
+				Twitter
+			</a>
+		</li>
+		<li>
+			<a href="https://julibe.com/instagram" target="_blank" aria-label="Experience Julibe’s visual explorations and photography" title="View Julibe’s Instagram">
+				Instagram
+			</a>
+		</li>
+		<li>
+			<a href="mailto:mail@julibe.com" aria-label="Reach out to Julibe for collaborations or inquiries" title="Contact Julibe via Email">
+				Email
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="modal" id="modal">
+	<img src="" class="modal-img" id="modalImg" alt="Detailed view of the artwork">
+	<h1 class="modal-title" id="modalTitle">Title</h1>
+	<div class="modal-desc-box">
+		<h2 id="modalMeta" style="font-family: 'Bodoni Moda'; font-size: 2rem;">YEAR</h2>
+		<p class="modal-desc" id="modalDesc">Description</p>
+	</div>
+	<button class="close-btn" id="closeBtn" aria-label="Close the artwork view" title="Return to gallery overview">Close View</button>
+</div>
+
+<div class="slider-track" id="track">
+
+	<div class="slide text-slide" id="intro">
+		<div class="text-content">
+			<h1>The Private Collector</h1>
+			<p>Welcome to my gallery. You are about to enter a curated space of rare visual narratives. I selected each piece for its provenance, emotional depth, and its ability to suspend time. Please, observe in silence.</p>
+
+			<div class="cta-arrow" aria-hidden="true">&rarr; Hover to Explore</div>
+		</div>
+	</div>
+
+	<!-- Art Slides -->
+	<div class="slide art-slide" data-img="https://picsum.photos/id/1016/1200/1200" data-title="Valley of Silence" data-meta="Lot No. 104" data-desc="I captured a raw, unyielding depiction of geological time at the precipice of twilight.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/1016/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">Valley<br>of Silence</h2><span class="slide-year">Cat. 104</span>
+			</div>
+			<div class="slide-number">01</div>
+		</div>
+	</div>
+
+	<div class="slide art-slide" data-img="https://picsum.photos/id/106/1200/1200" data-title="Pink Ephemera" data-meta="Lot No. 309" data-desc="I explore fragility, using macro-focus techniques to isolate the subject from reality.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/106/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">Pink<br>Ephemera</h2><span class="slide-year">Cat. 309</span>
+			</div>
+			<div class="slide-number">02</div>
+		</div>
+	</div>
+
+	<div class="slide art-slide" data-img="https://picsum.photos/id/1003/1200/1200" data-title="The Sentinel" data-meta="Lot No. 512" data-desc="I elevate wildlife photography to portraiture, letting the gaze of the subject mirror the human soul.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/1003/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">The<br>Sentinel</h2><span class="slide-year">Cat. 512</span>
+			</div>
+			<div class="slide-number">03</div>
+		</div>
+	</div>
+
+	<div class="slide art-slide" data-img="https://picsum.photos/id/1036/1200/1200" data-title="Frost & Bone" data-meta="Lot No. 721" data-desc="I capture monochromatic perfection in a chilling representation of isolation, where the horizon line blurs.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/1036/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">Frost<br>& Bone</h2><span class="slide-year">Cat. 721</span>
+			</div>
+			<div class="slide-number">04</div>
+		</div>
+	</div>
+
+	<div class="slide art-slide" data-img="https://picsum.photos/id/1048/1200/1200" data-title="Concrete Pulse" data-meta="Lot No. 884" data-desc="I juxtapose organic movement against rigid urban architecture to reveal structured chaos.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/1048/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">Concrete<br>Pulse</h2><span class="slide-year">Cat. 884</span>
+			</div>
+			<div class="slide-number">05</div>
+		</div>
+	</div>
+
+	<div class="slide art-slide" data-img="https://picsum.photos/id/111/1200/1200" data-title="Chrome Memory" data-meta="Lot No. 902" data-desc="I tell the story of obsolescence through rust and polished steel, a testament to the machine age.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/111/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">Chrome<br>Memory</h2><span class="slide-year">Cat. 902</span>
+			</div>
+			<div class="slide-number">06</div>
+		</div>
+	</div>
+
+	<div class="slide art-slide" data-img="https://picsum.photos/id/16/1200/1200" data-title="Azure Coast" data-meta="Lot No. 115" data-desc="I capture water as a boundary in a meditative composition, revealing the stillness before the voyage.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/16/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">Azure<br>Coast</h2><span class="slide-year">Cat. 115</span>
+			</div>
+			<div class="slide-number">07</div>
+		</div>
+	</div>
+
+	<div class="slide art-slide" data-img="https://picsum.photos/id/54/1200/1200" data-title="Silent Peaks" data-meta="Lot No. 440" data-desc="I sculpt nature visually, letting the jagged lines of the cliff face challenge the softness of the surrounding mist.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/54/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">Silent<br>Peaks</h2><span class="slide-year">Cat. 440</span>
+			</div>
+			<div class="slide-number">08</div>
+		</div>
+	</div>
+
+	<div class="slide art-slide" data-img="https://picsum.photos/id/28/1200/1200" data-title="Deep Woods" data-meta="Lot No. 667" data-desc="I explore the forest as the lungs of the earth, capturing a chaotic yet harmonious study of light filtering through the canopy.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/28/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">Deep<br>Woods</h2><span class="slide-year">Cat. 667</span>
+			</div>
+			<div class="slide-number">09</div>
+		</div>
+	</div>
+
+	<div class="slide art-slide" data-img="https://picsum.photos/id/1076/1200/1200" data-title="Glass Monolith" data-meta="Lot No. 589" data-desc="I reflect modern transparency, where architectural lines slice through the sky, mirroring the world back upon itself.">
+		<div class="slide-bg" style="background-image: url('https://picsum.photos/id/1076/1200/1200');"></div>
+		<div class="slide-content">
+			<div>
+				<h2 class="slide-title">Glass<br>Monolith</h2><span class="slide-year">Cat. 589</span>
+			</div>
+			<div class="slide-number">10</div>
+		</div>
+	</div>
+
+	<div class="slide text-slide" id="footer-slide">
+		<div class="text-content">
+			<h2>Curating the Unseen</h2>
+			<p>This digital gallery explores the intersection of classical artistry and modern interaction. Designed with a focus on minimalist elegance and intuitive discovery, I invite you to slow down. I believe that art isn't just viewed; it is experienced.</p>
+
+			<div id="share">
+				<h3>Let’s Collaborate</h3>
+				<p>If these works resonate with you, I welcome correspondence—whether discussing ideas, projects, or insights on the evolution of visual storytelling.</p>
+			</div>
+			<p class="copyright"> Copyright &copy; 2025 Julibe. All rights reserved. </p>
+		</div>
+	</div>
+
+</div>

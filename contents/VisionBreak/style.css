@@ -62,20 +62,23 @@
 		textarea::-webkit-scrollbar-thumb:hover {
 			background: rgba(255, 255, 255, 0.3);
 		}
-
-		body {
+		body{
+			padding: 0;
+			margin: 0;
+		}
+		.elementor-widget-container {
 			font-family: 'Poppins', sans-serif;
 			background-color: var(--bg-color);
 			color: var(--text-main);
 			min-height: 100vh;
 			display: flex;
 			flex-direction: column;
-			background-image: 
+			background-image:
 				radial-gradient(circle at 10% 20%, rgba(106, 17, 203, 0.05) 0%, transparent 40%),
 				radial-gradient(circle at 90% 80%, rgba(255, 154, 68, 0.05) 0%, transparent 40%);
 			overflow-x: hidden;
 
-			& nav {
+			nav {
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -91,7 +94,7 @@
 				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 				user-select: none;
 
-				& h2 {
+				h2 {
 					font-size: 1.5rem;
 					font-weight: 700;
 					background: linear-gradient(135deg, #a570ff 0%, #5ebeff 100%);
@@ -100,7 +103,7 @@
 					cursor: default;
 				}
 
-				& button {
+				button {
 					padding: 0.8rem 2rem;
 					border: none;
 					border-radius: 16px;
@@ -130,7 +133,7 @@
 				}
 			}
 
-			& .main-layout-wrapper {
+			.main-layout-wrapper {
 				display: grid;
 				grid-template-columns: 450px minmax(0, 1fr);
 				gap: 2rem;
@@ -140,13 +143,13 @@
 				width: 100%;
 				align-items: stretch;
 
-				& header.intro-section {
+				header.intro-section {
 					display: flex;
 					flex-direction: column;
 					gap: 2.5rem;
 					min-width: 0;
 
-					& .card {
+					.card {
 						background: var(--card-bg);
 						backdrop-filter: blur(20px);
 						border-radius: 30px;
@@ -163,7 +166,7 @@
 							box-shadow: var(--shadow-hover);
 						}
 
-						& h1 {
+						h1 {
 							font-size: 1.6rem;
 							margin-bottom: 1.5rem;
 							color: var(--text-main);
@@ -182,7 +185,7 @@
 							}
 						}
 
-						& .info-box {
+						.info-box {
 							background: white;
 							padding: 1.5rem;
 							border-radius: 20px;
@@ -190,17 +193,17 @@
 							border: 1px solid rgba(0, 0, 0, 0.05);
 							margin-bottom: 2rem;
 
-							& p.lead {
+							p.lead {
 								font-size: 1.05rem;
 								color: var(--text-main);
 								margin-bottom: 1.5rem;
 								line-height: 1.6;
 							}
 
-							& ul {
+							ul {
 								list-style: none;
 
-								& li {
+								li {
 									margin-bottom: 1rem;
 									padding-left: 1.5rem;
 									position: relative;
@@ -217,7 +220,7 @@
 										top: -7px;
 									}
 
-									& strong {
+									strong {
 										color: #2575fc;
 										font-weight: 600;
 									}
@@ -229,7 +232,7 @@
 							}
 						}
 
-						& .code-showcase {
+						.code-showcase {
 							background: var(--code-bg);
 							border-radius: 16px;
 							corner-shape: squircle;
@@ -237,7 +240,7 @@
 							box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
 							border: 1px solid rgba(255,255,255,0.1);
 
-							& .code-header {
+							.code-header {
 								background: rgba(255,255,255,0.05);
 								padding: 0.8rem 1.2rem;
 								display: flex;
@@ -245,14 +248,14 @@
 								align-items: center;
 								border-bottom: 1px solid rgba(255,255,255,0.1);
 
-								& span {
+								span {
 									color: #8b949e;
 									font-family: 'Poppins', sans-serif;
 									font-size: 0.85rem;
 									font-weight: 600;
 								}
 
-								& button {
+								button {
 									background: rgba(255,255,255,0.1);
 									border: none;
 									color: white;
@@ -269,11 +272,11 @@
 								}
 							}
 
-							& pre {
+							pre {
 								padding: 1.2rem;
 								overflow-x: auto;
 
-								& code {
+								code {
 									font-family: 'Fira Code', monospace;
 									font-size: 0.8rem;
 									color: var(--code-text);
@@ -284,11 +287,11 @@
 					}
 				}
 
-				& main.app-workspace {
+				main.app-workspace {
 					width: 100%;
 					min-width: 0;
 
-					& .workspace-unified-panel {
+					.workspace-unified-panel {
 						background: var(--card-bg);
 						backdrop-filter: blur(20px);
 						border-radius: 24px;
@@ -306,14 +309,14 @@
 							box-shadow: var(--shadow-hover);
 						}
 
-						& .unified-header {
+						.unified-header {
 							display: grid;
 							grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 							border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 							background: rgba(255, 255, 255, 0.5);
 							user-select: none;
 
-							& .header-col {
+							.header-col {
 								padding: 1.5rem 2rem;
 								display: flex;
 								align-items: center;
@@ -323,7 +326,7 @@
 									border-right: 1px solid rgba(0, 0, 0, 0.05);
 								}
 
-								& h3 {
+								h3 {
 									font-size: 1.2rem;
 									color: var(--text-main);
 									font-weight: 700;
@@ -331,8 +334,8 @@
 									overflow: hidden;
 									text-overflow: ellipsis;
 								}
-								
-								& .badge {
+
+								.badge {
 									background: rgba(106, 17, 203, 0.1);
 									color: #6a11cb;
 									padding: 0.3rem 0.8rem;
@@ -344,19 +347,19 @@
 							}
 						}
 
-						& .unified-body {
+						.unified-body {
 							flex-grow: 1;
 							display: grid;
 							grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 							position: relative;
 
-							& .editor-col {
+							.editor-col {
 								border-right: 1px solid rgba(0, 0, 0, 0.05);
 								padding: 2rem;
 								display: flex;
 								flex-direction: column;
 
-								& textarea.html-editor {
+								textarea.html-editor {
 									flex-grow: 1;
 									width: 100%;
 									height: 100%;
@@ -378,7 +381,7 @@
 										box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(106, 17, 203, 0.8);
 										border-color: rgba(255, 255, 255, 0.15);
 									}
-									
+
 									&::placeholder {
 										color: #6e7681;
 										font-style: italic;
@@ -386,12 +389,12 @@
 								}
 							}
 
-							& .preview-col {
+							.preview-col {
 								padding: 2rem;
 								display: flex;
 								flex-direction: column;
 
-								& .live-preview-container {
+								.live-preview-container {
 									flex-grow: 1;
 									overflow-y: auto;
 									height: 0;
@@ -399,11 +402,11 @@
 									color: var(--text-muted);
 									font-size: 1.05rem;
 
-									& br.marker-active {
+									br.marker-active {
 										display: none;
 									}
-									
-									& span.break-marker {
+
+									span.break-marker {
 										background: var(--secondary-gradient);
 										color: #ffffff;
 										width: 24px;
@@ -420,7 +423,7 @@
 										transition: opacity 0.3s ease, transform 0.3s ease;
 									}
 
-									& span.break-marker.hidden {
+									span.break-marker.hidden {
 										display: none;
 									}
 								}
@@ -430,7 +433,7 @@
 				}
 			}
 
-			& footer {
+			footer {
 				background: rgba(255, 255, 255, 0.5);
 				backdrop-filter: blur(10px);
 				padding: 4rem 2rem 3rem;
@@ -438,12 +441,12 @@
 				text-align: center;
 				margin-top: auto;
 
-				& .footer-container {
+				.footer-container {
 					max-width: 700px;
 					margin: 0 auto;
 				}
 
-				& .section-title {
+				.section-title {
 					font-size: 1.8rem;
 					font-weight: 700;
 					margin-bottom: 1rem;
@@ -452,21 +455,21 @@
 					-webkit-text-fill-color: transparent;
 				}
 
-				& .desc-text {
+				.desc-text {
 					color: var(--text-muted);
 					line-height: 1.6;
 					margin-bottom: 2.5rem;
 					font-size: 1rem;
 				}
 
-				& .link-list {
+				.link-list {
 					list-style: none;
 					display: flex;
 					justify-content: center;
 					gap: 1rem;
 					flex-wrap: wrap;
 
-					& li a {
+					li a {
 						display: inline-block;
 						padding: 0.8rem 1.8rem;
 						background: white;
@@ -488,7 +491,7 @@
 				}
 			}
 
-			& #toast_container {
+			#toast_container {
 				position: fixed;
 				bottom: 2rem;
 				right: 2rem;
@@ -498,7 +501,7 @@
 				z-index: 9999;
 				pointer-events: none;
 
-				& .toast-message {
+				.toast-message {
 					background: var(--toast-bg);
 					color: var(--toast-text);
 					padding: 1rem 1.5rem;
@@ -536,23 +539,23 @@
 		@media (max-width: 1000px) {
 			body .main-layout-wrapper {
 				grid-template-columns: 1fr;
-				
-				& main.app-workspace .workspace-unified-panel {
-					& .unified-header, & .unified-body {
+
+				main.app-workspace .workspace-unified-panel {
+					.unified-header, .unified-body {
 						grid-template-columns: 1fr;
 					}
 
-					& .unified-header .header-col:first-child {
-						border-right: none;
-						border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-					}
-					
-					& .unified-body .editor-col {
+					.unified-header .header-col:first-child {
 						border-right: none;
 						border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 					}
 
-					& .unified-body .preview-col .live-preview-container {
+					.unified-body .editor-col {
+						border-right: none;
+						border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+					}
+
+					.unified-body .preview-col .live-preview-container {
 						min-height: 400px;
 					}
 				}
