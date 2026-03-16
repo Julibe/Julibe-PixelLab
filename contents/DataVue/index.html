@@ -25,7 +25,108 @@
     <h3>Stay Connected</h3>
     <p>
       Connect with me, <span>@Julibe</span> and show off your favorite dashboards.
+      Your feedback and creative inputs are always welcome!<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<aside class="sidebar">
+  <div id="intro">
+    <h2>DataVue</h2>
+    <h3>Clear Insights • Powerful Data</h3>
+    <p>
+      Explore a space where data isn’t just numbers—it’s alive.
+      Smooth line charts, flowing area graphs, dynamic bar transitions,
+      and circular performance indicators all come together to make insights clear.
+    </p>
+  </div>
+
+  <div id="about">
+    <h2>Hello, Data Explorer!</h2>
+    <p>
+      Dive into this curated collection of animated dashboard components designed for clarity,
+      elegance, and usability. Whether building a full analytics suite or gathering inspiration for your next UI.
+    </p>
+  </div>
+
+  <div id="share">
+    <h3>Stay Connected</h3>
+    <p>
+      Connect with me, <span>@Julibe</span> and show off your favorite dashboards.
       Your feedback and creative inputs are always welcome!
+    </p>
+    <p style="font-size:0.85rem; opacity:0.7;">
+      I'm always open to collaborations.
+    </p>
+    <ul class="social-list">
+      <li><a href="https://julibe.com/" target="_blank">Portfolio</a></li>
+      <li><a href="https://julibe.com/whatsapp" target="_blank">WhatsApp</a></li>
+      <li><a href="https://julibe.com/twitter" target="_blank">Twitter</a></li>
+      <li><a href="https://julibe.com/instagram" target="_blank">Instagram</a></li>
+      <li><a href="mailto:mail@julibe.com">Email</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main class="main-content">
+  <div class="dashboard-grid">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Quality Review</h3>
+      </div>
+      <div style="height: 200px;">
+        <svg id="chartArea" viewBox="0 0 350 200"></svg>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Submittals</h3>
+      </div>
+      <div style="height: 200px;">
+        <svg id="chartBar" viewBox="0 0 350 200"></svg>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Performance</h3>
+      </div>
+      <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+        <svg id="chartGauge" viewBox="0 0 300 160" style="max-height: 160px;">
+          <path class="gauge-bg" d="M 30,150 A 120,120 0 1 1 270,150" />
+          <path id="gaugePath" class="gauge-arc" d="M 30,150 A 120,120 0 1 1 270,150" />
+          <text id="gaugeText" class="gauge-txt" x="150" y="135">0</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Weekly Audits</h3>
+      </div>
+      <div style="height: 200px;">
+        <svg id="chartLine" viewBox="0 0 350 200"></svg>
+      </div>
+    </div>
+  </div>
+</main>
+
+<button class="btn-share" onclick="window.shareTwitter()">
+  <i class="fa-brands fa-twitter"></i> Share Experience
+</button>
+
+<button class="fab-refresh" onclick="updateAll()" title="Redraw">
+  <i class="fa-solid fa-rotate-right"></i>
+</button>
+
+<svg width="0" height="0" style="position:absolute;pointer-events: none;">
+  <defs>
+    <linearGradient id="greenGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a3e635" stop-opacity="0.5" />
+      <stop offset="95%" stop-color="#a3e635" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+</svg>
     </p>
     <p style="font-size:0.85rem; opacity:0.7;">
       I'm always open to collaborations.
