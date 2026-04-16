@@ -3,7 +3,12 @@ title: Pastelweeper
 slogan: Sweet Colors, Bitter Traps
 slug: pastelweeper
 extract: Don’t let the soft palette fool you. 🚩 Manage HP, loot medkits, and defuse ticking time bombs in this infinite RPG-infused Minesweeper dungeon. Start the crawl!
-description: A strategic Minesweeper evolution featuring RPG progression, hit points, inventory management, and dynamic board hazards. Built with CSS Grid and 3D transform effects.
+description: |
+  ## A Sweet and Explosive Adventure
+  Who says logic puzzles have to be boring gray grids? Welcome to Pastelweeper, a strategic evolution of a legendary classic! This project completely transforms the traditional sweeping experience by injecting it with pure chaos, beautiful Kawaii aesthetics, and engaging RPG elements that keep you on the edge of your seat.
+
+  ## Forgiving but Fierce
+  Instead of a frustrating one-hit game over, Pastelweeper introduces hit points, expandable grid levels, and a dynamic inventory system packed with life-saving Medkits and Scanners. Built entirely with Vanilla JavaScript and CSS Grid, this highly polished web game proves you do not need a heavy engine to deliver a thrilling, high-stakes arcade experience right in your browser!
 
 ## Pricing & Estimates
 time_concept: 6

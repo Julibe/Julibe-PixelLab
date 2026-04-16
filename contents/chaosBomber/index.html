@@ -1,13 +1,76 @@
-<div id="game-container">
-  <canvas id="gameCanvas"></canvas>
-  <div id="ui-layer">
-    <div id="score">FLOOR: 1</div>
-    <div id="stats">HP: 1 | DASH: READY</div>
-  </div>
-  <div id="overlay">
-    <h1>Chaos Bomber</h1>
-    <p>Survive the procedural maze. Defeat the Rogue AI Bot and Monsters.<br>Find the exit portal (Red Diamond).</p>
-    <button id="startBtn">Initialize Chaos</button>
-    <div class="controls">WASD: Move | SPACE: Bomb | E: Dash (Phase Shift)</div>
-  </div>
+<div
+	id="game-container"
+	role="application"
+	aria-label="Interactive arcade game area where players explore a maze and battle enemies"
+	title="A dynamic game environment where the Chaos Bomber adventure unfolds">
+	<canvas
+		id="gameCanvas"
+		role="img"
+		aria-label="Canvas rendering the maze battlefield, enemies, player character, bombs, and exit portal"
+		title="Visual playfield where all gameplay elements are displayed and animated"></canvas>
+
+	<div
+		id="ui-layer"
+		role="region"
+		aria-label="Live game status information such as floor number, health, and dash ability"
+		title="Heads-up display presenting real-time gameplay statistics">
+		<div
+			id="score"
+			role="status"
+			aria-live="polite"
+			aria-label="Current floor level indicator that updates as progress is made through the maze"
+			title="Shows which procedural floor of the maze the player is currently exploring">
+			FLOOR: 1
+		</div>
+
+		<div
+			id="stats"
+			role="status"
+			aria-live="polite"
+			aria-label="Player health and dash ability status that changes during gameplay"
+			title="Displays the player’s remaining health points and whether the phase dash ability is available">
+			HP: 1 | DASH: READY
+		</div>
+	</div>
+
+	<div
+		id="overlay"
+		role="dialog"
+		aria-modal="true"
+		aria-labelledby="game-title"
+		aria-describedby="game-description"
+		aria-label="Game introduction and start menu overlay"
+		title="Opening interface that introduces the challenge and allows the player to begin the game">
+		<h1
+			id="game-title"
+			aria-label="Title of the arcade style maze survival game"
+			title="Main heading presenting the name of the game and its chaotic theme">
+			Chaos Bomber
+		</h1>
+
+		<p
+			id="game-description"
+			role="note"
+			aria-label="Brief mission description explaining the goal of surviving the maze and locating the exit portal"
+			title="Quick overview of the objective: defeat enemies, navigate the maze, and locate the glowing red portal">
+			Survive the procedural maze. Defeat the Rogue AI Bot and
+			Monsters.<br />Find the exit portal (Red Diamond).
+		</p>
+
+		<button
+			id="startBtn"
+			role="button"
+			aria-label="Start the Chaos Bomber game and enter the procedural maze"
+			title="Begin the adventure and drop into the chaotic maze battlefield">
+			Initialize Chaos
+		</button>
+
+		<div
+			class="controls"
+			role="note"
+			aria-label="Keyboard control instructions explaining movement, bomb placement, and dash ability"
+			title="Reference guide for keyboard controls used during gameplay">
+			WASD: Move | SPACE: Bomb | E: Dash (Phase Shift)
+		</div>
+	</div>
 </div>

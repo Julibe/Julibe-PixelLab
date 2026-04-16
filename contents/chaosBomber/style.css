@@ -1,83 +1,159 @@
+:root {
+  --bg-color: #222;
+  --text-light: #f0eee4;
+  --text-dark: #333;
+  --accent-primary: #ff4422;
+  --accent-hover: #ff2200;
+  --border-dark: #1a1a1a;
+  --overlay-bg: rgba(0, 0, 0, 0.85);
+  --scrollbar-bg: transparent;
+  --scrollbar-hover: rgba(255, 255, 255, 0.1);
+}
+
+/* Variables and selection */
+::selection {
+  color: var(--text-light);
+  background: var(--accent-primary);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border: 0 none transparent;
+  border-radius: 3em;
+  corner-shape: squircle;
+}
+
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background: var(--accent-hover);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+  border: 0 none transparent;
+  border-radius: 3em;
+  corner-shape: squircle;
+}
+
+::-webkit-scrollbar-track:hover,
+::-webkit-scrollbar-track:active {
+  background: var(--scrollbar-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-bg);
+}
+
+/* Main structure */
 body {
   margin: 0;
-  background-color: #222;
+  background-color: var(--bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   font-family: "Courier New", Courier, monospace;
-  color: #f0eee4;
+  color: var(--text-light);
   overflow: hidden;
+
+  #game-container {
+    position: relative;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    border: 10px solid var(--border-dark);
+    border-radius: 16px;
+    corner-shape: squircle;
+
+    canvas {
+      display: block;
+      background-color: var(--text-light);
+      border-radius: 6px;
+      corner-shape: squircle;
+    }
+
+    #ui-layer {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      font-weight: bold;
+      text-shadow: 1px 1px 0 #000;
+      font-size: 20px;
+      color: var(--text-dark);
+    }
+
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--overlay-bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+      border-radius: 6px;
+      corner-shape: squircle;
+
+      h1 {
+        color: var(--accent-primary);
+        font-size: 48px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+
+      p {
+        color: var(--text-light);
+        margin-bottom: 20px;
+        max-width: 600px;
+        line-height: 1.5;
+      }
+
+      button {
+        padding: 15px 40px;
+        font-size: 24px;
+        background: var(--accent-primary);
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        font-family: inherit;
+        text-transform: uppercase;
+        transition: transform 0.1s;
+        user-select: none;
+        border-radius: 12px;
+        corner-shape: squircle;
+
+        &:hover {
+          transform: scale(1.05);
+          background: var(--accent-hover);
+        }
+      }
+
+      .controls {
+        font-size: 14px;
+        color: #aaa;
+        margin-top: 20px;
+      }
+    }
+  }
 }
-#game-container {
-  position: relative;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-  border: 10px solid #1a1a1a;
-}
-canvas {
-  display: block;
-  background-color: #f0eee4; /* Cream background from image */
-}
-#ui-layer {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  font-weight: bold;
-  text-shadow: 1px 1px 0 #000;
-  font-size: 20px;
-  color: #333;
-}
-#overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 10;
-}
-h1 {
-  color: #ff4422;
-  font-size: 48px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-}
-p {
-  color: #f0eee4;
-  margin-bottom: 20px;
-  max-width: 600px;
-  line-height: 1.5;
-}
-button {
-  padding: 15px 40px;
-  font-size: 24px;
-  background: #ff4422;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-family: inherit;
-  text-transform: uppercase;
-  transition: transform 0.1s;
-}
-button:hover {
-  transform: scale(1.05);
-  background: #ff2200;
-}
-.controls {
-  font-size: 14px;
-  color: #aaa;
-  margin-top: 20px;
-}
+
 .hidden {
   display: none !important;
 }
